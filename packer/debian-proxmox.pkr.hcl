@@ -21,6 +21,8 @@ source "proxmox-iso" "proxmox" {
     memory = 1024
     os = "l26"
     qemu_agent = true
+    cloud_init = true
+    cloud_init_storage_pool = "local-lvm"
     network_adapters {
         model = "virtio"
         bridge = "vmbr0"
@@ -57,4 +59,9 @@ build {
     sources = [
         "source.proxmox-iso.proxmox",
     ]
+
+    provisioner "shell" {
+        script = "scripts/provision.sh"
+        execute_command = "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
+    }
 }
