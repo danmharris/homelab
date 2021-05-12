@@ -12,3 +12,10 @@ use it to bootstrap a minimal Debian install (using
 a state ready to be managed by other tools.
 
 Project link: https://www.packer.io/
+
+### Terraform
+
+This is an infrastructure as code tool that manages the main resources in the
+lab (e.g. VMs, DNS records etc.).
+
+Project link: https://terraform.io/
