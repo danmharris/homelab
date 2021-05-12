@@ -38,6 +38,7 @@ source "proxmox-iso" "proxmox" {
     }
 
     iso_file = "local:iso/debian-10.9.0-amd64-netinst.iso"
+    unmount_iso = true
     http_directory = "http"
     boot_wait = "10s"
     boot_command = [
