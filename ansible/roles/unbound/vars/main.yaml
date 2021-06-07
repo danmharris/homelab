@@ -1,0 +1,3 @@
+---
+unbound_package: unbound
+unbound_config: /etc/unbound/unbound.conf

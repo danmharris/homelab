@@ -1,0 +1,15 @@
+---
+- name: Install unbound
+  package:
+    name: "{{ unbound_package }}"
+    state: present
+- name: Install unbound config
+  template:
+    src: unbound.conf.j2
+    dest: "{{ unbound_config }}"
+  notify: Restart unbound
+- name: Enable unbound service
+  service:
+    name: unbound
+    state: started
+    enabled: yes

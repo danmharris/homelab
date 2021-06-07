@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+server:
+{% for address in unbound_private_addresses | default([]) %}
+  private-address: {{ address }}
+{% endfor %}
+{% for domain in unbound_private_domains | default([]) %}
+  private-domain: {{ domain }}
+{% endfor %}
+{% for zone, type in (unbound_local_zones | default({})).items() %}
+  local-zone: "{{ zone }}." {{ type }}
+{% endfor %}
+{% for zone, opts in (unbound_forward_zones | default({})).items() %}
+forward-zone:
+  name: {{ zone }}
+{% for addr in opts.forward_addrs %}
+  forward-addr: {{ addr }}
+{% endfor %}
+{% endfor %}
