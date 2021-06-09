@@ -16,3 +16,10 @@ forward-zone:
   forward-addr: {{ addr }}
 {% endfor %}
 {% endfor %}
+{% for zone, opts in (unbound_stub_zones | default({})).items() %}
+stub-zone:
+  name: {{ zone }}
+{% for addr in opts.stub_addrs %}
+  stub-addr: {{ addr }}
+{% endfor %}
+{% endfor %}

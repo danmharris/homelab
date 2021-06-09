@@ -3,12 +3,12 @@ unbound_private_domains: ['dnhrrs.xyz']
 unbound_private_addresses: ['10.23.0.0/16']
 unbound_local_zones:
   10.in-addr.arpa: transparent
-unbound_forward_zones:
+unbound_stub_zones:
   dnhrrs.xyz:
-    forward_addrs:
+    stub_addrs:
       - 10.23.10.2
       - 10.23.20.3
   23.10.in-addr.arpa:
-    forward_addrs:
+    stub_addrs:
       - 10.23.10.2
       - 10.23.20.3
