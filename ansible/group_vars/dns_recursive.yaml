@@ -1,4 +1,6 @@
 ---
+unbound_local_only: false
+unbound_allowed_addresses: ['10.23.0.0/16']
 unbound_private_domains: ['dnhrrs.xyz']
 unbound_private_addresses: ['10.23.0.0/16']
 unbound_local_zones:

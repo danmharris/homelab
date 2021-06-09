@@ -1,5 +1,11 @@
 # {{ ansible_managed }}
 server:
+{% if not (unbound_local_only | default(true)) %}
+  interface: 0.0.0.0
+{% endif %}
+{% for address in unbound_allowed_addresses | default([]) %}
+  access-control: {{ address }} allow
+{% endfor %}
 {% for address in unbound_private_addresses | default([]) %}
   private-address: {{ address }}
 {% endfor %}
