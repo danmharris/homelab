@@ -2,6 +2,7 @@ launch=gsqlite3
 gsqlite3-database={{ pdns_database }}
 {% if pdns_api | default(false) %}
 webserver=yes
+webserver-address=0.0.0.0
 api=yes
 api-key={{ pdns_api_key }}
 {% endif %}
