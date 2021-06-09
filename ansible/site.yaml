@@ -1,4 +1,10 @@
 ---
+- hosts: all
+  tags: common
+  roles:
+    - role: jnv.unattended-upgrades
+      tags: [updates]
+
 - hosts: dns_authoritative
   roles:
     - role: pdns
