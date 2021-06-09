@@ -1,0 +1,10 @@
+---
+- hosts: dns_authoritative
+  roles:
+    - role: pdns
+      tags: [dns]
+
+- hosts: dns_recursive
+  roles:
+    - role: unbound
+      tags: [dns]
