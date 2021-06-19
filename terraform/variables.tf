@@ -1,3 +1,12 @@
+variable "pdns_api_key" {
+  type = string
+  sensitive = true
+}
+
+variable "pdns_server_url" {
+  type = string
+}
+
 variable "proxmox_url" {
   type = string
 }
