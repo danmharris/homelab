@@ -3,6 +3,7 @@ gsqlite3-database={{ pdns_database }}
 {% if pdns_api | default(false) %}
 webserver=yes
 webserver-address=0.0.0.0
+webserver-allow-from={{ pdns_api_allow_from | join(',') }}
 api=yes
 api-key={{ pdns_api_key }}
 {% endif %}
