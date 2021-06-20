@@ -1,3 +1,16 @@
+variable "mysql_endpoint" {
+  type = string
+}
+
+variable "mysql_user" {
+  type = string
+}
+
+variable "mysql_password" {
+  type      = string
+  sensitive = true
+}
+
 variable "pdns_api_key" {
   type      = string
   sensitive = true

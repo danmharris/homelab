@@ -1,5 +1,9 @@
 terraform {
   required_providers {
+    mysql = {
+      source  = "winebarrel/mysql"
+      version = "1.10.3"
+    }
     powerdns = {
       source  = "pan-net/powerdns"
       version = "1.4.0"
@@ -9,6 +13,12 @@ terraform {
       version = "2.7.1"
     }
   }
+}
+
+provider "mysql" {
+  endpoint = var.mysql_endpoint
+  username = var.mysql_user
+  password = var.mysql_password
 }
 
 provider "powerdns" {

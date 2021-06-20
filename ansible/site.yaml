@@ -14,3 +14,16 @@
   roles:
     - role: unbound
       tags: [dns]
+
+- hosts: mysql
+  pre_tasks:
+    - name: Install python interpreters
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - "python-pymysql"
+        - "python3-pymysql"
+  roles:
+    - role: geerlingguy.mysql
+      tags: [database, mysql]
