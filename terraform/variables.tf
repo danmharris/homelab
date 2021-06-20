@@ -20,11 +20,6 @@ variable "proxmox_password" {
   sensitive = true
 }
 
-variable "proxmox_boot_order" {
-  type    = string
-  default = "order=scsi0;ide2;net0"
-}
-
 variable "ssh_public_key" {
   type = string
 }
