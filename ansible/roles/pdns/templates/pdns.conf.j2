@@ -1,3 +1,6 @@
+# {{ ansible_managed }}
+setuid=pdns
+setgid=pdns
 launch=gsqlite3
 gsqlite3-database={{ pdns_database }}
 {% if pdns_api | default(false) %}
