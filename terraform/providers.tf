@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     powerdns = {
-      source = "pan-net/powerdns"
+      source  = "pan-net/powerdns"
       version = "1.4.0"
     }
     proxmox = {
