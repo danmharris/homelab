@@ -16,12 +16,20 @@ module "scotty_vm" {
   ssh_public_key = var.ssh_public_key
 }
 
-module "dalmatian_vm" {
+module "db_0_vm" {
   source         = "./modules/vm"
-  name           = "dalmatian"
-  desc           = "MySQL server"
+  desc           = "MySQL server primary"
   node           = "tangor"
   ip             = "10.23.20.102"
+  ssh_public_key = var.ssh_public_key
+  memory         = 1024
+}
+
+module "db_1_vm" {
+  source         = "./modules/vm"
+  desc           = "MySQL server replica"
+  node           = "tangor"
+  ip             = "10.23.20.103"
   ssh_public_key = var.ssh_public_key
   memory         = 1024
 }
