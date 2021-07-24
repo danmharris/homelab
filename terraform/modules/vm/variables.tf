@@ -35,6 +35,7 @@ variable "memory" {
 variable "name" {
   type        = string
   description = "Name of VM. Will also be used as A record"
+  default     = ""
 }
 
 variable "node" {

@@ -12,6 +12,10 @@ terraform {
       source  = "Telmate/proxmox"
       version = "2.7.1"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.1.0"
+    }
   }
 }
 

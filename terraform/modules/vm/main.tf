@@ -8,11 +8,23 @@ terraform {
       source  = "Telmate/proxmox"
       version = "2.7.1"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.1.0"
+    }
   }
 }
 
+resource "random_pet" "name" {
+  length = 2
+}
+
+locals {
+  name = var.name != "" ? var.name : random_pet.name.id
+}
+
 resource "proxmox_vm_qemu" "vm" {
-  name        = var.name
+  name        = local.name
   desc        = var.desc
   target_node = var.node
   clone       = var.template
@@ -42,7 +54,7 @@ resource "proxmox_vm_qemu" "vm" {
 
 resource "powerdns_record" "dns-a" {
   zone    = "dnhrrs.xyz"
-  name    = "${var.name}.dnhrrs.xyz."
+  name    = "${local.name}.dnhrrs.xyz."
   type    = "A"
   ttl     = 3600
   records = [var.ip]
@@ -53,5 +65,5 @@ resource "powerdns_record" "dns-ptr" {
   name    = "${join(".",reverse(split(".", var.ip)))}.in-addr.arpa."
   type    = "PTR"
   ttl     = 3600
-  records = ["${var.name}.dnhrrs.xyz."]
+  records = ["${local.name}.dnhrrs.xyz."]
 }
