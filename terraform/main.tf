@@ -1,21 +1,3 @@
-module "db_0_vm" {
-  source         = "./modules/vm"
-  desc           = "MySQL server primary"
-  node           = "tangor"
-  ip             = "10.23.20.102"
-  ssh_public_key = var.ssh_public_key
-  memory         = 1024
-}
-
-module "db_1_vm" {
-  source         = "./modules/vm"
-  desc           = "MySQL server replica"
-  node           = "tangor"
-  ip             = "10.23.20.103"
-  ssh_public_key = var.ssh_public_key
-  memory         = 1024
-}
-
 resource "powerdns_record" "dns-a" {
   zone    = "dnhrrs.xyz"
   name    = "ha.dnhrrs.xyz."
