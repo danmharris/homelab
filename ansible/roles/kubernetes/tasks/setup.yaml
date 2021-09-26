@@ -44,3 +44,14 @@
 - name: Apply sysctl params
   command: 'sysctl --system'
   when: kubernetes_sysctl_result.changed
+
+- name: Remove swap from fstab
+  lineinfile:
+    path: /etc/fstab
+    regex: 'swap'
+    state: absent
+  register: kubernetes_swap_result
+
+- name: Disable swap
+  command: swapoff -a
+  when: kubernetes_swap_result.changed
