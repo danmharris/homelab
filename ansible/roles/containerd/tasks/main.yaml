@@ -1,0 +1,31 @@
+---
+- name: Add Docker apt key
+  get_url:
+    url: "{{ containerd_key }}"
+    dest: /etc/apt/trusted.gpg.d/docker.asc
+- name: Add Docker repository
+  apt_repository:
+    filename: docker
+    repo: "deb https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
+    state: present
+- name: Install containerd packages
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ containerd_packages }}"
+  register: containerd_installed
+- name: Generate containerd config
+  shell: "containerd config default > {{ containerd_config }}"
+  when: containerd_installed.changed
+  notify: Restart containerd
+- name: Enable systemd cgroup
+  lineinfile:
+    insertafter: 'plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options'
+    line: "            SystemdCgroup = {{ containerd_systemd_cgroup | lower }}"
+    path: "{{ containerd_config }}"
+    regex: 'SystemdCgroup = '
+  notify: Restart containerd
+- name: Enable containerd service
+  service:
+    name: containerd
+    enabled: true

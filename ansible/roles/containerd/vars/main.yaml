@@ -1,0 +1,6 @@
+---
+containerd_repo: https://download.docker.com/linux/debian
+containerd_key: https://download.docker.com/linux/debian/gpg
+containerd_packages:
+  - containerd.io
+containerd_config: /etc/containerd/config.toml
