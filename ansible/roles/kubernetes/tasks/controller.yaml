@@ -19,3 +19,15 @@
   command: "kubectl apply -f {{ kubernetes_flannel_manifest }}"
   register: kubernetes_flannel_result
   changed_when: "'created' in kubernetes_flannel_result.stdout"
+
+- name: Generate join command
+  command: 'kubeadm token create --print-join-command'
+  changed_when: false
+  register: kubernetes_join_command
+
+- name: Set join command on all hosts
+  set_fact:
+    kubernetes_join_command: "{{ kubernetes_join_command }}"
+  delegate_to: "{{ item }}"
+  delegate_facts: true
+  loop: "{{ groups['kubernetes'] }}"

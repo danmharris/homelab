@@ -5,3 +5,7 @@
 - name: Controller tasks
   include_tasks: controller.yaml
   when: kubernetes_role == 'controller'
+
+- name: Node tasks
+  include_tasks: node.yaml
+  when: kubernetes_role == 'node'
