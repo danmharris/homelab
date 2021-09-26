@@ -32,3 +32,9 @@
   roles:
     - containerd
     - kubernetes
+
+# Done separately so join command is present
+- hosts: kubernetes_node
+  roles:
+    - containerd
+    - kubernetes
