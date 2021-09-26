@@ -29,3 +29,5 @@
   service:
     name: containerd
     enabled: true
+- name: Flush handlers
+  meta: flush_handlers

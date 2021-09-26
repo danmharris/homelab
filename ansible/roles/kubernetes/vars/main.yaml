@@ -1,0 +1,10 @@
+---
+kubernetes_key: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+kubernetes_packages:
+  - kubelet
+  - kubeadm
+  - kubectl
+kubernetes_kernel_modules:
+  - overlay
+  - br_netfilter
+kubernetes_flannel_manifest: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
