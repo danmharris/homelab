@@ -1,6 +1,7 @@
 ---
 - name: Setup kubeadm
   include_tasks: setup.yaml
+
 - name: Controller tasks
   include_tasks: controller.yaml
   when: kubernetes_role == 'controller'

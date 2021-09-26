@@ -3,37 +3,44 @@
   get_url:
     url: "{{ kubernetes_key }}"
     dest: /etc/apt/trusted.gpg.d/kubernetes.gpg
+
 - name: Add kubernetes apt repository
   apt_repository:
     filename: kubernetes
     repo: 'deb  https://apt.kubernetes.io/ kubernetes-xenial main'
     state: present
+
 - name: Install kubernetes packages
   package:
     name: "{{ item }}"
     state: present
   loop: "{{ kubernetes_packages }}"
+
 - name: Hold kubernetes packages
   command: "apt-mark hold {{ item }}"
   loop: "{{ kubernetes_packages }}"
   register: kubernetes_hold_result
   changed_when: '"already" not in kubernetes_hold_result.stdout'
+
 - name: Persist kernel modules
   template:
     src: modules-load.conf.j2
     dest: /etc/modules-load.d/containerd.conf
   register: kubernetes_modules_result
+
 - name: Load kernel modules
   community.general.modprobe:
     name: "{{ item }}"
     state: present
   loop: "{{ kubernetes_kernel_modules }}"
   when: kubernetes_modules_result.changed
+
 - name: Install sysctl config
   template:
     src: sysctl.conf.j2
     dest: /etc/sysctl.d/99-kubernetes-cri.conf
   register: kubernetes_sysctl_result
+
 - name: Apply sysctl params
   command: 'sysctl --system'
   when: kubernetes_sysctl_result.changed

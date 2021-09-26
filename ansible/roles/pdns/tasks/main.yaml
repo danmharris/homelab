@@ -4,6 +4,7 @@
     name: "{{ item }}"
     state: present
   loop: "{{ pdns_packages }}"
+
 - name: Install config
   template:
     src: pdns.conf.j2
@@ -12,10 +13,12 @@
     group: root
     mode: 0640
   notify: Restart pdns
+
 - name: Create database
   shell:
     cmd: "sqlite3 {{ pdns_database }} < {{ pdns_schema }}"
     creates: "{{ pdns_database }}"
+
 - name: Set permissions on database
   file:
     path: "{{ pdns_dir }}"
@@ -23,6 +26,7 @@
     group: pdns
     state: directory
     recurse: true
+
 - name: Enable service
   service:
     name: pdns

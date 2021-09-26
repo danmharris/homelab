@@ -3,15 +3,18 @@
   command:
     cmd: kubeadm init --pod-network-cidr=10.244.0.0/16
     creates: /etc/kubernetes/admin.conf
+
 - name: Create .kube directory
   file:
     path: ~/.kube
     state: directory
+
 - name: Link kubectl config
   file:
     src: /etc/kubernetes/admin.conf
     dest: ~/.kube/config
     state: link
+
 - name: Install flannel to cluster
   command: "kubectl apply -f {{ kubernetes_flannel_manifest }}"
   register: kubernetes_flannel_result
