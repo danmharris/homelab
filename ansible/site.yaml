@@ -27,3 +27,8 @@
   roles:
     - role: geerlingguy.mysql
       tags: [database, mysql]
+
+- hosts: kubernetes_controller
+  roles:
+    - containerd
+    - kubernetes
