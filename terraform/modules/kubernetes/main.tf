@@ -63,6 +63,7 @@ resource "proxmox_vm_qemu" "controller" {
 
 resource "proxmox_vm_qemu" "node" {
   for_each    = local.node_ips
+  depends_on  = [proxmox_vm_qemu.controller]
   name        = random_pet.vm_name[each.value].id
   desc        = "Kubernetes node"
   target_node = var.node
