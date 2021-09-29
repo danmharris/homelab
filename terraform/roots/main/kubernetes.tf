@@ -3,4 +3,5 @@ module "k8s_cluster" {
   controller_ips = ["10.23.20.100"]
   node_ips       = ["10.23.20.102","10.23.20.103"]
   ssh_public_key = var.ssh_public_key
+  template       = "debian10"
 }
