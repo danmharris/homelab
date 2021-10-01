@@ -38,3 +38,7 @@
   roles:
     - containerd
     - kubernetes
+
+- hosts: nfs
+  roles:
+    - geerlingguy.nfs
