@@ -35,6 +35,11 @@
 
 # Done separately so join command is present
 - hosts: kubernetes_node
+  pre_tasks:
+    - name: Install nfs client
+      package:
+        name: nfs-common
+        state: present
   roles:
     - containerd
     - kubernetes
