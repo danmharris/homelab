@@ -1,7 +1,7 @@
 ---
 - name: Initialise cluster
   command:
-    cmd: kubeadm init --pod-network-cidr=10.244.0.0/16
+    cmd: "kubeadm init --pod-network-cidr={{ kubernetes_pod_cidr }}"
     creates: /etc/kubernetes/admin.conf
 
 - name: Create .kube directory
@@ -15,10 +15,10 @@
     dest: ~/.kube/config
     state: link
 
-- name: Install flannel to cluster
-  command: "kubectl apply -f {{ kubernetes_flannel_manifest }}"
-  register: kubernetes_flannel_result
-  changed_when: "'created' in kubernetes_flannel_result.stdout"
+- name: Install CNI to cluster
+  command: "kubectl apply -f {{ kubernetes_cni_manifest }}"
+  register: kubernetes_cni_result
+  changed_when: "'created' in kubernetes_cni_result.stdout"
 
 - name: Generate join command
   command: 'kubeadm token create --print-join-command'

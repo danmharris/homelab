@@ -1,0 +1,16 @@
+---
+apiVersion: projectcalico.org/v3
+kind: BGPPeer
+metadata:
+  name: my-global-peer
+spec:
+  peerIP: 10.23.20.1
+  asNumber: 64512
+---
+apiVersion: projectcalico.org/v3
+kind: BGPConfiguration
+metadata:
+  name: default
+spec:
+  serviceExternalIPs:
+    - cidr: 10.44.0.0/24

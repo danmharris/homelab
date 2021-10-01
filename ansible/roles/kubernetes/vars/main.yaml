@@ -7,4 +7,5 @@ kubernetes_packages:
 kubernetes_kernel_modules:
   - overlay
   - br_netfilter
-kubernetes_flannel_manifest: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubernetes_cni_manifest: https://docs.projectcalico.org/manifests/calico.yaml
+kubernetes_pod_cidr: 192.168.0.0/16
