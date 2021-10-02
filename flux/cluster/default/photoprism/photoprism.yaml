@@ -1,0 +1,54 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: photoprism
+  namespace: default
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: photoprism
+      version: '6.0.1'
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+  values:
+    image:
+      tag: 20210211
+    env:
+      PHOTOPRISM_READONLY: 1
+      PHOTOPRISM_WORKERS: 1
+      PHOTOPRISM_SITE_URL: https://photoprism.dnhrrs.xyz/
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+        ingressClassName: nginx
+        hosts:
+          - host: photoprism.dnhrrs.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: photoprism-cert
+            hosts:
+              - photoprism.dnhrrs.xyz
+    persistence:
+      config:
+        enabled: true
+        mountPath: /photoprism/storage
+        existingClaim: photoprism
+      originals:
+        enabled: true
+        mountPath: /photoprism/originals
+        existingClaim: photos
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 0.5Gi
+      limits:
+        cpu: 2000m
+        memory: 1.5Gi
