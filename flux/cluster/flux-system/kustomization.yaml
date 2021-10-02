@@ -6,4 +6,5 @@ resources:
   - gotk-sync.yaml
   - repos/ingress-nginx.yaml
   - repos/jetstack.yaml
+  - repos/k8s-at-home.yaml
   - repos/nfs-subdir-external-provisioner.yaml
