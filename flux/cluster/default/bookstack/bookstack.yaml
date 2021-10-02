@@ -36,6 +36,7 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-staging
+        ingressClassName: nginx
         hosts:
           - host: bookstack.dnhrrs.xyz
             paths:
