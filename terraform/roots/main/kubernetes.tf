@@ -66,3 +66,16 @@ resource "powerdns_record" "vm_ptr" {
   ttl      = 3600
   records  = ["${proxmox_vm_qemu.nfs.name}.vm.dnhrrs.xyz."]
 }
+
+// Ingress
+resource "random_id" "ingress_name" {
+  byte_length = 3
+}
+
+resource "powerdns_record" "ingress_a" {
+  zone    = "dnhrrs.xyz"
+  name    = "ingress-${random_id.ingress_name.hex}.k8s.dnhrrs.xyz."
+  type    = "A"
+  ttl     = 3600
+  records = ["10.44.0.10"]
+}
