@@ -16,7 +16,7 @@ spec:
         namespace: flux-system
   values:
     image:
-      tag: 20210211
+      tag: '20210211'
     env:
       PHOTOPRISM_READONLY: 1
       PHOTOPRISM_WORKERS: 1
