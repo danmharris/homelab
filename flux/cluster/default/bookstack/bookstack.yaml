@@ -39,11 +39,8 @@ spec:
         hosts:
           - host: bookstack.dnhrrs.xyz
             paths:
-              path: /
-              pathType: Prefix
-              service:
-                name:
-                port:
+              - path: /
+                pathType: Prefix
         tls:
           - secretName: bookstack-cert
             hosts:
