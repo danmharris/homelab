@@ -79,3 +79,19 @@ resource "powerdns_record" "ingress_a" {
   ttl     = 3600
   records = ["10.44.0.10"]
 }
+
+resource "powerdns_record" "bookstack_cname" {
+  zone    = "dnhrrs.xyz"
+  name    = "bookstack.dnhrrs.xyz."
+  type    = "CNAME"
+  ttl     = 3600
+  records = [powerdns_record.ingress_a.name]
+}
+
+resource "powerdns_record" "photoprism_cname" {
+  zone    = "dnhrrs.xyz"
+  name    = "photoprism.dnhrrs.xyz."
+  type    = "CNAME"
+  ttl     = 3600
+  records = [powerdns_record.ingress_a.name]
+}
