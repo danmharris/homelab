@@ -8,3 +8,4 @@ resources:
   - repos/jetstack.yaml
   - repos/k8s-at-home.yaml
   - repos/nfs-subdir-external-provisioner.yaml
+  - repos/prometheus-community.yaml
