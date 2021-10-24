@@ -103,3 +103,11 @@ resource "powerdns_record" "prometheus_cname" {
   ttl     = 3600
   records = [powerdns_record.ingress_a.name]
 }
+
+resource "powerdns_record" "grafana_cname" {
+  zone    = "dnhrrs.xyz"
+  name    = "grafana.dnhrrs.xyz."
+  type    = "CNAME"
+  ttl     = 3600
+  records = [powerdns_record.ingress_a.name]
+}
