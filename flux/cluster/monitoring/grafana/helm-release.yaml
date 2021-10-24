@@ -29,11 +29,11 @@ spec:
           hosts:
             - grafana.dnhrrs.xyz
     persistence:
-      enabled: true
-      storageClassName: nfs-client
-      accessModes:
-        - ReadWriteOnce
-      size: 1Gi
+      enabled: false
+      # storageClassName: nfs-client
+      # accessModes:
+      #   - ReadWriteOnce
+      # size: 1Gi
     admin:
       existingSecret: grafana-credentials
       userKey: admin-user
