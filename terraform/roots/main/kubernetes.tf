@@ -95,3 +95,11 @@ resource "powerdns_record" "photoprism_cname" {
   ttl     = 3600
   records = [powerdns_record.ingress_a.name]
 }
+
+resource "powerdns_record" "prometheus_cname" {
+  zone    = "dnhrrs.xyz"
+  name    = "prometheus.dnhrrs.xyz."
+  type    = "CNAME"
+  ttl     = 3600
+  records = [powerdns_record.ingress_a.name]
+}
