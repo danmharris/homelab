@@ -34,6 +34,8 @@ spec:
             hosts:
               - prometheus.dnhrrs.xyz
       prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
             spec:
