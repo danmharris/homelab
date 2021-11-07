@@ -1,0 +1,46 @@
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: photoprism-index
+spec:
+  schedule: '0 * * * *'
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      ttlSecondsAfterFinished: 0
+      template:
+        spec:
+          containers:
+            - name: photoprism
+              image: 'photoprism/photoprism:20210211'
+              imagePullPolicy: IfNotPresent
+              args:
+                - /photoprism/bin/photoprism
+                - index
+              env:
+                - name: PHOTOPRISM_READONLY
+                  value: 'true'
+                - name: PHOTOPRISM_DATABASE_DSN
+                  value: '/photoprism/storage/index.db'
+              volumeMounts:
+                - name: photoprism
+                  mountPath: /photoprism/storage
+                - name: photos
+                  mountPath: /photoprism/originals
+              resources:
+                requests:
+                  cpu: 1000m
+                  memory: 1Gi
+                limits:
+                  cpu: 2000m
+                  memory: 3Gi
+          volumes:
+            - name: photos
+              persistentVolumeClaim:
+                claimName: photos
+            - name: photoprism
+              persistentVolumeClaim:
+                claimName: photoprism
+          restartPolicy: OnFailure
