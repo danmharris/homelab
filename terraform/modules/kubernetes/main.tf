@@ -33,8 +33,8 @@ resource "proxmox_vm_qemu" "controller" {
   target_node = var.node
   clone       = var.template
 
-  cores  = 2
-  memory = 3072
+  cores  = 4
+  memory = 4096
 
   agent = 1
   boot  = "order=scsi0;ide2;net0"
