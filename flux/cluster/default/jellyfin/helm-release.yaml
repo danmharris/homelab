@@ -38,11 +38,13 @@ spec:
         mountPath: /config
         storageClass: nfs-client
         accessMode: ReadWriteOnce
+        size: 1Gi
       cache:
         enabled: true
         mountPath: /cache
         storageClass: nfs-client
         accessMode: ReadWriteOnce
+        size: 1Gi
       media:
         enabled: true
         mountPath: /media
