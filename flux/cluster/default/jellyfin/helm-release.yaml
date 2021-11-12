@@ -37,10 +37,12 @@ spec:
         enabled: true
         mountPath: /config
         storageClass: nfs-client
+        accessMode: ReadWriteOnce
       cache:
         enabled: true
         mountPath: /cache
         storageClass: nfs-client
+        accessMode: ReadWriteOnce
       media:
         enabled: true
         mountPath: /media
