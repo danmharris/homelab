@@ -111,3 +111,11 @@ resource "powerdns_record" "grafana_cname" {
   ttl     = 3600
   records = [powerdns_record.ingress_a.name]
 }
+
+resource "powerdns_record" "jellyfin_cname" {
+  zone    = "dnhrrs.xyz"
+  name    = "jellyfin.dnhrrs.xyz."
+  type    = "CNAME"
+  ttl     = 3600
+  records = [powerdns_record.ingress_a.name]
+}

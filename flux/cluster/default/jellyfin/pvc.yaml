@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: dvds
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: dvds
+  mountOptions:
+    - hard
+    - ro
+    - rsize=32768
+    - wsize=32768
+  nfs:
+    path: /volume1/DVDs
+    server: nas.dnhrrs.xyz
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dvds
+spec:
+  storageClassName: dvds
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Mi
