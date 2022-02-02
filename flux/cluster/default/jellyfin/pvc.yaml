@@ -3,6 +3,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: dvds
+  namespace: default
 spec:
   capacity:
     storage: 5Gi
@@ -24,6 +25,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: dvds
+  namespace: default
 spec:
   storageClassName: dvds
   accessModes:
