@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: photoprism
+  namespace: default
 spec:
   storageClassName: "nfs-client"
   accessModes:
@@ -15,6 +16,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: photos
+  namespace: default
 spec:
   capacity:
     storage: 5Gi
@@ -36,6 +38,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: photos
+  namespace: default
 spec:
   storageClassName: photos
   accessModes:
