@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: photoprism
-              image: 'photoprism/photoprism:20210211'
+              image: 'photoprism/photoprism:20220121'
               imagePullPolicy: IfNotPresent
               args:
                 - /photoprism/bin/photoprism
