@@ -1,0 +1,38 @@
+apiVersion: v1
+data:
+    key: ENC[AES256_GCM,data:N185Q8ZbKxkBSm29PR083VxNFyB/ONkBKvhFHHPHY771KLwEDjAzANssF24=,iv:gQm+G15ZE/p6UXcLarI7NRVmaU98L4/ZT4ibi/mmu5E=,tag:SrN7M1m0L55dfkIPys+omw==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: bookstack-key
+    namespace: default
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    lastmodified: '2022-02-02T13:36:39Z'
+    mac: ENC[AES256_GCM,data:6RaL1eZN8WwSW8Bm5NfMm//ljt8VyEJrOajmnX7/yGCVdX2NiS+kStcSaEXvEZkZ+UCpNYJRId+ZSJp8L2OGLcRqGEEVzvWDdEDtyuaUwqUeJaTsBV/cZTuCV8WQhx4jbZe5umxwkO8DEp75bRws1bBClu7Uo2hqIYkoG0y2yAE=,iv:HsH3XCpmuOM/t369BjGRIUS6VGRPb0pTY4K5estexiM=,tag:6m+dG3BX12HVdRhxmATC8Q==,type:str]
+    pgp:
+    -   created_at: '2022-02-02T13:36:39Z'
+        enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAxlxznDH90E6AQ/9HZOy4lJODzoCCCmKCeY5S0/XrzqGh4K0hg1AZqjwDvnL
+            Z+NiSgHuI2FsME5QuhpKzlXlTeu5moMXsUnWEyEpTHjG2+c1mxoi2snau0SY4AYQ
+            WC5j8b+XClf/L0gBGHB4iiBbcgAdE/UHfDQTi6yzgMWMHy831fm7xCk7aIX1HqTF
+            pyPq4Ezs9ZcZalCdHI9sRoRR+E5p8j5xIo6N68z+kgAQabRYU6OnnTy+0+12we3R
+            hYYt+yxMqHduOixZuY3dKgZa16JGzRWVuRspZWOUVMuzm75XtJlT+CXtk9G2COzQ
+            zpsC/bWj1x+7czbmv4fjoZYQzycXpYvaecAburKtoyVLhC5EEv9Ph2cXcmwJ/i4L
+            kv2MC6corlYvD9r1o58/qAsKfMmVQ9YCdeAmDLNccXrsLPq4IoQ2f03FOAHcyNkx
+            Rb+i06227mKUsWWDz6Q7LHKgMXE5Mz0J8jQCnXP3Vrff5qsbLSDsFNBiBKzV7s5+
+            N/LxMClpxs3HC1xRF2s62Z2h8FD8NOA8WO2eWwg5UYIbIG9AcKVPOmblw0dx+1yt
+            n12InzbNxlZPTiyUC7Yuu9OkE3E7HzMAxErhcBGW1M9tmGT8by2HDsZt0wGbN8Om
+            BfCQRRl2uNui9YI2ru8+AvSQMq7wQwlQtjLgmCI1v+6PnUDK2ITHYD95Y6Yy157S
+            XgGiEXA7faEvIxMeg2NHH8be9Bgyeg8oEEMKPOX5+W2ktYHr4C2Fyc+MD0nlD6Ne
+            o7CBmOLFikIah2cxZNIADDG5uU6Yt6kztgEA/nK+a8mCB5Nd0jDYyUl2FwqD3gc=
+            =MwgA
+            -----END PGP MESSAGE-----
+        fp: 027AF72E69902FFABC4EC908C5C4837CA36C0020
+    encrypted_regex: ^(data|stringData)$
+    version: 3.6.1
