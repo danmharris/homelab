@@ -6,4 +6,5 @@ resources:
   - calico
   - ingress-nginx
   - nfs-subdir-external-provisioner
+  - cert-manager
   - kube-prometheus-stack
