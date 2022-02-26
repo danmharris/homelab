@@ -4,10 +4,4 @@ kind: Kustomization
 resources:
   - gotk-components.yaml
   - gotk-sync.yaml
-  - pod-monitor.yaml
-  - repos/grafana.yaml
-  - repos/ingress-nginx.yaml
-  - repos/jetstack.yaml
-  - repos/k8s-at-home.yaml
-  - repos/nfs-subdir-external-provisioner.yaml
-  - repos/prometheus-community.yaml
+  - infrastructure.yaml
