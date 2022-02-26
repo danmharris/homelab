@@ -20,7 +20,7 @@ metadata:
 spec:
   interval: 10m0s
   path: ./flux/clusters/5906f5
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
