@@ -1,0 +1,65 @@
+---
+- hosts: proxmox_vm
+  gather_facts: false
+  become: false
+  serial: 1
+  tasks:
+    - name: Generate name
+      delegate_to: localhost
+      set_fact:
+        proxmox_name: "{{ proxmox_role }}-{{ inventory_hostname | replace('.', '-') }}"
+    - name: Stop Proxmox VM
+      delegate_to: localhost
+      proxmox_kvm:
+        api_user: "{{ proxmox_api['user'] }}"
+        api_password: "{{ proxmox_api['password'] }}"
+        api_host: "{{ proxmox_api['host'] }}"
+        name: "{{ proxmox_name }}"
+        node: "{{ proxmox_node }}"
+        state: stopped
+        force: true
+      register: vm_stopped
+      ignore_errors: true
+    - name: Wait for VM to stop
+      delegate_to: localhost
+      wait_for:
+        timeout: 10
+      when: vm_stopped is changed
+    - name: Destroy Proxmox VM
+      delegate_to: localhost
+      proxmox_kvm:
+        api_user: "{{ proxmox_api['user'] }}"
+        api_password: "{{ proxmox_api['password'] }}"
+        api_host: "{{ proxmox_api['host'] }}"
+        name: "{{ proxmox_name }}"
+        node: "{{ proxmox_node }}"
+        state: absent
+      when: vm_stopped is not failed
+    - name: Remove A record in DNS
+      delegate_to: localhost
+      uri:
+        url: "http://{{ groups['dns_authoritative'][0] }}:8081/api/v1/servers/localhost/zones/dnhrrs.xyz."
+        method: PATCH
+        headers:
+          X-API-Key: "{{ pdns_api_key }}"
+        body_format: json
+        body:
+          rrsets:
+            - name: "{{ proxmox_name }}.vm.dnhrrs.xyz."
+              type: A
+              changetype: DELETE
+        status_code: [204]
+    - name: Remove PTR record in DNS
+      delegate_to: localhost
+      uri:
+        url: "http://{{ groups['dns_authoritative'][0] }}:8081/api/v1/servers/localhost/zones/23.10.in-addr.arpa."
+        method: PATCH
+        headers:
+          X-API-Key: "{{ pdns_api_key }}"
+        body_format: json
+        body:
+          rrsets:
+            - name: "{{ inventory_hostname.split('.') | reverse | join('.') }}.in-addr.arpa."
+              type: PTR
+              changetype: DELETE
+        status_code: [204]

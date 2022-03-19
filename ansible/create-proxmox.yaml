@@ -1,0 +1,78 @@
+---
+- hosts: proxmox_vm
+  gather_facts: false
+  become: false
+  serial: 1
+  tasks:
+    - name: Generate name
+      delegate_to: localhost
+      set_fact:
+        proxmox_name: "{{ proxmox_role }}-{{ inventory_hostname | replace('.', '-') }}"
+    - name: Create Proxmox VM
+      delegate_to: localhost
+      proxmox_kvm:
+        api_user: "{{ proxmox_api['user'] }}"
+        api_password: "{{ proxmox_api['password'] }}"
+        api_host: "{{ proxmox_api['host'] }}"
+        name: "{{ proxmox_name }}"
+        node: "{{ proxmox_node }}"
+        cores: "{{ proxmox_cores }}"
+        memory: "{{ proxmox_memory }}"
+        net:
+          net0: 'virtio,bridge=vmbr0,tag=20'
+        scsi:
+          scsi0: "{{ proxmox_cd }}"
+        virtio:
+          virtio0: "local-lvm:{{ proxmox_disk }},format=raw"
+        bootdisk: virtio0
+        onboot: true
+        state: present
+      register: vm_created
+    - name: Wait for VM to create
+      delegate_to: localhost
+      wait_for:
+        timeout: 10
+      when: vm_created is changed
+    - name: Start Proxmox VM
+      delegate_to: localhost
+      proxmox_kvm:
+        api_user: "{{ proxmox_api['user'] }}"
+        api_password: "{{ proxmox_api['password'] }}"
+        api_host: "{{ proxmox_api['host'] }}"
+        name: "{{ proxmox_name }}"
+        node: "{{ proxmox_node }}"
+        state: started
+    - name: Register A record in DNS
+      delegate_to: localhost
+      uri:
+        url: "http://{{ groups['dns_authoritative'][0] }}:8081/api/v1/servers/localhost/zones/dnhrrs.xyz."
+        method: PATCH
+        headers:
+          X-API-Key: "{{ pdns_api_key }}"
+        body_format: json
+        body:
+          rrsets:
+            - name: "{{ proxmox_name }}.vm.dnhrrs.xyz."
+              type: A
+              ttl: 3600
+              changetype: REPLACE
+              records:
+                - content: "{{ inventory_hostname }}"
+        status_code: [204]
+    - name: Register PTR record in DNS
+      delegate_to: localhost
+      uri:
+        url: "http://{{ groups['dns_authoritative'][0] }}:8081/api/v1/servers/localhost/zones/23.10.in-addr.arpa."
+        method: PATCH
+        headers:
+          X-API-Key: "{{ pdns_api_key }}"
+        body_format: json
+        body:
+          rrsets:
+            - name: "{{ inventory_hostname.split('.') | reverse | join('.') }}.in-addr.arpa."
+              type: PTR
+              ttl: 3600
+              changetype: REPLACE
+              records:
+                - content: "{{ proxmox_name }}.vm.dnhrrs.xyz."
+        status_code: [204]
