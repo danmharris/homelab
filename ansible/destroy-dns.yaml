@@ -1,0 +1,34 @@
+---
+- hosts: dns_record
+  gather_facts: false
+  become: false
+  serial: 1
+  tasks:
+    - name: Remove A record in DNS
+      delegate_to: localhost
+      uri:
+        url: "http://{{ groups['dns_authoritative'][0] }}:8081/api/v1/servers/localhost/zones/dnhrrs.xyz."
+        method: PATCH
+        headers:
+          X-API-Key: "{{ pdns_api_key }}"
+        body_format: json
+        body:
+          rrsets:
+            - name: "{{ dns_name }}.{{ dns_zone }}.dnhrrs.xyz."
+              type: A
+              changetype: DELETE
+        status_code: [204]
+    - name: Remove PTR record in DNS
+      delegate_to: localhost
+      uri:
+        url: "http://{{ groups['dns_authoritative'][0] }}:8081/api/v1/servers/localhost/zones/23.10.in-addr.arpa."
+        method: PATCH
+        headers:
+          X-API-Key: "{{ pdns_api_key }}"
+        body_format: json
+        body:
+          rrsets:
+            - name: "{{ inventory_hostname.split('.') | reverse | join('.') }}.in-addr.arpa."
+              type: PTR
+              changetype: DELETE
+        status_code: [204]

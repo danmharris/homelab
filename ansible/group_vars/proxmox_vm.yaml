@@ -12,3 +12,4 @@ proxmox_api:
   host: tangor.dnhrrs.xyz
 proxmox_node: tangor
 proxmox_cd: 'none,media=cdrom'
+dns_zone: vm
