@@ -30,6 +30,7 @@ spec:
     - ro
     - rsize=32768
     - wsize=32768
+    - nolock
   nfs:
     path: /volume1/Photos
     server: nas.dnhrrs.xyz
