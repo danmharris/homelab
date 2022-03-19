@@ -21,4 +21,4 @@ spec:
         tag: v1.0.2
       service:
         externalIPs:
-          - 10.44.0.10
+          - 10.42.0.10
