@@ -20,7 +20,7 @@ spec:
     ingress:
       enabled: true
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-staging
+        cert-manager.io/cluster-issuer: letsencrypt-prod
       ingressClassName: nginx
       hosts:
         - grafana.dnhrrs.xyz
