@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - sources
   - calico
+  - external-dns
   - ingress-nginx
   - nfs-subdir-external-provisioner
   - cert-manager
