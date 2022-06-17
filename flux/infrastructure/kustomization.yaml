@@ -9,3 +9,4 @@ resources:
   - nfs-subdir-external-provisioner
   - cert-manager
   - kube-prometheus-stack
+  - mariadb
