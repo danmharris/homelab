@@ -23,7 +23,7 @@ spec:
           secretKeyRef:
             name: bookstack-key
             key: key
-      DB_HOST: cluster-97bc32.db.dnhrrs.xyz
+      DB_HOST: mariadb-primary.mariadb
       DB_USER:
         valueFrom:
           secretKeyRef:
