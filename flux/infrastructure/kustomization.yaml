@@ -10,3 +10,4 @@ resources:
   - cert-manager
   - kube-prometheus-stack
   - mariadb
+  - renovate

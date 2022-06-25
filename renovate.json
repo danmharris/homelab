@@ -1,0 +1,9 @@
+{
+    "semanticCommits": true,
+    "helm-values": {
+        "fileMatch": ["cluster/.+helm-release\\.yaml$"]
+    },
+    "kubernetes": {
+        "fileMatch": ["cluster/.+\\.yaml"]
+    }
+}

@@ -1,0 +1,38 @@
+apiVersion: v1
+data:
+    RENOVATE_TOKEN: ENC[AES256_GCM,data:49t5nVM/f7fl7lY7w4xyAZFM8GAeTgenLeTGoMlaFjtTV8rjlLFM/abEziGvjnIVbrKR4XVpwss=,iv:s6ME1ahEWmsAezgZ+7OFEUd5/eTwB7+mNgsytpyXlOw=,tag:+XxSy+JWvsLMtj9EVBmtfA==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: renovate-env
+    namespace: renovate
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    lastmodified: '2022-06-25T12:48:57Z'
+    mac: ENC[AES256_GCM,data:X5wFopmpv9q6MfgoFjmY/+WzIbLXte0HLr/Ph1t2VCgSNpYF0Sh0evp8e+wchrt9JIQ1IaSzg+WnT2QWazRJ2/CVsfJEKz1NYAwiay+tGpQvUTUmedcwy7ejeid3JlXK7VFk1cXUrevEa5+Bl0ltwA/LG0MQ3PRyXkr6DtDqTa0=,iv:PSXsMp1FYDGxkiTEaNHQkApvX5xZ1v8ICqC8utKW3CE=,tag:f1kg0HG79Yw6+iNpyyw3/A==,type:str]
+    pgp:
+    -   created_at: '2022-06-25T12:48:56Z'
+        enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAxlxznDH90E6ARAAxBL+IpTaqj3dojtBzO9f7PpXmzsLF36qYjyTLkERe4FD
+            l3oP5e1m8cn7UIvdPZIH2EHfqXEgdB5f/xmXDasVxtydH3ouf0up3Rq3e0Yr94FB
+            izK70Z1SHu0XNMhgMu6VPJnCUWDJKByliCXQb7hrXDllZEqGCaV1WrUw+8MIQchA
+            pWW3CVRtUrM+HzpduDIYfVDjys5+YAv+lM1lXzN/ZuGy65ZdHLs6g3FuRnfeqhGF
+            SCzGOWvJ6t2Dz9jLdBTpgUtxqc8rW9gSEpVk+O2Ej8Z7uv+p7gfaONvbGSxfnL7F
+            gRAoLQPIKjbCLI0hgXVXrK4+TaHqIAILccbV6ZZgQfh68pib3L5ZF3nyhDLMs9tv
+            7eR8uZawPYHxnJWQoyW8FkAezb46cTRYa1SVqIpkUWaaRw29bnd76z3ESuzh4fvn
+            VuJBlpRNOQIO9396JP5YlkFFt88CiejUr6QDTRsV33icn6QnQMZXxlg+1dXk7RH1
+            oFqAVvgUh9qI43HDeAmQhA/6OLIPtqB8EbTZ7iXcw5a0Nvt2IQm15DmXGMqlrD2v
+            g/FqTrU/bxSUfJnQUscrQ75HiaE2KWDT/c2LjpqIjcXDcgeF5BcHpol6kAY/SiiC
+            biUCzdz5iOgNCf2m7yamshuugxNLcBqbGk9cfUYxrr9HWT4PbrZ9DtBCZNJE1RXS
+            XgHkzY6kvmSfsCOQFsfcACOAuzGj+E4GPheVVXT0YY0qqcRVqWYOfz3Kt4JGQFRj
+            uPIB2NbKaTI0kcnvqzBKjrHp9aQroCJoZ7pKueZlTTrFpbDTpTKdQDGOuAP4Pto=
+            =YjQQ
+            -----END PGP MESSAGE-----
+        fp: 027AF72E69902FFABC4EC908C5C4837CA36C0020
+    encrypted_regex: ^(data|stringData)$
+    version: 3.6.1
