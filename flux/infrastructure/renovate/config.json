@@ -1,4 +1,5 @@
 {
     "repositories": ["danmharris/homelab"],
-    "dryRun": "true"
+    "dryRun": "true",
+    "detectHostRulesFromEnv": true
 }
