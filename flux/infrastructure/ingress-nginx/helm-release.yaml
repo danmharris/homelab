@@ -17,7 +17,7 @@ spec:
   values:
     controller:
       image:
-        image: ingress-nginx/controller
+        repository: ingress-nginx/controller
         tag: v1.0.2
       service:
         externalIPs:

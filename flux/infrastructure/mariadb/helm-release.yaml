@@ -16,6 +16,7 @@ spec:
         namespace: flux-system
   values:
     image:
+      repository: bitnami/mariadb
       tag: 10.6.8-debian-11-r3
     architecture: replication
     auth:
