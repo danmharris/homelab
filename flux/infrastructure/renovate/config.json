@@ -1,4 +1,3 @@
 {
-    "repositories": ["danmharris/homelab"],
-    "dryRun": "true"
+    "repositories": ["danmharris/homelab"]
 }
