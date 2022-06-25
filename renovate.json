@@ -1,9 +1,13 @@
 {
     "semanticCommits": true,
+    "flux": {
+        "fileMatch": ["flux/cluster/gotk-components\\.yaml$"]
+    },
     "helm-values": {
-        "fileMatch": ["cluster/.+helm-release\\.yaml$"]
+        "fileMatch": ["flux/.+helm-release\\.yaml$"]
     },
     "kubernetes": {
-        "fileMatch": ["cluster/.+\\.yaml"]
+        "fileMatch": ["flux/.+\\.yaml$"],
+        "ignorePaths": ["flux/cluster/"]
     }
 }
