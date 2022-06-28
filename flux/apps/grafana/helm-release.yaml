@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: grafana/grafana
-      tag: 9.0.1
+      tag: 9.0.2
     ingress:
       enabled: true
       annotations:
