@@ -8,7 +8,7 @@
     },
     "kubernetes": {
         "fileMatch": ["flux/.+\\.yaml$"],
-        "ignorePaths": ["flux/cluster/"]
+        "ignorePaths": ["flux/cluster/", "flux/infrastructure/calico/"]
     },
     "packageRules": [
         {
@@ -18,10 +18,6 @@
         {
             "matchPackageNames": "renovate/renovate",
             "extends": ["schedule:monthly"]
-        },
-        {
-            "matchPaths": "flux/infrastructure/calico/**",
-            "enabled": false
         }
     ]
 }
