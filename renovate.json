@@ -9,5 +9,19 @@
     "kubernetes": {
         "fileMatch": ["flux/.+\\.yaml$"],
         "ignorePaths": ["flux/cluster/"]
-    }
+    },
+    "packageRules": [
+        {
+            "matchPackageNames": "bitnami/mariadb",
+            "allowedVersions": "< 10.7"
+        },
+        {
+            "matchPackageNames": "renovate/renovate",
+            "extends": ["schedule:monthly"]
+        },
+        {
+            "matchPaths": "flux/infrastructure/calico/**",
+            "enabled": false
+        }
+    ]
 }
