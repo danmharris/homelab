@@ -1,11 +1,3 @@
-module "k8s_cluster" {
-  source         = "../../modules/kubernetes"
-  controller_ips = ["10.23.20.30"]
-  node_ips       = ["10.23.20.31","10.23.20.32"]
-  ssh_public_key = var.ssh_public_key
-  template       = "debian10"
-}
-
 // NFS node
 resource "random_pet" "nfs_name" {
   length   = 2
@@ -65,17 +57,4 @@ resource "powerdns_record" "vm_ptr" {
   type     = "PTR"
   ttl      = 3600
   records  = ["${proxmox_vm_qemu.nfs.name}.vm.dnhrrs.xyz."]
-}
-
-// Ingress
-resource "random_id" "ingress_name" {
-  byte_length = 3
-}
-
-resource "powerdns_record" "ingress_a" {
-  zone    = "dnhrrs.xyz"
-  name    = "ingress-${random_id.ingress_name.hex}.k8s.dnhrrs.xyz."
-  type    = "A"
-  ttl     = 3600
-  records = ["10.44.0.10"]
 }

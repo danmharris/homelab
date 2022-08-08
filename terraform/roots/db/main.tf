@@ -23,14 +23,3 @@ provider "proxmox" {
 variable "ssh_public_key" {
   type = string
 }
-
-module "db_cluster" {
-  source         = "../../modules/db"
-  cores          = 1
-  ram            = "1024"
-  disk           = "20"
-  replica_ips    = ["10.23.20.105"]
-  primary_ip     = "10.23.20.105"
-  ssh_public_key = var.ssh_public_key
-  template       = "debian10"
-}
