@@ -2,4 +2,4 @@
 proxmox_role: talos-worker
 proxmox_cores: 2
 proxmox_memory: 3072
-proxmox_disk: 10
+proxmox_disk: 60
