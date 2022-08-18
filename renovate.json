@@ -18,6 +18,13 @@
         {
             "matchPackageNames": "renovate/renovate",
             "extends": ["schedule:monthly"]
+        },
+        {
+            "matchPackageNames": [
+                "photoprism/photoprism",
+                "linuxserver/bookstack"
+            ],
+            "versioning": "loose"
         }
     ]
 }
