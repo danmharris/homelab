@@ -44,7 +44,6 @@ spec:
       SAML2_DISPLAY_NAME_ATTRIBUTES: Name
       SAML2_IDP_ENTITYID: https://auth.dnhrrs.xyz/api/v3/providers/saml/1/metadata/?download
       SAML2_AUTOLOAD_METADATA: true
-      APP_DEBUG: true
     ingress:
       main:
         enabled: true
