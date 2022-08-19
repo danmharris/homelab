@@ -11,3 +11,4 @@ resources:
   - kube-prometheus-stack
   - mariadb
   - renovate
+  - postgresql
