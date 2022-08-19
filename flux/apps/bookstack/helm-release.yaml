@@ -37,6 +37,13 @@ spec:
             key: password
       DB_DATABASE: bookstack
       APP_URL: https://bookstack.dnhrrs.xyz
+      AUTH_METHOD: saml2
+      SAML2_NAME: SSO
+      SAML2_EMAIL_ATTRIBUTE: email
+      SAML2_EXTERNAL_ID_ATTRIBUTE: uid
+      SAML2_DISPLAY_NAME_ATTRIBUTES: Name
+      SAML2_IDP_ENTITYID: https://auth.dnhrrs.xyz/api/v3/providers/saml/1/metadata/?download
+      SAML2_AUTOLOAD_METADATA: true
     ingress:
       main:
         enabled: true
