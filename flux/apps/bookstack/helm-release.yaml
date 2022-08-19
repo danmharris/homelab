@@ -44,6 +44,9 @@ spec:
       SAML2_DISPLAY_NAME_ATTRIBUTES: Name
       SAML2_IDP_ENTITYID: https://auth.dnhrrs.xyz/api/v3/providers/saml/1/metadata/?download
       SAML2_AUTOLOAD_METADATA: true
+      SAML2_USER_TO_GROUPS: true
+      SAML2_GROUP_ATTRIBUTE: groups
+      SAML2_REMOVE_FROM_GROUPS: true
     ingress:
       main:
         enabled: true
