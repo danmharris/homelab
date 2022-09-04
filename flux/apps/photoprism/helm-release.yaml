@@ -19,6 +19,7 @@ spec:
       repository: photoprism/photoprism
       tag: '20220121'
     env:
+      PHOTOPRISM_PUBLIC: 1
       PHOTOPRISM_READONLY: 1
       PHOTOPRISM_WORKERS: 1
       PHOTOPRISM_SITE_URL: https://photoprism.dnhrrs.xyz/
