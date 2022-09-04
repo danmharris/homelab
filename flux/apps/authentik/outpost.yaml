@@ -5,11 +5,15 @@ metadata:
   name: authentik-outpost
   namespace: authentik
 spec:
+  ingressClassName: nginx
   rules:
     - host: photoprism.dnhrrs.xyz
       http:
         paths:
           - backend:
-              serviceName: authentik
-              servicePort: 80
+              service:
+                name: authentik
+                port:
+                  number: 80
             path: /outpost.goauthentik.io
+            pathType: Prefix
