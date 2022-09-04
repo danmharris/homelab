@@ -5,3 +5,4 @@ resources:
   - _namespace.yaml
   - authentik-credentials.yaml
   - helm-release.yaml
+  - outpost.yaml
