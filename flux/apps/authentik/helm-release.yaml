@@ -34,7 +34,7 @@ spec:
             - auth.dnhrrs.xyz
     authentik:
       postgresql:
-        host: postgresql.postgresql
+        host: postgresql.database.svc.cluster.local
         name: authentik
         user: authentik
     redis:
