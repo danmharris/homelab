@@ -15,35 +15,6 @@
     - role: unbound
       tags: [dns]
 
-- hosts: mysql
-  pre_tasks:
-    - name: Install python interpreters
-      package:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - "python-pymysql"
-        - "python3-pymysql"
-  roles:
-    - role: geerlingguy.mysql
-      tags: [database, mysql]
-
-- hosts: kubernetes_controller
-  roles:
-    - containerd
-    - kubernetes
-
-# Done separately so join command is present
-- hosts: kubernetes_node
-  pre_tasks:
-    - name: Install nfs client
-      package:
-        name: nfs-common
-        state: present
-  roles:
-    - containerd
-    - kubernetes
-
 - hosts: nfs
   roles:
     - geerlingguy.nfs
