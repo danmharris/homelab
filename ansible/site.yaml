@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: debian
   tags: common
   roles:
     - role: jnv.unattended-upgrades
