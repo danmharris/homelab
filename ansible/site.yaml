@@ -18,44 +18,26 @@
     - role: pdns
       tags: [dns]
   post_tasks:
-    - name: List forward zone records
-      command:
-        argv:
-          - pdnsutil
-          - list-zone
-          - dnhrrs.xyz
-      register: pdns_forward_output
-      changed_when: false
-    - name: Register A record for proxmox vms
-      command:
-        argv:
-          - pdnsutil
-          - add-record
-          - dnhrrs.xyz
-          - "{{ hostvars[item]['proxmox_name'] }}.{{ hostvars[item]['dns_zone'] }}"
-          - A
-          - "{{ hostvars[item]['inventory_hostname'] }}"
+    - name: Add A record for proxmox vms
+      include_role:
+        name: pdns
+        tasks_from: create-record
+      vars:
+        _pdns_zone: dnhrrs.xyz
+        _pdns_name: "{{ hostvars[item]['proxmox_name'] }}.{{ hostvars[item]['dns_zone'] }}"
+        _pdns_type: A
+        _pdns_content: "{{ hostvars[item]['inventory_hostname'] }}"
       loop: "{{ groups['proxmox_vm'] }}"
-      when: "item not in pdns_forward_output.stdout"
-    - name: List reverse zone records
-      command:
-        argv:
-          - pdnsutil
-          - list-zone
-          - 23.10.in-addr.arpa
-      register: pdns_reverse_output
-      changed_when: false
-    - name: Register PTR record for proxmox vms
-      command:
-        argv:
-          - pdnsutil
-          - add-record
-          - 23.10.in-addr.arpa
-          - "{{ (hostvars[item]['inventory_hostname'].split('.') | reverse)[:2] | join('.') }}"
-          - PTR
-          - "{{ hostvars[item]['proxmox_name'] }}.{{ hostvars[item]['dns_zone'] }}.dnhrrs.xyz."
+    - name: Add PTR record for proxmox vms
+      include_role:
+        name: pdns
+        tasks_from: create-record
+      vars:
+        _pdns_zone: 23.10.in-addr.arpa
+        _pdns_name: "{{ (hostvars[item]['inventory_hostname'].split('.') | reverse)[:2] | join('.') }}"
+        _pdns_type: PTR
+        _pdns_content: "{{ hostvars[item]['proxmox_name'] }}.{{ hostvars[item]['dns_zone'] }}.dnhrrs.xyz."
       loop: "{{ groups['proxmox_vm'] }}"
-      when: "hostvars[item]['proxmox_name'] not in pdns_reverse_output.stdout"
 
 - hosts: dns_recursive
   roles:
