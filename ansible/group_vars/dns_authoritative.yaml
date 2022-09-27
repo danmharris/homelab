@@ -7,3 +7,25 @@ pdns_records:
   - { zone: dnhrrs.xyz, name: api.mercury.k8s, type: A, content: 10.23.20.33 }
   - { zone: 23.10.in-addr.arpa, name: '33.20', type: PTR, content: api.mercury.k8s.dnhrrs.xyz. }
   - { zone: dnhrrs.xyz, name: ingress.mercury.k8s, type: A, content: 10.42.0.10 }
+
+  # Hardware (forward)
+  - { zone: dnhrrs.xyz, name: erx, type: A, content: 10.23.100.1 }
+  - { zone: dnhrrs.xyz, name: switch0, type: A, content: 10.23.100.2 }
+  - { zone: dnhrrs.xyz, name: unifi, type: A, content: 10.23.100.3 }
+  - { zone: dnhrrs.xyz, name: tangor, type: A, content: 10.23.100.5 }
+  - { zone: dnhrrs.xyz, name: nas, type: A, content: 10.23.20.5 }
+  - { zone: dnhrrs.xyz, name: lychee, type: A, content: 10.23.20.12 }
+  - { zone: dnhrrs.xyz, name: dhcpns1, type: A, content: 10.23.10.2 }
+
+  # Hardware (reverse)
+  - { zone: 23.10.in-addr.arpa, name: '1.100', type: PTR, content: erx.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '2.100', type: PTR, content: switch0.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '3.100', type: PTR, content: unifi.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '5.100', type: PTR, content: tangor.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '1.20', type: PTR, content: erx.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '5.20', type: PTR, content: nas.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '12.20', type: PTR, content: lychee.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '1.10', type: PTR, content: erx.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '2.10', type: PTR, content: dhcpns1.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '1.30', type: PTR, content: erx.dnhrrs.xyz. }
+  - { zone: 23.10.in-addr.arpa, name: '1.40', type: PTR, content: erx.dnhrrs.xyz. }
