@@ -32,3 +32,12 @@
     name: pdns
     state: started
     enabled: true
+
+- name: Add records
+  include_tasks: create-record.yaml
+  vars:
+    _pdns_zone: "{{ item.zone }}"
+    _pdns_name: "{{ item.name }}"
+    _pdns_type: "{{ item.type }}"
+    _pdns_content: "{{ item.content }}"
+  loop: "{{ pdns_records }}"
