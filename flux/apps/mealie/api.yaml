@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: mealie-api
-          image: 'hkotel/mealie:api-v1.0.0beta-4'
+          image: 'hkotel/mealie:api-nightly'
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9000
@@ -68,7 +68,8 @@ spec:
           persistentVolumeClaim:
             claimName: mealie-data
       securityContext:
-        fsGroup: 1000
+        runAsUser: 1000
+        runAsGroup: 1000
 
 ---
 kind: Service

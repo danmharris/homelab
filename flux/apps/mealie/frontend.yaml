@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mealie-frontend
-          image: 'hkotel/mealie:frontend-v1.0.0beta-4'
+          image: 'hkotel/mealie:frontend-nightly'
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
