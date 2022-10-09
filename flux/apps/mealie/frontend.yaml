@@ -23,6 +23,7 @@ spec:
           volumeMounts:
             - name: mealie-data
               mountPath: /app/data
+              subPath: data
               readOnly: true
           env:
             - name: API_URL

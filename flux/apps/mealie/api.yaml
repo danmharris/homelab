@@ -37,6 +37,7 @@ spec:
           volumeMounts:
             - name: mealie-data
               mountPath: /app/data
+              subPath: data
           env:
             - name: ALLOW_SIGNUP
               value: 'false'
@@ -67,8 +68,6 @@ spec:
         - name: mealie-data
           persistentVolumeClaim:
             claimName: mealie-data
-      securityContext:
-        fsGroup: 1000
 
 ---
 kind: Service
