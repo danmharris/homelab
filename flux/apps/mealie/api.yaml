@@ -1,0 +1,83 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mealie-data
+  namespace: default
+spec:
+  storageClassName: "nfs-client"
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mealie-api
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mealie-api
+  template:
+    metadata:
+      labels:
+        app: mealie-api
+    spec:
+      containers:
+        - name: mealie-api
+          image: 'hkotel/mealie:api-v1.0.0beta-4'
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          volumeMounts:
+            - name: mealie-data
+              mountPath: /app/data
+          env:
+            - name: ALLOW_SIGNUP
+              value: 'false'
+            - name: PUID
+              value: '1000'
+            - name: PGID
+              value: '1000'
+            - name: TZ
+              value: Europe/London
+            - name: MAX_WORKERS
+              value: '1'
+            - name: WEB_CONCURRENCY
+              value: '1'
+            - name: BASE_URL
+              value: https://mealie.dnhrrs.xyz
+            - name: DB_ENGINE
+              value: postgres
+            - name: POSTGRES_SERVER
+              value: postgres.database.svc.cluster.local
+            - name: POSTGRES_PORT
+              value: '5432'
+            - name: POSTGRES_DB
+              value: mealie
+          envFrom:
+            - secretRef:
+                name: mealie-env
+      volumes:
+        - name: mealie-data
+          persistentVolumeClaim:
+            claimName: mealie-data
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mealie-api
+  namespace: default
+spec:
+  selector:
+    app: mealie-api
+  ports:
+    - name: http
+      port: 9000
+      targetPort: 9000

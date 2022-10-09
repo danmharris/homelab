@@ -1,0 +1,39 @@
+apiVersion: v1
+data:
+    POSTGRES_PASSWORD: ENC[AES256_GCM,data:wpFGi7naYzBc3dVfR0gUfwbdMVJ5TJ7zdQnqyOZ2FCYoSaK//XZEpvjcH/I=,iv:OYw7qnrlirQw4TFVh+MeBN2uDFvVod2Z0QpUiDpg0tk=,tag:v1cqhV/aoJjZlRDLvJO9Mw==,type:str]
+    POSTGRES_USER: ENC[AES256_GCM,data:mhE3tPibROk=,iv:KbWix0T1z8vLCXHnEpA+iJ0GHRZrhhftQY+0heAuZg8=,tag:4AXoOANCco2AjHgGtrODiA==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: mealie-env
+    namespace: default
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    lastmodified: '2022-10-09T13:54:37Z'
+    mac: ENC[AES256_GCM,data:ztVAJgY+POtdzFDVFnbDybm/yhYmYy2DmiOruAuhtWrYmR7jwnItJQ5CBlNwSTyQ7do7m1/2/seQ1IdVrMzi90TGnY7JG2hZ6VIL3nFYCmIr693hUqSgLiA2i50O6ZikGsR/CxWIxjVsP73vtvHroRsRn3BQamFa5ks4f+1COIo=,iv:DVYZz1RlZ4+0/HgYll7Ie1BYwGzrz9zyR5mszJsodj0=,tag:j0mLDQvOqkiu4Pfv9sOk4w==,type:str]
+    pgp:
+    -   created_at: '2022-10-09T13:54:37Z'
+        enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAxlxznDH90E6ARAAic6yg+q+oPZvlooAcOQ0OgiSWVZrtF0RwxJuso6UnPT2
+            B9Kas7/QCQWX6IY9K2bPq7EzzhYaXm5RJs4GSLM4uIR3iCS724Xyf9owNiwF9oiO
+            M5GED3PMmKwo51ndZnCYs6nCpJ62Ivd5P2LDEk98azLIWpFI7Qmko8vEsNr0j6ew
+            KWekoaq5y7/vZ/09KfIYF/03JK9tPpobdIqliA0EvxNqx/j70JOTcfKfO8N1hpiM
+            X84zkl8JpwwSubfhEQosiE7Z+csWQiO+5zA306IAYujqZlmo1FbUsuR5iM83+bV5
+            Aa2ij+kcjdPfXnXm7ttNkmQI6SKbDQ/RNQdcSlvHw+8Jj/93jfWB62SazYBF6DON
+            Ce2gMd24RiIbLn4YFRbt6EYq1OE23gPYYCWM8HQDE6c6Zc85Xo+55y2ZsK7iYyYt
+            +YwuCDlTzQ4qy+pE3kjYrWcC0DDxs0/1eTUUmcJFP71oqH3ZAp/+gSPpcLtzcRRv
+            dUOlCu7LqZNsfxY8kGPgPW+F4W1sJ/hE4EM/jSGJEunezwWkQESXt1wybjJkzwBY
+            4J1elLjEVlTeXlYWcd7wz8/WBGpWPuHbkCRcWHZYHC9WMReXzFsZxFCCLDN3IH68
+            E5XvfSzu0vlEBDQZJDOsfa6x5fuaFgUk3AsdxmN+tqP6HD4NfeuiWJkb3Mc9rybS
+            XgEHMv0lXBN8/lt2aaWeI7XBVHNboKwfiYrrGq21S0XGv+1eJ1ZWDWewpHJH7avC
+            qi5IW53B/24dWiwzP8owpl6Mp0FuBok/fBD6jj1NVgM/Uj01GQlOAEHzA9VgqLE=
+            =UmVp
+            -----END PGP MESSAGE-----
+        fp: 027AF72E69902FFABC4EC908C5C4837CA36C0020
+    encrypted_regex: ^(data|stringData)$
+    version: 3.6.1
