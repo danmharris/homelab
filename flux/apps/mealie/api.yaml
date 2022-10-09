@@ -60,6 +60,14 @@ spec:
               value: '5432'
             - name: POSTGRES_DB
               value: mealie
+            - name: LDAP_AUTH_ENABLED
+              value: 'true'
+            - name: LDAP_SERVER_URL
+              value: ldap://ak-outpost-ldap.authentik.svc.cluster.local
+            - name: LDAP_BIND_TEMPLATE
+              value: 'cn={},ou=users,dc=ldap,dc=dnhrrs,dc=xyz'
+            - name: LDAP_BASE_DN
+              value: 'ou=users,dc=ldap,dc=dnhrrs,dc=xyz'
           envFrom:
             - secretRef:
                 name: mealie-env
