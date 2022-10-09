@@ -55,7 +55,7 @@ spec:
             - name: DB_ENGINE
               value: postgres
             - name: POSTGRES_SERVER
-              value: postgres.database.svc.cluster.local
+              value: postgresql.database.svc.cluster.local
             - name: POSTGRES_PORT
               value: '5432'
             - name: POSTGRES_DB
