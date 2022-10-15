@@ -40,7 +40,7 @@ spec:
             - gitea.dnhrrs.xyz
     persistence:
       enabled: true
-      storageClass: nfs-client
+      existingClaim: gitea-data
     gitea:
       admin:
         existingSecret: gitea-credentials
