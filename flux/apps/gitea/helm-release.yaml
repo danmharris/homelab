@@ -1,0 +1,58 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitea
+  namespace: default
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: gitea
+      version: 'v6.0.1'
+      sourceRef:
+        kind: HelmRepository
+        name: gitea
+        namespace: flux-system
+  values:
+    image:
+      repository: gitea/gitea
+      tag: '1.17.2'
+      pullPolicy: IfNotPresent
+      rootless: true
+    service:
+      ssh:
+        externalIPs:
+          - 10.42.0.20
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: gitea.dnhrrs.xyz
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: gitea-cert
+          hosts:
+            - gitea.dnhrrs.xyz
+    persistence:
+      enabled: true
+      storageClass: nfs-client
+    gitea:
+      admin:
+        existingSecret: gitea-credentials
+      config:
+        server:
+          SSH_DOMAIN: gitea-ssh.dnhrrs.xyz
+        database:
+          DB_TYPE: postgres
+          HOST: postgresql.database.svc.cluster.local:5432
+          NAME: gitea
+      additionalConfigSources:
+        - secret:
+            secretName: gitea-postgresql
+    postgresql:
+      enabled: false

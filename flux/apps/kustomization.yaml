@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - authentik
   - bookstack
+  - gitea
   - grafana
   - jellyfin
   - mealie
