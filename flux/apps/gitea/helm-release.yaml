@@ -24,6 +24,7 @@ spec:
       ssh:
         externalIPs:
           - 10.42.0.20
+        clusterIP:
     ingress:
       enabled: true
       className: nginx
