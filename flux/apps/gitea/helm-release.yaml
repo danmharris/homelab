@@ -53,6 +53,8 @@ spec:
           DB_TYPE: postgres
           HOST: postgresql.database.svc.cluster.local:5432
           NAME: gitea
+        webhook:
+          ALLOWED_HOST_LIST: woodpecker.dnhrrs.xyz
       additionalConfigSources:
         - secret:
             secretName: gitea-postgresql
