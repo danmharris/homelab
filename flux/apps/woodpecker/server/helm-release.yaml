@@ -21,6 +21,7 @@ spec:
       pullPolicy: IfNotPresent
     env:
       WOODPECKER_HOST: https://woodpecker.dnhrrs.xyz
+      WOODPECKER_OPEN: 'true'
       WOODPECKER_DATABASE_DRIVER: postgres
       WOODPECKER_GITHUB: 'false'
       WOODPECKER_GITEA: 'true'
