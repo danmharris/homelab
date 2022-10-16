@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: bitnami/mariadb
-      tag: 10.6.9-debian-11-r3
+      tag: 10.6.10-debian-11-r3
     architecture: replication
     auth:
       existingSecret: mariadb-credentials
