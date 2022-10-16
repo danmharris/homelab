@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: woodpecker-server
+  namespace: default
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: woodpecker-server
+      version: '0.15.5'
+      sourceRef:
+        kind: HelmRepository
+        name: woodpecker
+        namespace: flux-system
+  values:
+    image:
+      repository: 'woodpeckerci/woodpecker-server'
+      tag: 'v0.15.5'
+      pullPolicy: IfNotPresent
+    env:
+      WOODPECKER_HOST: https://woodpecker.dnhrrs.xyz
+      WOODPECKER_DATABASE_DRIVER: postgres
+      WOODPECKER_GITHUB: 'false'
+      WOODPECKER_GITEA: 'true'
+      WOODPECKER_GITEA_URL: https://gitea.dnhrrs.xyz
+    extraSecretNamesForEnvFrom:
+      - woodpecker-env
+      - woodpecker-agent-secret
+    persistentVolume:
+      enabled: true
+      size: 1Gi
+      storageClass: nfs-client
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: woodpecker.dnhrrs.xyz
+          paths:
+            - path: /
+      tls:
+        - secretName: woodpecker-cert
+          hosts:
+            - woodpecker.dnhrrs.xyz
