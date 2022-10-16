@@ -33,14 +33,4 @@ spec:
       size: 1Gi
       storageClass: nfs-client
     ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-      hosts:
-        - host: woodpecker.dnhrrs.xyz
-          paths:
-            - path: /
-      tls:
-        - secretName: woodpecker-cert
-          hosts:
-            - woodpecker.dnhrrs.xyz
+      enabled: false
