@@ -25,6 +25,10 @@
                 "linuxserver/bookstack"
             ],
             "versioning": "loose"
+        },
+        {
+            "matchDatasources": ["kubernetes-api"],
+            "enabled": false
         }
     ]
 }
