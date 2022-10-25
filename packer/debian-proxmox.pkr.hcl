@@ -24,6 +24,8 @@ source "proxmox-iso" "proxmox" {
     node = var.proxmox_node
     memory = 1024
     os = "l26"
+    bios = "ovmf"
+    efidisk = "local-lvm"
     qemu_agent = true
     cloud_init = true
     cloud_init_storage_pool = "local-lvm"
@@ -34,8 +36,8 @@ source "proxmox-iso" "proxmox" {
         firewall = true
     }
     disks {
-        type = "scsi"
-        disk_size = "10G"
+        type = "virtio"
+        disk_size = "30G"
         storage_pool = "local-lvm"
         storage_pool_type = "lvm-thin"
         format = "raw"
@@ -45,10 +47,11 @@ source "proxmox-iso" "proxmox" {
     http_directory = "http"
     boot_wait = "10s"
     boot_command = [
-        "<esc><wait>",
-        "auto <wait>",
-        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
-        "<enter><wait>",
+        "<down>e<wait>",
+        "<down><down><down><end><wait>",
+        "auto=true priority=critical <wait>",
+        "url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
+        "<f10><wait>",
     ]
 
     ssh_username = "packer"
