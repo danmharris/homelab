@@ -22,5 +22,6 @@ spec:
       pullPolicy: IfNotPresent
     env:
       WOODPECKER_SERVER: woodpecker-server.default.svc.cluster.local:9000
+      WOODPECKER_LOG_LEVEL: debug
     extraSecretNamesForEnvFrom:
       - woodpecker-agent-secret
