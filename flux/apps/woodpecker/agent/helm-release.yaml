@@ -20,6 +20,8 @@ spec:
       repository: 'woodpeckerci/woodpecker-agent'
       tag: 'v0.15.5'
       pullPolicy: IfNotPresent
+    dind:
+      image: docker:20.10.21-dind
     env:
       WOODPECKER_SERVER: woodpecker-server.default.svc.cluster.local:9000
       WOODPECKER_LOG_LEVEL: debug
