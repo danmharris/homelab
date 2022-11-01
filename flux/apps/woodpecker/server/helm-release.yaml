@@ -26,6 +26,7 @@ spec:
       WOODPECKER_GITHUB: 'false'
       WOODPECKER_GITEA: 'true'
       WOODPECKER_GITEA_URL: https://gitea.dnhrrs.xyz
+      WOODPECKER_ADMIN: administrator
     extraSecretNamesForEnvFrom:
       - woodpecker-env
       - woodpecker-agent-secret
