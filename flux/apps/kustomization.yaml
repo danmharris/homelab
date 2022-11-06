@@ -7,7 +7,6 @@ resources:
   - gitea
   - grafana
   - jellyfin
-  - mealie
   - photoprism
   - recipes-site
   - woodpecker
