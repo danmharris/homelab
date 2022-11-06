@@ -27,7 +27,3 @@ spec:
       WOODPECKER_LOG_LEVEL: debug
     extraSecretNamesForEnvFrom:
       - woodpecker-agent-secret
-    podSecurityContext:
-      capabilities:
-        add:
-          - MKNOD
