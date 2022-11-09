@@ -45,7 +45,7 @@ source "proxmox-iso" "proxmox" {
 
     unmount_iso = true
     http_directory = "http"
-    boot_wait = "10s"
+    boot_wait = "15s"
     boot_command = [
         "<down>e<wait>",
         "<down><down><down><end><wait>",
