@@ -56,4 +56,3 @@
     body:
       ide0: 'local-lvm:cloudinit'
   when: vm_cloned is changed
-
