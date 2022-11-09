@@ -1,0 +1,18 @@
+---
+proxmox_role: compute
+proxmox_api:
+  user: changeme
+  token_id: changeme
+  token_secret: changeme
+  host: pve
+proxmox_node: pve
+
+proxmox_cores: 1
+proxmox_memory: 1024
+proxmox_disk: 30
+proxmox_cd: 'none,media=cdrom'
+
+proxmox_clone: ''
+proxmox_gateway: ''
+proxmox_nameservers: []
+proxmox_ssh_key: ''

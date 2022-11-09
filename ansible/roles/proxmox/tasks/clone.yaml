@@ -1,0 +1,59 @@
+---
+- name: Clone Proxmox VM
+  delegate_to: localhost
+  community.general.proxmox_kvm:
+    api_user: "{{ proxmox_api['user'] }}"
+    api_token_id: "{{ proxmox_api['token_id'] }}"
+    api_token_secret: "{{ proxmox_api['token_secret'] }}"
+    api_host: "{{ proxmox_api['host'] }}"
+    name: "{{ proxmox_name }}"
+    node: "{{ proxmox_node }}"
+    clone: "{{ proxmox_clone }}"
+    full: yes
+    timeout: 60
+    state: present
+  register: vm_cloned
+  when: proxmox_clone != ""
+- name: Update params post clone
+  delegate_to: localhost
+  community.general.proxmox_kvm:
+    api_user: "{{ proxmox_api['user'] }}"
+    api_token_id: "{{ proxmox_api['token_id'] }}"
+    api_token_secret: "{{ proxmox_api['token_secret'] }}"
+    api_host: "{{ proxmox_api['host'] }}"
+    name: "{{ proxmox_name }}"
+    node: "{{ proxmox_node }}"
+    cores: "{{ proxmox_cores }}"
+    memory: "{{ proxmox_memory }}"
+    virtio:
+      virtio0: "local-lvm:{{ proxmox_disk }},format=raw"
+    bootdisk: virtio0
+    citype: nocloud
+    ipconfig:
+      ipconfig0: "ip={{ inventory_hostname }}/24,gw={{ proxmox_gateway }}"
+    nameservers: "{{ proxmox_nameservers }}"
+    sshkeys: "{{ proxmox_ssh_key }}"
+    onboot: true
+    update: yes
+  when: vm_cloned is changed
+- name: Remove cloudinit drive
+  delegate_to: localhost
+  uri: &uri_params
+    url: "https://{{ proxmox_api['host'] }}:8006/api2/json/nodes/{{ proxmox_node }}/qemu/{{ vm_cloned.vmid }}/config"
+    method: PUT
+    headers:
+      Authorization: "PVEAPIToken={{ proxmox_api['user'] }}!{{ proxmox_api['token_id'] }}={{ proxmox_api['token_secret'] }}"
+    body_format: form-urlencoded
+    body:
+      ide0: 'none,media=cdrom'
+    status_code: [200]
+    validate_certs: no
+  when: vm_cloned is changed
+- name: Add cloudinit drive
+  delegate_to: localhost
+  uri:
+    <<: *uri_params
+    body:
+      ide0: 'local-lvm:cloudinit'
+  when: vm_cloned is changed
+
