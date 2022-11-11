@@ -7,8 +7,6 @@ unbound_local_zones:
   10.in-addr.arpa: transparent
 unbound_stub_zones:
   dnhrrs.xyz:
-    stub_addrs:
-      - 10.23.20.104
+    stub_addrs: "{{ groups['dns_authoritative'] }}"
   23.10.in-addr.arpa:
-    stub_addrs:
-      - 10.23.20.104
+    stub_addrs: "{{ groups['dns_authoritative'] }}"
