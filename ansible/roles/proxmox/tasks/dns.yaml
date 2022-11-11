@@ -1,0 +1,19 @@
+---
+- name: Add A record for proxmox vms
+  include_role:
+    name: pdns
+    tasks_from: create-record
+  vars:
+    _pdns_zone: dnhrrs.xyz
+    _pdns_name: "{{ proxmox_name }}.{{ dns_zone }}"
+    _pdns_type: A
+    _pdns_content: "{{ inventory_hostname }}"
+- name: Add PTR record for proxmox vms
+  include_role:
+    name: pdns
+    tasks_from: create-record
+  vars:
+    _pdns_zone: 23.10.in-addr.arpa
+    _pdns_name: "{{ (inventory_hostname.split('.') | reverse)[:2] | join('.') }}"
+    _pdns_type: PTR
+    _pdns_content: "{{ proxmox_name }}.{{ dns_zone }}.dnhrrs.xyz."

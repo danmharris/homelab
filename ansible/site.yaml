@@ -17,27 +17,6 @@
   roles:
     - role: pdns
       tags: [dns]
-  post_tasks:
-    - name: Add A record for proxmox vms
-      include_role:
-        name: pdns
-        tasks_from: create-record
-      vars:
-        _pdns_zone: dnhrrs.xyz
-        _pdns_name: "{{ hostvars[item]['proxmox_name'] }}.{{ hostvars[item]['dns_zone'] }}"
-        _pdns_type: A
-        _pdns_content: "{{ hostvars[item]['inventory_hostname'] }}"
-      loop: "{{ groups['proxmox_vm'] }}"
-    - name: Add PTR record for proxmox vms
-      include_role:
-        name: pdns
-        tasks_from: create-record
-      vars:
-        _pdns_zone: 23.10.in-addr.arpa
-        _pdns_name: "{{ (hostvars[item]['inventory_hostname'].split('.') | reverse)[:2] | join('.') }}"
-        _pdns_type: PTR
-        _pdns_content: "{{ hostvars[item]['proxmox_name'] }}.{{ hostvars[item]['dns_zone'] }}.dnhrrs.xyz."
-      loop: "{{ groups['proxmox_vm'] }}"
 
 - hosts: dns_recursive
   roles:

@@ -6,6 +6,7 @@ proxmox_api:
   token_secret: changeme
   host: pve
 proxmox_node: pve
+proxmox_pool: ''
 
 proxmox_cores: 1
 proxmox_memory: 1024

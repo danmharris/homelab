@@ -19,5 +19,6 @@ proxmox_api:
           6439383162666634643430376133653037313935343261323232
   host: tangor.dnhrrs.xyz
 proxmox_node: tangor
+proxmox_pool: prod
 dns_zone: vm
 proxmox_gateway: '10.23.20.1'

@@ -8,6 +8,7 @@
     api_host: "{{ proxmox_api['host'] }}"
     name: "{{ proxmox_name }}"
     node: "{{ proxmox_node }}"
+    pool: "{{ proxmox_pool }}"
     clone: "{{ proxmox_clone }}"
     full: yes
     timeout: 60
