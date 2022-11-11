@@ -3,7 +3,7 @@ setuid=pdns
 setgid=pdns
 launch=gsqlite3
 gsqlite3-database={{ pdns_database }}
-{% if pdns_api | default(false) %}
+{% if pdns_api %}
 webserver=yes
 webserver-address=0.0.0.0
 webserver-allow-from={{ pdns_api_allow_from | join(',') }}
