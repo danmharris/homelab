@@ -7,22 +7,22 @@
   roles:
     - proxmox
 
-- hosts: debian
-  tags: common
+- hosts: dns_authoritative
   roles:
     - role: jnv.unattended-upgrades
       tags: [updates]
-
-- hosts: dns_authoritative
-  roles:
     - role: pdns
       tags: [dns]
 
 - hosts: dns_recursive
   roles:
+    - role: jnv.unattended-upgrades
+      tags: [updates]
     - role: unbound
       tags: [dns]
 
 - hosts: nfs
   roles:
+    - role: jnv.unattended-upgrades
+      tags: [updates]
     - geerlingguy.nfs
