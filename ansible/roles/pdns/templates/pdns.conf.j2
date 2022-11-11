@@ -3,6 +3,7 @@ setuid=pdns
 setgid=pdns
 launch=gsqlite3
 gsqlite3-database={{ pdns_database }}
+default-soa-content={{ pdns_default_soa_content }}
 {% if pdns_api %}
 webserver=yes
 webserver-address=0.0.0.0

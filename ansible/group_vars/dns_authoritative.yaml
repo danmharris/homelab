@@ -1,6 +1,7 @@
 ---
 pdns_api: true
 pdns_api_allow_from: ['10.23.0.0/16']
+pdns_default_soa_content: "{{ proxmox_name }}.{{ dns_zone }}.dnhrrs.xyz admin.dnhrrs.xyz 0 10800 3600 604800 3600"
 pdns_zones:
   - dnhrrs.xyz
   - 23.10.in-addr.arpa

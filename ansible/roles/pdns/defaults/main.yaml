@@ -1,6 +1,7 @@
 ---
 pdns_zones: []
 pdns_records: []
+pdns_default_soa_content: 'a.misconfigured.dns.server.invalid hostmaster.@ 0 10800 3600 604800 3600'
 pdns_api: false
 pdns_api_allow_from: 127.0.0.1
 pdns_api_key: changeme
