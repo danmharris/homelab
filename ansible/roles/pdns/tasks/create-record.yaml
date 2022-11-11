@@ -16,4 +16,4 @@
       - "{{ _pdns_name }}"
       - "{{ _pdns_type }}"
       - "{{ _pdns_content }}"
-  when: "_pdns_name not in pdns_zone_output.stdout"
+  when: "_pdns_name ~ '.' ~ _pdns_zone not in pdns_zone_output.stdout"
