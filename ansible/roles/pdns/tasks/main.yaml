@@ -33,6 +33,12 @@
     state: started
     enabled: true
 
+- name: Create zones
+  include_tasks: create-zone.yaml
+  vars:
+    _pdns_zone: "{{ item }}"
+  loop: "{{ pdns_zones }}"
+
 - name: Add records
   include_tasks: create-record.yaml
   vars:

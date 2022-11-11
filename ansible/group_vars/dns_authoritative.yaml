@@ -1,6 +1,9 @@
 ---
 pdns_api: true
 pdns_api_allow_from: ['10.23.0.0/16']
+pdns_zones:
+  - dnhrrs.xyz
+  - 23.10.in-addr.arpa
 pdns_records:
   - { zone: dnhrrs.xyz, name: ha, type: A, content: 10.23.30.5 }
   - { zone: 23.10.in-addr.arpa, name: '5.30', type: PTR, content: ha.dnhrrs.xyz. }

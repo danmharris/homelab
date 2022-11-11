@@ -1,0 +1,15 @@
+---
+- name: List zones
+  command:
+    argv:
+      - pdnsutil
+      - list-all-zones
+  register: pdns_zones_output
+  changed_when: false
+- name: Register zone
+  command:
+    argv:
+      - pdnsutil
+      - create-zone
+      - "{{ _pdns_zone }}"
+  when: "_pdns_zone not in pdns_zones_output.stdout"
