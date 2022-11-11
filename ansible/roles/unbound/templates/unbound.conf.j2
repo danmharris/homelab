@@ -1,28 +1,28 @@
 # {{ ansible_managed }}
 server:
-{% if not (unbound_local_only | default(true)) %}
+{% if not unbound_local_only %}
   interface: 0.0.0.0
 {% endif %}
-{% for address in unbound_allowed_addresses | default([]) %}
+{% for address in unbound_allowed_addresses %}
   access-control: {{ address }} allow
 {% endfor %}
-{% for address in unbound_private_addresses | default([]) %}
+{% for address in unbound_private_addresses %}
   private-address: {{ address }}
 {% endfor %}
-{% for domain in unbound_private_domains | default([]) %}
+{% for domain in unbound_private_domains %}
   private-domain: {{ domain }}
 {% endfor %}
-{% for zone, type in (unbound_local_zones | default({})).items() %}
+{% for zone, type in unbound_local_zones.items() %}
   local-zone: "{{ zone }}." {{ type }}
 {% endfor %}
-{% for zone, opts in (unbound_forward_zones | default({})).items() %}
+{% for zone, opts in unbound_forward_zones.items() %}
 forward-zone:
   name: {{ zone }}
 {% for addr in opts.forward_addrs %}
   forward-addr: {{ addr }}
 {% endfor %}
 {% endfor %}
-{% for zone, opts in (unbound_stub_zones | default({})).items() %}
+{% for zone, opts in unbound_stub_zones.items() %}
 stub-zone:
   name: {{ zone }}
 {% for addr in opts.stub_addrs %}
