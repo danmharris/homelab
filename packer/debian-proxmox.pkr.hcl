@@ -22,6 +22,7 @@ source "proxmox-iso" "proxmox" {
     password = var.proxmox_password
 
     node = var.proxmox_node
+    pool = "templates"
     memory = 1024
     os = "l26"
     bios = "ovmf"
