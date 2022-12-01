@@ -36,7 +36,7 @@ spec:
       prometheusSpec:
         image:
           repository: quay.io/prometheus/prometheus
-          tag: v2.40.4
+          tag: v2.40.5
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         storageSpec:
