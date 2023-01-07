@@ -1,6 +1,6 @@
 apiVersion: v1
 data:
-    RENOVATE_TOKEN: ENC[AES256_GCM,data:tmpIjMYh4HSsWllKhNd2dYU5eJUhhfBLF6SaLilX555Rt3M3oUBwmr+hligFvqmOPfH5Y5h86+s=,iv:7hXT8giWeI2UYHtnKbrmWNPJQF7rDKUETfScrymTrDQ=,tag:FJs+FnGKhU1FZObIE5UmDA==,type:str]
+    RENOVATE_TOKEN: ENC[AES256_GCM,data:VQU5ovcgUJAIqQg23ulOWkwZr/Dc4XtUhu4Epg7v5CUNLfGkjrwn7yHKbuEf8WMT25+IDQOlQgs=,iv:SVXcyBB0sJrqQF+0R8a9yxaJYEVgKP6wCkluOw7kBWY=,tag:IV+rRmDWLIVz+y11ukwZ9w==,type:str]
 kind: Secret
 metadata:
     creationTimestamp: null
@@ -21,8 +21,8 @@ sops:
             TFJobjRtNWxoRmx2clZxSWY5R0hnYVUKl1VsKnf8XWh6/c7NcOI0ngBsqEH/7oVc
             p97RIf8HNd/z6xdCw3R/RsqilYZPdm+vkpZsrKgU9MeiCpXtUaO9Iw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-10-16T12:51:56Z"
-    mac: ENC[AES256_GCM,data:9O/U8s60mJdUgr9b4Ehyc3DWTHoPcWDAd58cpEPYZ8tGNe3dqfe1yVtdYZ6ehbK/QMute1gL8FMJ3YHtl5U8VhHSl0LaHZb0FG5kO54WB+kQI4EzSzaNUoaglupYh4SDZgz8sR/9eCRvRv5MvoRUebSxkV25PVy/kbeNJqDZiYg=,iv:e10kdz+s/xNMt28WswWsRF53VmeNrLdS/9MSVnoNBL0=,tag:sKJtxU6on9DI8xxDLt3b/g==,type:str]
+    lastmodified: "2023-01-07T16:01:49Z"
+    mac: ENC[AES256_GCM,data:ILq+8T0HOUkjajBRxYu+RT8IQzol0//fQk8aZ17R9XMbg/e376MtM4JYkn78ackQDj2i5qh3jAp5ZTY+IzfnNw54+TIeS3PPDh0auHezjiSSxyCAUTSQIzB2Ql7EHxi+VqX6ReQFkRVyAXVvvCSgDf5M3Uu5Vxt6Qt08+Tvrrlo=,iv:Dk1O8o9y4zNiyOG7jrY05B9ro+6+9r7jjyNFNGqioL0=,tag:URHF/lAlIuoPy6G9Zr6cjA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
-    version: 3.6.1
+    version: 3.7.3
