@@ -16,6 +16,10 @@
             "allowedVersions": "< 10.7"
         },
         {
+            "matchPackageNames": "bitnami/postgresql",
+            "allowedVersions": "< 15"
+        },
+        {
             "matchPackageNames": "renovate/renovate",
             "extends": ["schedule:monthly"]
         },
