@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: recipes-site
-          image: 'gitea.dnhrrs.xyz/dan/recipes:0.1.0'
+          image: 'gitea.dnhrrs.xyz/dan/recipes:0.2.0'
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
