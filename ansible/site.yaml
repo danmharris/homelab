@@ -21,7 +21,7 @@
     - role: unbound
       tags: [dns]
 
-- hosts: nfs
+- hosts: k8s_nfs
   roles:
     - role: jnv.unattended-upgrades
       tags: [updates]
