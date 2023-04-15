@@ -36,3 +36,7 @@ spec:
       storageClass: nfs-client
     ingress:
       enabled: false
+    resources:
+      requests:
+        cpu: 10m
+        memory: 32Mi

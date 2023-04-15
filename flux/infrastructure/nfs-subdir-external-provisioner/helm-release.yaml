@@ -18,6 +18,10 @@ spec:
     image:
       repository: k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner
       tag: 'v4.0.2'
+    resources:
+      requests:
+        cpu: 10m
+        memory: 32Mi
     storageClass:
       defaultClass: true
       name: nfs-client
