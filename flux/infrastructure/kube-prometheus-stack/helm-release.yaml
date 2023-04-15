@@ -41,7 +41,7 @@ spec:
         podMonitorSelectorNilUsesHelmValues: false
         resources:
           requests:
-            cpu: 300mi
+            cpu: 300m
             memory: 0.5Gi
         storageSpec:
           volumeClaimTemplate:
