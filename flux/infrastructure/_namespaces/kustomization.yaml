@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - cert-manager.yaml
   - database.yaml
-  - mariadb.yaml
   - renovate.yaml
