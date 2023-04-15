@@ -20,6 +20,10 @@ spec:
       tag: '1.19.1'
       pullPolicy: IfNotPresent
       rootless: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 0.5Gi
     service:
       ssh:
         externalIPs:

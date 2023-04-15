@@ -18,6 +18,15 @@ spec:
     image:
       repository: ghcr.io/goauthentik/server
       tag: 2023.3.1
+    resources:
+      server:
+        requests:
+          cpu: 100m
+          memory: 0.5Gi
+      worker:
+        requests:
+          cpu: 100m
+          memory: 0.5Gi
     ingress:
       enabled: true
       annotations:

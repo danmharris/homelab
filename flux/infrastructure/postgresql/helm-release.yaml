@@ -24,3 +24,7 @@ spec:
     primary:
       persistence:
         storageClass: nfs-client
+      resources:
+        requests:
+          cpu: 250m
+          memory: 0.5Gi

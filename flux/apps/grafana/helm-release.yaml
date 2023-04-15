@@ -18,6 +18,10 @@ spec:
     image:
       repository: grafana/grafana
       tag: 9.4.7
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
     ingress:
       enabled: true
       annotations:

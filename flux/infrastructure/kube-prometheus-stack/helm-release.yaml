@@ -39,6 +39,10 @@ spec:
           tag: v2.43.0
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
+        resources:
+          requests:
+            cpu: 300mi
+            memory: 0.5Gi
         storageSpec:
           volumeClaimTemplate:
             spec:

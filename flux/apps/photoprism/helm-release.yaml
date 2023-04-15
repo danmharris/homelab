@@ -57,8 +57,8 @@ spec:
         existingClaim: photos
     resources:
       requests:
-        cpu: 1000m
-        memory: 0.5Gi
+        cpu: 500m
+        memory: 0.25Gi
       limits:
-        cpu: 2000m
-        memory: 1.5Gi
+        cpu: 1000m
+        memory: 1.0Gi
