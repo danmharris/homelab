@@ -11,6 +11,7 @@ pdns_records:
   - { zone: dnhrrs.xyz, name: ha, type: A, content: 10.23.30.5 }
   - { zone: 23.10.in-addr.arpa, name: '5.30', type: PTR, content: ha.dnhrrs.xyz. }
   - { zone: dnhrrs.xyz, name: api.mercury.k8s, type: A, content: 10.23.20.33 }
+  - { zone: dnhrrs.xyz, name: gitea-ssh, type: A, content: 10.42.0.20 }
   - { zone: dnhrrs.xyz, name: united-ant.vm, type: A, content: 10.23.20.14 }
   - { zone: 23.10.in-addr.arpa, name: '14.20', type: PTR, content: united-ant.vm.dnhrrs.xyz. }
 
