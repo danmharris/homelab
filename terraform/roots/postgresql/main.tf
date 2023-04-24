@@ -1,4 +1,12 @@
 terraform {
+  cloud {
+    organization = "danmharris"
+
+    workspaces {
+      name = "postgresql"
+    }
+  }
+
   required_providers {
     postgresql = {
       source  = "cyrilgdn/postgresql"
