@@ -7,7 +7,7 @@ kind: Secret
 metadata:
     creationTimestamp: null
     name: woodpecker-env
-    namespace: default
+    namespace: woodpecker
 sops:
     kms: []
     gcp_kms: []
@@ -23,8 +23,8 @@ sops:
             L3FiYVBOMjRqRlQzS0xTSXNKZ1lKbncKJoIhZzAtpecYXFJaPtJDzLI3sLL3rDtp
             y8mxYu3lCLVdUCjQ5pb3dwtabH97uKI3aFNP9P2V5wdyHp7XAci1KQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2022-10-16T12:51:57Z"
-    mac: ENC[AES256_GCM,data:qyh3jd8VeFRspPQoZeJuoki1q2WM10sSfB+T/BIHFWr1Z9Ybc8WlCg4TNmUegB9pgKa8mGll12LdYVgoKn2u0RZCrkAQd1rGP+6pCDDah2w9GxE8JwVodsr1oduaAPVy2+Y8sms5N5S0I/BfC7mRTfqbs8qUdBWbQNx6BRoBH5Q=,iv:u63RbWrhmzoWMLKOvw3YBlBNTMGWbHPdFpAY3G+KXfU=,tag:JthT1ZFmqRnhvdCzduHu5Q==,type:str]
+    lastmodified: "2023-04-30T11:20:37Z"
+    mac: ENC[AES256_GCM,data:sdNhXkxYkKNTExN1WpWNGwJkKhq9xa0HTnIXbgQskl1zSjf07/wBgn3yAwS0EomNOu/fyxQd3LrZVmaLoRscm1+q+BCjOkFMzyGPQ19Tb4LKPB52fgxqC/xQ5RNvx44FTYBj8CAAxi7It9QK39yGtMc09+Ocwrbh6wDW3u4gvTQ=,iv:7K7P9QxykqiwTfvzIMis+4G/rcFLaC9Ha5Z/u2v6dwk=,tag:DmRPwnRPBEAl6eLhPNbD4Q==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
-    version: 3.6.1
+    version: 3.7.3

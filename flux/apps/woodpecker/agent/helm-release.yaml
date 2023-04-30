@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: woodpecker-agent
-  namespace: default
+  namespace: woodpecker
 spec:
   interval: 1h
   chart:
@@ -23,6 +23,6 @@ spec:
     dind:
       image: docker:22.06-rc-dind
     env:
-      WOODPECKER_SERVER: woodpecker-server.default.svc.cluster.local:9000
+      WOODPECKER_SERVER: woodpecker-server.woodpecker.svc.cluster.local:9000
     extraSecretNamesForEnvFrom:
       - woodpecker-agent-secret
