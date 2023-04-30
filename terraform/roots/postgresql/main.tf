@@ -21,6 +21,6 @@ terraform {
 }
 
 data "sops_file" "credentials" {
-  source_file = "credentials.enc.yml"
+  source_file = "credentials.sops.yaml"
   input_type  = "yaml"
 }
