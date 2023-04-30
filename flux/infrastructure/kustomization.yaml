@@ -12,3 +12,4 @@ resources:
   - kube-prometheus-stack
   - renovate
   - postgresql
+  - tf-controller

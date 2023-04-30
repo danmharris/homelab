@@ -11,4 +11,5 @@ resources:
   - k8s-at-home.yaml
   - nfs-subdir-external-provisioner.yaml
   - prometheus-community.yaml
+  - tf-controller.yaml
   - woodpecker.yaml
