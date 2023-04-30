@@ -7,6 +7,7 @@ metadata:
 spec:
   interval: 5m
   path: ./terraform/roots/postgresql
+  approvePlan: auto
   backendConfig:
     disable: true
   cliConfigSecretRef:
