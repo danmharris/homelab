@@ -14,3 +14,9 @@ spec:
         kind: HelmRepository
         name: tf-controller
         namespace: flux-system
+  values:
+    image:
+      tag: v0.14.1
+    runner:
+      image:
+        tag: v0.14.1
