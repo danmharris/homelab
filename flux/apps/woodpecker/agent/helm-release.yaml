@@ -21,7 +21,7 @@ spec:
       tag: 'v0.15.8'
       pullPolicy: IfNotPresent
     dind:
-      image: docker:23.0.5-dind
+      image: docker:23.0.6-dind
     env:
       WOODPECKER_SERVER: woodpecker-server.woodpecker.svc.cluster.local:9000
     extraSecretNamesForEnvFrom:
