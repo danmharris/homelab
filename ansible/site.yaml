@@ -28,3 +28,12 @@
 - hosts: k8s_nfs
   roles:
     - geerlingguy.nfs
+
+- hosts: wireguard
+  roles:
+    - ipr-cnrs.nftables
+  tasks:
+    - name: Enable IP forwarding
+      sysctl:
+        name: net.ipv4.ip_forward
+        value: '1'

@@ -1,0 +1,30 @@
+---
+proxmox_pool: dev
+proxmox_role: vpn
+
+nft_fail2ban_service_override: false
+nft_define_default: {}
+nft_set_default: {}
+
+nft_global_default_rules:
+  005_state_management:
+    - ct state established,related accept
+    - ct state invalid drop
+
+nft_input_default_rules:
+  000_policy:
+    - type filter hook input priority 0; policy drop;
+  010_global:
+    - jump global
+  020_icmp:
+    - meta l4proto ipv6-icmp accept
+    - meta l4proto icmp accept
+    - ip protocol igmp accept
+  030_ssh:
+    - tcp dport ssh accept
+  040_wireguard:
+    - udp dport 51820 accept
+
+nft_output_default_rules:
+  000_policy:
+    - type filter hook output priority 0; policy accept;

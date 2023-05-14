@@ -2,3 +2,4 @@
 - name: jnv.unattended-upgrades
 - name: geerlingguy.mysql
 - name: geerlingguy.nfs
+- name: ipr-cnrs.nftables
