@@ -7,13 +7,10 @@
   roles:
     - proxmox
 
-- hosts: all:!talos
-  tasks:
-    - name: Automatic updates on debian
-      include_role:
-        name: jnv.unattended-upgrades
+- hosts: debian
+  roles:
+    - role: jnv.unattended-upgrades
       tags: [updates]
-      when: ansible_facts['os_family'] == 'Debian'
 
 - hosts: dns_authoritative
   roles:
