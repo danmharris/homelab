@@ -7,22 +7,24 @@
   roles:
     - proxmox
 
+- hosts: all:!talos
+  tasks:
+    - name: Automatic updates on debian
+      include_role:
+        name: jnv.unattended-upgrades
+      tags: [updates]
+      when: ansible_facts['os_family'] == 'Debian'
+
 - hosts: dns_authoritative
   roles:
-    - role: jnv.unattended-upgrades
-      tags: [updates]
     - role: pdns
       tags: [dns]
 
 - hosts: dns_recursive
   roles:
-    - role: jnv.unattended-upgrades
-      tags: [updates]
     - role: unbound
       tags: [dns]
 
 - hosts: k8s_nfs
   roles:
-    - role: jnv.unattended-upgrades
-      tags: [updates]
     - geerlingguy.nfs
