@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+    authentik_token: ENC[AES256_GCM,data:KZpYNpT0w+mBND1mDs5nJEbAPfnbaomShdO84/7UiluCMFgJYKwQhtJDnlZdKujcRZCI1WCF3Gvxwk5tYan+N/+/Rul8iMm4pF6uNZnPs90=,iv:o3BbzIyf4js5nSltqLjSmMCLfFzYDG5xe3OU8w+jtBQ=,tag:yvyt6xAntqzlwiQ9963Q6w==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: tf-authentik-vars
+    namespace: flux-system
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age162k3jv9wyce4dkly60tu0l9jmme5qa3fmcrknrz6lx54ru2ftgaqcsy5e2
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXRWxCaWo2dkIyZUtXc0hD
+            bmpLbnFRVjVRUHNZekppS21ZdHQ5bmZtL2tJCjhsbDJzcHVZVFNHNmlNanNqaHBK
+            UE52UUdzVU4wbHRubFhxU21vOStxWlkKLS0tIGhjN3BKKys2V3BEUVViRnNmMW9C
+            bFdGOCsxTUc1c1hsK2lRZWswbzJNaW8Kci6LdHIT5Tiwc2NBxTomUOscOOtr/3Nb
+            Q7iMV0J1vzfZHeGbZvTTzIj+GIJkEWo4zXQi01cPsJCGt0TG+OkFLg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-05-21T14:13:56Z"
+    mac: ENC[AES256_GCM,data:QgvxV7oesqTS+fS8wBI8D6n4LTNoUO91FDc6RROQwVfmYKXeRlAoKVVA+lRCU8SB/nCO4WzqZfsgnRODKvMRqOqdH0w69VeY710uJ6SHfmG+wtSGpIufTrm89kvrnKRRyDCMTUf+uvk2by7m5u4jGBqicg7QDAjEvDipamYENL4=,iv:DomBIefQjIV8WN2Ad13jE9nFLewikHmo8syHc76PxE0=,tag:46LbugmOdoD/Ye4z1BiNPQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
