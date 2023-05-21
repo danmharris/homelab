@@ -15,7 +15,7 @@ spec:
     namespace: flux-system
   vars:
     - name: authentik_url
-      value: authentik.authentik.svc.cluster.local
+      value: http://authentik.authentik.svc.cluster.local
   varsFrom:
     - kind: Secret
       name: tf-authentik-vars
