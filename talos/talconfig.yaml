@@ -1,6 +1,6 @@
 clusterName: mercury
 talosVersion: v1.1.1
-kubernetesVersion: v1.24.12
+kubernetesVersion: v1.24.13
 endpoint: https://api.mercury.k8s.dnhrrs.xyz:6443
 domain: cluster.local
 allowSchedulingOnMasters: false
