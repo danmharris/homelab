@@ -34,6 +34,13 @@ spec:
                   mountPath: /opt/renovate/
                 - name: work-volume
                   mountPath: /tmp/renovate/
+              resources:
+                requests:
+                  cpu: 1000m
+                  memory: 0.5Gi
+                limits:
+                  cpu: 1500m
+                  memory: 1Gi
           restartPolicy: Never
           volumes:
             - name: config-volume
