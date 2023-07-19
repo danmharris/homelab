@@ -52,6 +52,7 @@ spec:
       auth:
         signout_redirect_url: https://auth.dnhrrs.xyz/if/session-end/grafana/
         oauth_auto_login: true
+        oauth_allow_insecure_email_lookup: true
       auth.generic_oauth:
         enabled: true
         name: authentik
