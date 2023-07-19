@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: 'woodpeckerci/woodpecker-server'
-      tag: 'v0.15.10'
+      tag: 'v0.15.11'
       pullPolicy: IfNotPresent
     env:
       WOODPECKER_HOST: https://woodpecker.dnhrrs.xyz
