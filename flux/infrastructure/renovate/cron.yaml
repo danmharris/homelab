@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:35.155.0
+              image: renovate/renovate:35.159.7
               env:
                 - name: RENOVATE_PLATFORM
                   value: 'github'
