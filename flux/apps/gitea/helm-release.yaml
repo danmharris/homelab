@@ -46,6 +46,7 @@ spec:
             - gitea.dnhrrs.xyz
     persistence:
       enabled: true
+      create: false
       claimName: gitea-data
     gitea:
       admin:
