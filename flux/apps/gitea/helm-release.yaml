@@ -63,5 +63,8 @@ spec:
       additionalConfigSources:
         - secret:
             secretName: gitea-postgresql
-    postgresql:
+    postgresql-ha:
       enabled: false
+    redis-cluster:
+      cluster:
+        nodes: 3
