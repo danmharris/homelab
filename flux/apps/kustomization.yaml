@@ -6,5 +6,6 @@ resources:
   - gitea
   - grafana
   - jellyfin
+  - nextcloud
   - photoprism
   - recipes-site

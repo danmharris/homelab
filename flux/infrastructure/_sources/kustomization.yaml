@@ -9,6 +9,7 @@ resources:
   - ingress-nginx.yaml
   - jetstack.yaml
   - k8s-at-home.yaml
+  - nextcloud.yaml
   - nfs-subdir-external-provisioner.yaml
   - prometheus-community.yaml
   - tf-controller.yaml
