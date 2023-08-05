@@ -59,3 +59,8 @@ spec:
         secretName: nextcloud-credentials
         usernameKey: username
         passwordKey: password
+      securityContext:
+        runAsUser: 33
+        runAsGroup: 33
+        runAsNonRoot: true
+        readOnlyRootFilesystem: false
