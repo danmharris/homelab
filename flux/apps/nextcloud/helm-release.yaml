@@ -64,3 +64,7 @@ spec:
         runAsGroup: 33
         runAsNonRoot: true
         readOnlyRootFilesystem: false
+    livenessProbe:
+      enabled: false
+    readinessProbe:
+      enabled: false
