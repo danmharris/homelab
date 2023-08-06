@@ -69,20 +69,20 @@ spec:
         runAsGroup: 33
         runAsNonRoot: true
         readOnlyRootFilesystem: false
+      configs:
+        proxy.config.php: |-
+          <?php
+          $CONFIG = array (
+            'trusted_proxies' => array(
+              0 => '127.0.0.1',
+              1 => '192.168.0.0/16',
+            ),
+            'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
+          );
     livenessProbe:
       enabled: false
     readinessProbe:
       enabled: false
-    configs:
-      proxy.config.php: |-
-        <?php
-        $CONFIG = array (
-          'trusted_proxies' => array(
-            0 => '127.0.0.1',
-            1 => '192.168.0.0/16',
-          ),
-          'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
-        );
     phpClientHttpsFix:
       enabled: true
     cronjob:
