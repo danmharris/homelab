@@ -31,6 +31,8 @@ spec:
       className: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/enable-cors: "true"
+        nginx.ingress.kubernetes.io/cors-allow-headers: "X-Forwarded-For"
       hosts:
         - host: nextcloud.dnhrrs.xyz
           paths:
@@ -71,3 +73,16 @@ spec:
       enabled: false
     readinessProbe:
       enabled: false
+    configs:
+      proxy.config.php: |-
+        <?php
+        $CONFIG = array (
+          'trusted_proxies' => array(
+            0 => '127.0.0.1',
+          ),
+          'forwarded_for_headers' => array('HTTP_X_FORWARDED_FOR'),
+        );
+    phpClientHttpsFix:
+      enabled: true
+    cronjob:
+      enabled: true
