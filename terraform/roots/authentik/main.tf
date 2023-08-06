@@ -13,9 +13,19 @@ terraform {
       source  = "goauthentik/authentik"
       version = "2023.6.0"
     }
+
+    sops = {
+      source  = "carlpett/sops"
+      version = "0.7.2"
+    }
   }
 }
 
 data "authentik_flow" "default-authorization-flow" {
   slug = "default-provider-authorization-implicit-consent"
+}
+
+data "sops_file" "secrets" {
+  source_file = "secrets.sops.yaml"
+  input_type  = "yaml"
 }
