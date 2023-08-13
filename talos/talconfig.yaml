@@ -13,7 +13,7 @@ clusterSvcNets:
 cniConfig:
   name: custom
   urls:
-    - https://docs.projectcalico.org/archive/v3.20/manifests/calico.yaml
+    - https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml
 nodes:
   - hostname: talos-10-23-20-36
     ipAddress: 10.23.20.36
