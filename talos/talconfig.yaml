@@ -59,14 +59,3 @@ nodes:
           routes:
               - network: 0.0.0.0/0
                 gateway: 10.23.20.1
-controlPlane:
-  patches:
-    - |-
-      - op: add
-        path: /cluster/controllerManager/extraArgs
-        value:
-          authentication-skip-lookup: true
-      - op: add
-        path: /cluster/scheduler/extraArgs
-        value:
-          authentication-skip-lookup: true
