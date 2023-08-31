@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: grafana/grafana
-      tag: 10.0.3
+      tag: 10.1.1
     resources:
       requests:
         cpu: 100m
