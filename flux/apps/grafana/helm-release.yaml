@@ -46,6 +46,8 @@ spec:
       userKey: admin-user
       passwordKey: admin-password
     envFromSecret: grafana-env
+    rbac:
+      pspEnabled: false
     grafana.ini:
       server:
         root_url: https://grafana.dnhrrs.xyz
