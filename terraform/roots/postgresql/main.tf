@@ -11,7 +11,7 @@ terraform {
   required_providers {
     postgresql = {
       source  = "cyrilgdn/postgresql"
-      version = "1.20.0"
+      version = "1.21.0"
     }
 
     sops = {
