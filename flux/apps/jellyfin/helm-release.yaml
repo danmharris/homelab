@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: jellyfin/jellyfin
-      tag: '10.8.10'
+      tag: '10.8.11'
     ingress:
       main:
         enabled: true
