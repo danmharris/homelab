@@ -18,7 +18,7 @@ spec:
     image:
       repository: nextcloud
       flavor: fpm
-      tag: '27.0.1-fpm'
+      tag: '27.1.2-fpm'
       pullPolicy: IfNotPresent
     nginx:
       enabled: true
