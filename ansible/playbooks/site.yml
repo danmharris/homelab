@@ -28,7 +28,7 @@
       ansible.builtin.package:
         name: "{{ item }}"
         state: present
-      loop: [vim]
+      loop: [vim, wget]
   handlers:
     - name: Restart ssh
       ansible.builtin.service:
