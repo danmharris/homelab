@@ -1,0 +1,32 @@
+---
+- name: Setup new machine
+  hosts: all
+  remote_user: root
+  tasks:
+    - name: System update
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: true
+    - name: Install sudo
+      ansible.builtin.package:
+        name: sudo
+        state: present
+    - name: Create ansible user
+      ansible.builtin.user:
+        name: ansible
+        state: present
+        append: true
+        groups: sudo
+        shell: /bin/bash
+    - name: Add SSH key to ansible user
+      ansible.posix.authorized_key:
+        user: ansible
+        state: present
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRLUzMqpXJdtlTFiyosSOcjZxVqvd1g1E4fNEkjPTjH ansible"
+    - name: Allow ansible user to sudo
+      ansible.builtin.copy:
+        src: files/sudoers
+        dest: /etc/sudoers.d/ansible
+        validate: /usr/sbin/visudo -csf %s
+    - name: Reboot
+      ansible.builtin.reboot:

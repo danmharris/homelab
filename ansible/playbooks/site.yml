@@ -1,0 +1,36 @@
+---
+- name: Common tasks
+  hosts: all
+  roles:
+    - jnv.unattended-upgrades
+  tasks:
+    - name: Create dan user
+      ansible.builtin.user:
+        name: dan
+        state: present
+        append: true
+        groups: sudo
+        shell: /bin/bash
+    - name: Add SSH key to dan user
+      ansible.posix.authorized_key:
+        user: dan
+        state: present
+        key: "{{ lookup('file', '/home/dan/.ssh/id_rsa.pub') }}"
+    - name: Disallow root SSH
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        insertafter: '^#PermitRootLogin'
+        regexp: '^PermitRootLogin '
+        line: 'PermitRootLogin no'
+      notify: Restart ssh
+    - name: Install useful utils
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      loop: [vim]
+  handlers:
+    - name: Restart ssh
+      ansible.builtin.service:
+        name: ssh
+        state: restarted

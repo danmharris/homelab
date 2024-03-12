@@ -1,3 +1,4 @@
 ---
 - name: jnv.unattended-upgrades
+  version: "v1.12.2"
 - name: geerlingguy.nfs
