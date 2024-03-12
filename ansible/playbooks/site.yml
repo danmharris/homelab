@@ -2,7 +2,7 @@
 - name: Common tasks
   hosts: all
   roles:
-    - jnv.unattended-upgrades
+    - hifis.unattended-upgrades
   tasks:
     - name: Create dan user
       ansible.builtin.user:
