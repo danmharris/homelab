@@ -1,5 +1,0 @@
----
-- name: Join node to cluster
-  command:
-    cmd: "{{ kubernetes_join_command.stdout }}"
-    creates: /etc/kubernetes/kubelet.conf

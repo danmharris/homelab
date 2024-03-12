@@ -1,8 +1,0 @@
-{{ ansible_managed | comment }}
-
-[mysqld]
-server-id = {{ mysql_server_id }}
-gtid-domain-id = {{ mysql_gtid_domain_id }}
-log-bin = mysql-bin
-relay-log = relay-bin
-log_slave_updates = on
