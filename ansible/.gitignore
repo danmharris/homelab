@@ -1,2 +1,4 @@
 /.vault_password
-/id_ed25519
+id_ed25519
+roles_galaxy/
+.venv/
