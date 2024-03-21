@@ -1,8 +1,0 @@
----
-unbound_local_only: true
-unbound_allowed_addresses: []
-unbound_private_addresses: []
-unbound_private_domains: []
-unbound_local_zones: {}
-unbound_forward_zones: {}
-unbound_stub_zones: {}

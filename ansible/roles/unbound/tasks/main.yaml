@@ -1,17 +1,18 @@
 ---
 - name: Install unbound
-  package:
-    name: "{{ unbound_package }}"
+  ansible.builtin.package:
+    name: unbound
     state: present
 
 - name: Install unbound config
-  template:
+  ansible.builtin.template:
     src: unbound.conf.j2
-    dest: "{{ unbound_config }}"
+    dest: /etc/unbound/unbound.conf
+    mode: '0644'
   notify: Restart unbound
 
 - name: Enable unbound service
-  service:
+  ansible.builtin.service:
     name: unbound
     state: started
-    enabled: yes
+    enabled: true

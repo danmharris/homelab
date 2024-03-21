@@ -1,31 +1,13 @@
 # {{ ansible_managed }}
 server:
-{% if not unbound_local_only %}
   interface: 0.0.0.0
-{% endif %}
-{% for address in unbound_allowed_addresses %}
-  access-control: {{ address }} allow
-{% endfor %}
-{% for address in unbound_private_addresses %}
-  private-address: {{ address }}
-{% endfor %}
-{% for domain in unbound_private_domains %}
-  private-domain: {{ domain }}
-{% endfor %}
-{% for zone, type in unbound_local_zones.items() %}
-  local-zone: "{{ zone }}." {{ type }}
-{% endfor %}
-{% for zone, opts in unbound_forward_zones.items() %}
-forward-zone:
-  name: {{ zone }}
-{% for addr in opts.forward_addrs %}
-  forward-addr: {{ addr }}
-{% endfor %}
-{% endfor %}
-{% for zone, opts in unbound_stub_zones.items() %}
+  access-control: 10.23.0.0/16 allow
+  private-address: 10.23.0.0/16
+  private-domain: dnhrrs.xyz
+  local-zone: "10.in-addr.arpa" transparent
 stub-zone:
-  name: {{ zone }}
-{% for addr in opts.stub_addrs %}
-  stub-addr: {{ addr }}
-{% endfor %}
-{% endfor %}
+  name: dnhrrs.xyz
+  stub-addr: 10.23.20.52
+stub-zone:
+  name: 23.10.in-addr.arpa
+  stub-addr: 10.23.20.52

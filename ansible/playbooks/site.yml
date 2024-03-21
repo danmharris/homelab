@@ -34,3 +34,8 @@
       ansible.builtin.service:
         name: ssh
         state: restarted
+
+- name: Set up unbound recursive DNS servers
+  hosts: unbound
+  roles:
+    - unbound
