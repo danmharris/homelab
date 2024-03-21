@@ -35,6 +35,11 @@
         name: ssh
         state: restarted
 
+- name: Set up coredns authoritative DNS servers
+  hosts: coredns
+  roles:
+    - coredns
+
 - name: Set up unbound recursive DNS servers
   hosts: unbound
   roles:

@@ -1,0 +1,6 @@
+# Ansible managed
+
+dnhrrs.xyz {
+    root /etc/coredns/zones
+    file db.dnhrrs.xyz
+}

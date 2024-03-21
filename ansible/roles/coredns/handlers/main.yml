@@ -1,0 +1,14 @@
+---
+- name: Run systemd-sysusers
+  ansible.builtin.command: systemd-sysusers
+
+- name: Run systemd-tmpfiles
+  ansible.builtin.command: systemd-tmpfiles --create
+
+- name: Run systemctl daemon-reload
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Restart coredns
+  ansible.builtin.service:
+    name: coredns
+    state: restarted

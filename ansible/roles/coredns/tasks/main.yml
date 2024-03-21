@@ -1,0 +1,79 @@
+---
+- name: Check coredns binary
+  ansible.builtin.stat:
+    path: /usr/bin/coredns
+  register: coredns_binary_stat
+
+- name: Install coredns binary
+  when: not coredns_binary_stat.stat.exists
+  block:
+    - name: Download coredns tarball
+      ansible.builtin.get_url:
+        url: https://github.com/coredns/coredns/releases/download/v1.11.1/coredns_1.11.1_linux_amd64.tgz
+        dest: /tmp/coredns.tgz
+        mode: '0644'
+    - name: Extract binary into /usr/bin
+      ansible.builtin.unarchive:
+        src: /tmp/coredns.tgz
+        dest: /usr/bin
+        remote_src: true
+
+- name: Create user
+  ansible.builtin.copy:
+    src: sysusers.conf
+    dest: /usr/lib/sysusers.d/coredns.conf
+    mode: '0644'
+  notify: Run systemd-sysusers
+
+- name: Create home directory
+  ansible.builtin.copy:
+    src: tmpfiles.conf
+    dest: /usr/lib/tmpfiles.d/coredns.conf
+    mode: '0644'
+  notify: Run systemd-tmpfiles
+
+- name: Install service unit
+  ansible.builtin.copy:
+    src: coredns.service
+    dest: /usr/lib/systemd/system/coredns.service
+    mode: '0644'
+  notify: Run systemctl daemon-reload
+
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: Create config directories
+  ansible.builtin.file:
+    path: '{{ item }}'
+    mode: '0755'
+    owner: coredns
+    group: coredns
+    state: directory
+  loop:
+    - /etc/coredns
+    - /etc/coredns/zones
+
+- name: Create Corefile
+  ansible.builtin.copy:
+    src: Corefile
+    dest: /etc/coredns/Corefile
+    mode: '0644'
+    owner: coredns
+    group: coredns
+  notify: Restart coredns
+
+- name: Install zone dbs
+  ansible.builtin.copy:
+    src: '{{ item }}'
+    dest: '/etc/coredns/zones/{{ item }}'
+    mode: '0644'
+    owner: coredns
+    group: coredns
+  loop:
+    - db.dnhrrs.xyz
+
+- name: Enable and start service
+  ansible.builtin.service:
+    name: coredns
+    enabled: true
+    state: started
