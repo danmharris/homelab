@@ -1,7 +1,6 @@
 ---
 - name: Setup new machine
   hosts: all
-  remote_user: root
   tasks:
     - name: System update
       ansible.builtin.apt:

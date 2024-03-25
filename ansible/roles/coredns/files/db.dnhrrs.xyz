@@ -3,7 +3,7 @@
 ; vim:noexpandtab
 $ORIGIN dnhrrs.xyz.
 @	3600	IN	SOA	ns.dnhrrs.xyz. admin.dnhrrs.xyz. (
-				0004	; serial
+				0005	; serial
 				7200	; refresh (2 hours)
 				3600	; retry (1 hour)
 				1209600	; expire (2 weeks)
@@ -15,6 +15,7 @@ dhcpns1		IN	A	10.23.10.2
 nas		IN	A	10.23.20.5
 ct-coredns-prod-1		IN	A	10.23.20.52
 ct-unbound-prod-1		IN	A	10.23.20.53
+vm-k0s-prod-core1		IN	A	10.23.20.54
 
 erx		IN	A	10.23.100.1
 switch0		IN	A	10.23.100.2
