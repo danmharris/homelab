@@ -1,6 +1,9 @@
 # Ansible managed
 
 dnhrrs.xyz {
-    root /etc/coredns/zones
-    file db.dnhrrs.xyz
+    file zones/db.dnhrrs.xyz
+}
+
+23.10.in-addr.arpa {
+    file zones/db.23.10.in-addr.arpa
 }

@@ -51,7 +51,7 @@
     state: directory
   loop:
     - /etc/coredns
-    - /etc/coredns/zones
+    - /var/lib/coredns/zones
 
 - name: Create Corefile
   ansible.builtin.copy:
@@ -65,12 +65,13 @@
 - name: Install zone dbs
   ansible.builtin.copy:
     src: '{{ item }}'
-    dest: '/etc/coredns/zones/{{ item }}'
+    dest: '/var/lib/coredns/zones/{{ item }}'
     mode: '0644'
     owner: coredns
     group: coredns
   loop:
     - db.dnhrrs.xyz
+    - db.23.10.in-addr.arpa
 
 - name: Enable and start service
   ansible.builtin.service:
