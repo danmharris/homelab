@@ -5,7 +5,7 @@ metadata:
   name: homelab
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10m
   ref:
     branch: main
   secretRef:
@@ -19,7 +19,7 @@ metadata:
   name: cluster
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10m
   path: ./kubernetes/flux
   prune: false
   sourceRef:
