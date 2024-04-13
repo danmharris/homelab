@@ -1,0 +1,15 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: server
+  namespace: network
+spec:
+  addresses:
+    - 10.23.20.175-10.23.20.199
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: all
+  namespace: network

@@ -11,3 +11,18 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: metallb-pool
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./kubernetes/apps/network/metallb/pool
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  dependsOn:
+    - name: metallb-chart
