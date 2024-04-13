@@ -26,8 +26,7 @@ spec:
       hosts:
         - host: echo.cluster.dnhrrs.xyz
           paths:
-            - path: /
-              pathType: Prefix
+            - /
       tls:
         - secretName: echo-cert
           hosts:
