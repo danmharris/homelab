@@ -1,0 +1,27 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: homelab
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  secretRef:
+    name: homelab
+  timeout: 1m0s
+  url: ssh://git@github.com/danmharris/homelab.git
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  path: ./kubernetes/flux
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: homelab
