@@ -1,6 +1,6 @@
 ---
 creation_rules:
-  - path_regex: flux/.*\.yaml
+  - path_regex: (flux|kubernetes)/.*\.ya?ml
     encrypted_regex: ^(data|stringData)$
     age: age162k3jv9wyce4dkly60tu0l9jmme5qa3fmcrknrz6lx54ru2ftgaqcsy5e2
   - age: age162k3jv9wyce4dkly60tu0l9jmme5qa3fmcrknrz6lx54ru2ftgaqcsy5e2
