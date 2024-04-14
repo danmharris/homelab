@@ -8,6 +8,7 @@ spec:
   interval: 10m
   path: ./kubernetes/apps/network/metallb/chart
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: homelab
