@@ -1,0 +1,14 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-csi
+  namespace: storage
+provisioner: nfs.csi.k8s.io
+parameters:
+  server: nas.dnhrrs.xyz
+  share: /volume1/cluster-volumes
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+mountOptions:
+  - nfsvers=4.1
