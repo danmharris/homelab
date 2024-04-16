@@ -1,0 +1,67 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitea
+  namespace: default
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: gitea
+      version: 'v10.1.4'
+      sourceRef:
+        kind: HelmRepository
+        name: gitea-charts
+        namespace: flux-system
+  values:
+    image:
+      repository: gitea/gitea
+      tag: '1.21.11'
+      rootless: true
+    service:
+      ssh:
+        type: LoadBalancer
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/proxy-body-size: 16m
+      hosts:
+        - host: gitea.cluster.dnhrrs.xyz
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - secretName: gitea-cert
+          hosts:
+            - gitea.cluster.dnhrrs.xyz
+    persistence:
+      enabled: true
+    gitea:
+      admin:
+        existingSecret: gitea-credentials
+      config:
+        server:
+          SSH_DOMAIN: gitea-ssh.cluster.dnhrrs.xyz
+        database:
+          DB_TYPE: postgres
+          HOST: postgresql-16-rw.database.svc.cluster.local:5432
+          NAME: gitea
+          USER: gitea
+    postgresql-ha:
+      enabled: false
+    redis-cluster:
+      enabled: true
+      image:
+        registry: docker.io
+        repository: bitnami/redis-cluster
+        tag: 7.2.4-debian-1
+      cluster:
+        nodes: 3
+  valuesFrom:
+    - kind: Secret
+      name: gitea-credentials
+      valuesKey: database
+      targetPath: gitea.config.database.PASSWD
