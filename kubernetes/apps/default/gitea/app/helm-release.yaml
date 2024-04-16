@@ -21,6 +21,8 @@ spec:
       rootless: true
     service:
       ssh:
+        annotations:
+          coredns.io/hostname: gitea-ssh.cluster.dnhrrs.xyz
         type: LoadBalancer
     ingress:
       enabled: true
