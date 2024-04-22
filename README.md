@@ -9,7 +9,7 @@ cluster. This is set up using [Talos](https://www.talos.dev) to provide a secure
 and immutable operating environment for the nodes.
 
 The cluster is managed using [Flux](https://fluxcd.io/) to perform GitOps from
-the `flux` directory of this repository. Any passwords/secrets are encrypted
+the `kubernetes` directory of this repository. Any passwords/secrets are encrypted
 using [Mozilla SOPS](https://github.com/mozilla/sops), committed to this
 repository and then decrypted by Flux.
 
@@ -17,45 +17,28 @@ repository and then decrypted by Flux.
 
 * Authentik: Single Sign-On (SSO)
 * Gitea: Hosts git repositories, OCI images and internal packages
-* Grafana: Dashboard and visualisations
-* Jellyfin: TV and Movie library and streaming
-* Photoprism: Photo management and organisation
-* Woodpecker: Continuous Integration and pipelines
 
 ### Infrastructure
 
-* Calico: Networking and provides BGP peering for inbound access
+* Flannel: Container network interface (CNI)
 * Cert Manager: Automatically generates TLS certificates for ingress using LetsEncrypt
-* External DNS: Automatically creates DNS records for ingress
+* k8s_gateway: Delegated DNS server which responds to lookups for services in the cluster
 * Nginx: Ingress
-* Kube Prometheus Stack: Prometheus and associated exporters for nodes and the cluster
-* NFS Subdir External Provisioner: Automatically provisions persistent volumes on an NFS mount
+* NFS CSI Driver: Automatically provisions persistent volumes on an NFS mount
 * PostgreSQL: Databases
-* Renovate: Checks for updates of running apps and creates GitHub PRs. Runs on a cron.
 
 ## 🏗 Ansible
 
 [Ansible](https://www.ansible.com/) is used to configure anything that isn't
-running in the Kubernetes cluster. This includes PowerDNS and Unbound for DNS on
-the network as well as the NFS server for the cluster. It also creates and
-manages all Proxmox virtual machines.
-
+running in the Kubernetes cluster. This includes other physical hosts on the
+network. This does common setup like configuring users, automatic updates, etc.
 All the playbooks can be found in the `ansible` directory.
 
-## 📦 Packer
+## See Also
 
-[Packer](https://www.packer.io) is used to create VM templates that can be used
-as a base for VMs. I use it to bootstrap a minimal Debian install (using
-[preseeding](https://www.debian.org/releases/stable/amd64/apb)) to get it into
-a state ready to be managed by other tools.
+### dns-config
 
-The image templates can be found in the `packer` directory.
+Contains the DNS configuration for the network. This runs as a docker compose
+stack on a Raspberry Pi 4.
 
-## 🚧 Terraform
-
-⚠ Most resources are in the process of being migrated to Ansible.
-
-[Terraform](https://terraform.io) is an infrastructure as code tool that manages
-the main resources in the lab (e.g. VMs, DNS records etc.).
-
-The modules and roots can be found in the `terraform` directory.
+Source: [dns-config](https://github.com/danmharris/dns-config)
