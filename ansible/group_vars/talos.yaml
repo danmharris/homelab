@@ -1,2 +1,0 @@
----
-proxmox_cd: 'local:iso/talos-1.1.1-amd64.iso,media=cdrom'

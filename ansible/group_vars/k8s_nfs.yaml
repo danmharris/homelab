@@ -1,3 +1,0 @@
----
-nfs_exports:
-  - "/srv/provisioner *(rw,sync)"
