@@ -43,6 +43,10 @@ spec:
       labels:
         app: photos-web
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
       containers:
         - name: photos-web
           image: 'filebrowser/filebrowser:v2.28.0-s6'
