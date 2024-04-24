@@ -1,0 +1,104 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nas-photos
+  namespace: default
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: nas-photos
+  storageClassName: nfs-csi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: photos-web
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs-csi
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: photos-web
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: photos-web
+  template:
+    metadata:
+      labels:
+        app: photos-web
+    spec:
+      containers:
+        - name: photos-web
+          image: 'filebrowser/filebrowser:v2.28.0-s6'
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: db
+              mountPath: /database
+            - name: photos
+              mountPath: /srv
+      volumes:
+        - name: db
+          persistentVolumeClaim:
+            claimName: photos-web
+        - name: photos
+          persistentVolumeClaim:
+            claimName: nas-photos
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: photos-web
+  namespace: default
+spec:
+  selector:
+    app: photos-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: photos-web
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: photos.cluster.dnhrrs.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: photos-web
+                port:
+                  name: http
+  tls:
+    - secretName: photos-web-cert
+      hosts:
+        - photos.cluster.dnhrrs.xyz
