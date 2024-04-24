@@ -55,7 +55,7 @@ spec:
             - name: PGID
               value: '1000'
           ports:
-            - containerPort: 80
+            - containerPort: 8080
               name: http
           volumeMounts:
             - name: db
