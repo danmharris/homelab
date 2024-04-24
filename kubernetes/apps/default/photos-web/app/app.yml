@@ -43,14 +43,15 @@ spec:
       labels:
         app: photos-web
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       containers:
         - name: photos-web
           image: 'filebrowser/filebrowser:v2.28.0-s6'
           imagePullPolicy: IfNotPresent
+          env:
+            - name: PUID
+              value: '1000'
+            - name: PGID
+              value: '1000'
           ports:
             - containerPort: 80
               name: http
