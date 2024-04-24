@@ -20,3 +20,4 @@ spec:
         registry: registry.k8s.io
         image: ingress-nginx/controller
         tag: "v1.10.0"
+      allowSnippetAnnotations: true
