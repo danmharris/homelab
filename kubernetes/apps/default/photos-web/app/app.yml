@@ -44,30 +44,32 @@ spec:
         app: photos-web
     spec:
       securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
         fsGroup: 1000
       containers:
         - name: photos-web
-          image: 'filebrowser/filebrowser:v2.28.0-s6'
+          image: 'filebrowser/filebrowser:v2.28.0'
           imagePullPolicy: IfNotPresent
           env:
-            - name: PUID
-              value: '1000'
-            - name: PGID
-              value: '1000'
+            - name: FB_PORT
+              value: '8080'
+            - name: FB_DATABASE
+              value: '/database/filebrowser.db'
+            - name: FB_NOAUTH
+              value: 'true'
+            - name: FB_ROOT
+              value: '/srv'
           ports:
             - containerPort: 8080
               name: http
           volumeMounts:
-            - name: config
-              mountPath: /config
             - name: db
               mountPath: /database
             - name: photos
               mountPath: /srv
       volumes:
-        - name: config
-          configMap:
-            name: photos-web
         - name: db
           persistentVolumeClaim:
             claimName: photos-web
