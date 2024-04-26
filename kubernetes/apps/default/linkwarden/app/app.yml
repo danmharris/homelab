@@ -44,6 +44,12 @@ spec:
               value: 'true'
             - name: AUTHENTIK_ISSUER
               value: https://auth.cluster.dnhrrs.xyz/application/o/linkwarden
+            - name: HOME
+              value: /data/data
+            - name: NEXT_PUBLIC_DISABLE_REGISTRATION
+              value: 'true'
+            - name: NEXT_PUBLIC_CREDENTIALS_ENABLED
+              value: 'false'
           envFrom:
             - secretRef:
                 name: linkwarden-env
