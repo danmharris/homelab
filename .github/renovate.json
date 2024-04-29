@@ -3,8 +3,6 @@
         "config:recommended",
         ":semanticCommits"
     ],
-    "platform": "github",
-    "autodiscover": true,
     "flux": {
         "fileMatch": ["kubernetes/.+\\.ya?ml$"]
     },
