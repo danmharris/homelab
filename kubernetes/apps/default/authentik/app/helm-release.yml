@@ -16,9 +16,6 @@ spec:
         namespace: flux-system
   values:
     server:
-      image:
-        repository: ghcr.io/goauthentik/server
-        tag: 2024.2.2
       ingress:
         enabled: true
         annotations:
