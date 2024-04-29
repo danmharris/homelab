@@ -12,5 +12,10 @@
     "kubernetes": {
         "fileMatch": ["kubernetes/.+\\.ya?ml$"]
     },
-    "packageRules": []
+    "packageRules": [
+        {
+            "matchPackagePrefixes": ["gitea.cluster.dnhrrs.xyz"],
+            "enabled": false
+        }
+    ]
 }
