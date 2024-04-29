@@ -1,6 +1,6 @@
 ---
 - name: hifis.unattended-upgrades
-  version: "v3.2.1"
+  version: "v3.3.0"
 - name: geerlingguy.docker
   version: "7.1.0"
 - name: geerlingguy.nfs
