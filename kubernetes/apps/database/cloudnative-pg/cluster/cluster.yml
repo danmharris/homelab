@@ -13,3 +13,16 @@ spec:
   superuserSecret:
     name: cloudnative-pg-superuser
   enableSuperuserAccess: true
+  backup:
+    barmanObjectStore:
+      destinationPath: s3://${CNPG_BUCKET_NAME}/
+      endpointURL: ${R2_ENDPOINT_URL}
+      serverName: postgresql-16-v1
+      s3Credentials:
+        accessKeyId:
+          name: cnpg-r2-creds
+          key: accessKeyId
+        secretAccessKey:
+          name: cnpg-r2-creds
+          key: secretAccessKey
+    retentionPolicy: '30d'
