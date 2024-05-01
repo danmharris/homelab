@@ -25,4 +25,8 @@ spec:
         secretAccessKey:
           name: cnpg-r2-creds
           key: secretAccessKey
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
     retentionPolicy: '30d'
