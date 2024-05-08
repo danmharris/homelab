@@ -29,6 +29,7 @@ spec:
   restic:
     repository: ${APP}-volsync
     copyMethod: Snapshot
+    accessModes: [ReadWriteOnce]
     cacheStorageClassName: nfs-csi
     storageClassName: nfs-csi
     volumeSnapshotClassName: nfs-csi
