@@ -1,0 +1,34 @@
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: ${APP}
+spec:
+  sourcePVC: ${APP}
+  trigger:
+    schedule: "0 3 * * *"
+  restic:
+    pruneIntervalDays: 14
+    repository: ${APP}-volsync
+    retain:
+      daily: 7
+      weekly: 4
+    copyMethod: Snapshot
+    cacheStorageClassName: nfs-csi
+    storageClassName: nfs-csi
+    volumeSnapshotClassName: nfs-csi
+
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: ${APP}
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    repository: ${APP}-volsync
+    copyMethod: Snapshot
+    cacheStorageClassName: nfs-csi
+    storageClassName: nfs-csi
+    volumeSnapshotClassName: nfs-csi

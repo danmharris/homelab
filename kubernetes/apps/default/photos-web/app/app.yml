@@ -14,20 +14,6 @@ spec:
   storageClassName: nfs-csi
 
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: photos-web
-  namespace: default
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: nfs-csi
-
----
 kind: Deployment
 apiVersion: apps/v1
 metadata:

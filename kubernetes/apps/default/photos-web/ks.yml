@@ -12,3 +12,21 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: photos-web-volsync
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./kubernetes/apps/volsync-system/volsync/template
+  prune: true
+  wait: true
+  targetNamespace: default
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  substitute:
+    APP: photos-web
