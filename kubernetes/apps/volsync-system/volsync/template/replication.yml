@@ -30,6 +30,7 @@ spec:
     repository: ${APP}-volsync
     copyMethod: Snapshot
     accessModes: [ReadWriteOnce]
+    capacity: 1Gi
     cacheStorageClassName: nfs-csi
     storageClassName: nfs-csi
     volumeSnapshotClassName: nfs-csi
