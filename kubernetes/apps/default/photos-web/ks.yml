@@ -28,5 +28,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-  substitute:
-    APP: photos-web
+  postBuild:
+    substitute:
+      APP: photos-web
