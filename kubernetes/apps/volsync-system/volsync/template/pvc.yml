@@ -8,7 +8,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: ${CAPACITY}
   storageClassName: nfs-csi
   dataSourceRef:
     kind: ReplicationDestination
