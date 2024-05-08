@@ -9,6 +9,8 @@ spec:
   path: ./kubernetes/apps/kube-system/csi-driver-nfs/app
   prune: true
   wait: true
+  dependsOn:
+    - name: snapshot-controller
   sourceRef:
     kind: GitRepository
     name: homelab
