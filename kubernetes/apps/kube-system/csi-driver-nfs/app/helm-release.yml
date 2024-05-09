@@ -14,3 +14,9 @@ spec:
         kind: HelmRepository
         name: csi-driver-nfs
         namespace: flux-system
+  values:
+    controller:
+      resources:
+        nfs:
+          limits:
+            memory: 1000Mi
