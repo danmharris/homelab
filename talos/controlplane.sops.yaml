@@ -12,6 +12,14 @@ machine:
         image: ghcr.io/siderolabs/kubelet:v1.30.0
         defaultRuntimeSeccompProfileEnabled: true
         disableManifestsDirectory: true
+        extraMounts:
+            - destination: /var/openebs/local
+              type: bind
+              source: /var/openebs/local
+              options:
+                - bind
+                - rshared
+                - rw
     network:
         hostname: lychee
         interfaces:
@@ -117,8 +125,8 @@ sops:
             ZkUwUXlicDYwN1p4L2N0Y0Y1b3c4bWsKTamliHXUaB+z6T3QE5n6OzbHPY+VKMUl
             QJytY8aB0xxK+ihOB5wIdAcoIP/7pD2g6+5dvWsjSvXmeQtzs1fbYw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-05-13T19:31:42Z"
-    mac: ENC[AES256_GCM,data:BlFRkTzq0PX9ogjw7iM5PM178p6IGfe3ZI/5EHHbiF2kTZlBSOLcK9sNwkmCktEqCEadnfd9MMeQ+JlJNsJQkKFeArXn06rHNm9Zobi+9sAyO+iVLPnQr17pHKGOBqqGonzGYmCQUIF9TYm7Rcap9CE9JK7DWFXhYMIPKbDMM7o=,iv:NobuQ3Bwnu8/2W9WN9Un/W4e8XcSHRRA4AtiReM14Rs=,tag:GS+oduhs7AZDjFMDws0Dfg==,type:str]
+    lastmodified: "2024-05-14T18:17:05Z"
+    mac: ENC[AES256_GCM,data:Ff557m3dd3O+wa4F6bSxycl9soM6rrl7Up2d9WkrFJ2DFwhvZiqkrUKqseSj+zcNHmkg2RxNblo2pkHUkmir7BO0dI23zxdhgL4xsVLXd5SllqUjTS//kiSLQ/VHwEQfT3OTDYCQONTwoNbpg/+NUmpKaCiVRZSpNaBbhM0FlJw=,iv:3A23n8SI2Xbz6bIoV5ftV2MWV/VIFrAowV05dMz4jUA=,tag:/uGd5qX7lLArBxS6T1rUaw==,type:str]
     pgp: []
     encrypted_regex: ^(crt|id|key|secret|secretboxEncryptionSecret|token)$
     version: 3.8.1
