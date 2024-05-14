@@ -5,11 +5,13 @@ metadata:
   name: postgresql-16
   namespace: database
 spec:
-  instances: 1
+  instances: 2
   imageName: ghcr.io/cloudnative-pg/postgresql:16.2-13
   primaryUpdateStrategy: unsupervised
   storage:
+    storageClass: openebs-hostpath
     size: 5Gi
+    resizeInUseVolumes: false
   superuserSecret:
     name: cloudnative-pg-superuser
   enableSuperuserAccess: true
