@@ -13,3 +13,7 @@ spec:
         kind: HelmRepository
         name: piraeus-charts
         namespace: flux-system
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
