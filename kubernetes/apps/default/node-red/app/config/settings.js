@@ -38,7 +38,7 @@ module.exports = {
     },
     logging: {
         console: {
-            level: "info",
+            level: "debug",
             metrics: false,
             audit: false
         }
