@@ -2,7 +2,7 @@ module.exports = {
     flowFile: 'flows.json',
     credentialSecret: process.env.NODE_RED_SECRET,
     flowFilePretty: true,
-    adminAuth: {
+    /*adminAuth: {
         type: "strategy",
         strategy: {
           name: "openidconnect",
@@ -26,7 +26,7 @@ module.exports = {
           },
         },
         users: [{username: "dan", permissions: ["*"]}],
-    },
+    },*/
     uiPort: process.env.PORT || 1880,
     diagnostics: {
         enabled: true,
