@@ -43,6 +43,11 @@ module.exports = {
             audit: false
         }
     },
+    contextStorage: {
+        default: {
+            module:"localfilesystem"
+        },
+    },
     exportGlobalContextKeys: false,
     externalModules: {},
     editorTheme: {
