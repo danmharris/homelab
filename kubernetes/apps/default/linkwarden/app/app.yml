@@ -70,8 +70,6 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: linkwarden
   namespace: default
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
   rules:
@@ -85,7 +83,3 @@ spec:
                 name: linkwarden
                 port:
                   name: http
-  tls:
-    - secretName: linkwarden-cert
-      hosts:
-        - links.cluster.dnhrrs.xyz

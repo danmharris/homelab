@@ -84,7 +84,6 @@ metadata:
   name: photos-web
   namespace: default
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/auth-url: |-
         http://authentik-server.default.svc.cluster.local/outpost.goauthentik.io/auth/nginx
     nginx.ingress.kubernetes.io/auth-signin: |-
@@ -113,7 +112,3 @@ spec:
                 name: authentik-server
                 port:
                   number: 80
-  tls:
-    - secretName: photos-web-cert
-      hosts:
-        - photos.cluster.dnhrrs.xyz

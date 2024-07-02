@@ -18,18 +18,12 @@ spec:
     server:
       ingress:
         enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
         ingressClassName: nginx
         hosts:
           - auth.cluster.dnhrrs.xyz
         paths:
           - /
         pathType: Prefix
-        tls:
-          - secretName: authentik-cert
-            hosts:
-              - auth.cluster.dnhrrs.xyz
     authentik:
       postgresql:
         host: postgresql-16-rw.database.svc.cluster.local

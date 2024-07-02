@@ -28,15 +28,9 @@ spec:
       dashboard:
         enabled: true
         ingressClassName: nginx
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
         hosts:
           - emqx.cluster.dnhrrs.xyz
         pathType: Prefix
-        tls:
-          - secretName: emqx-cert
-            hosts:
-              - emqx.cluster.dnhrrs.xyz
   valuesFrom:
     - kind: Secret
       name: emqx-credentials

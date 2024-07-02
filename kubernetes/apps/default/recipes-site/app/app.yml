@@ -45,8 +45,6 @@ apiVersion: networking.k8s.io/v1
 metadata:
   name: recipes-site
   namespace: default
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
   rules:
@@ -60,7 +58,3 @@ spec:
                 name: recipes-site
                 port:
                   name: http
-  tls:
-    - secretName: recipes-site-cert
-      hosts:
-        - recipes.cluster.dnhrrs.xyz

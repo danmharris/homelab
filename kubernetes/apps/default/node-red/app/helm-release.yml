@@ -37,8 +37,6 @@ spec:
             port: 1880
     ingress:
       app:
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-prod
         className: nginx
         hosts:
           - host: nodered.cluster.dnhrrs.xyz
@@ -48,10 +46,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - secretName: node-red-cert
-            hosts:
-              - nodered.cluster.dnhrrs.xyz
     persistence:
       data:
         type: persistentVolumeClaim
