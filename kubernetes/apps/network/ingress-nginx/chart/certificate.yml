@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cluster-dnhrrs-xyz-cert
+  namespace: network
+spec:
+  secretName: cluster-dnhrrs-xyz-cert
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: 'cluster.dnhrrs.xyz'
+  dnsNames:
+    - 'cluster.dnhrrs.xyz'
+    - '*.cluster.dnhrrs.xyz'

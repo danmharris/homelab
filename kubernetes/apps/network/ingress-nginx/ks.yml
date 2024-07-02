@@ -11,3 +11,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+  dependsOn:
+    - name: cert-manager-chart

@@ -21,3 +21,5 @@ spec:
         image: ingress-nginx/controller
         tag: "v1.10.0"
       allowSnippetAnnotations: true
+      extraArgs:
+        default-ssl-certificate: network/cluster-dnhrrs-xyz-cert
