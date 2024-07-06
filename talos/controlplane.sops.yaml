@@ -9,7 +9,7 @@ machine:
         key: ENC[AES256_GCM,data:BK/90MRpchCZ+YgObIJnWbpu39kbfRrKxnRS8ZVOl9LzgmmCTgGHmyqISjraPrHwjJONglBnKDFsOGJPz8yTvjI98ykq5ntN6Uri9X0297OGxBZQwvHGwSEMwDwAbD7BbiH7+PnJy7gycoWH8truWn11aoZcOv7ysT84ZAZbI43EXg3vrWUsY7v3kkMbVB+a6IeYm65216mIMyNINhsjXprp/FYeZuebsadWpdCDU74KGKiG,iv:Mtlh2/ZTCFvDT6m4cAEq/OrqvbKrRyEAFVWQRIDV5Z0=,tag:/75MI7aKHXikuoP1gZSSLg==,type:str]
     certSANs: []
     kubelet:
-        image: ghcr.io/siderolabs/kubelet:v1.30.0
+        image: ghcr.io/siderolabs/kubelet:v1.30.2
         defaultRuntimeSeccompProfileEnabled: true
         disableManifestsDirectory: true
         extraMounts:
@@ -67,7 +67,7 @@ cluster:
     serviceAccount:
         key: ENC[AES256_GCM,data:lFvwv8K3wyos0D5H29JwCJuTHL1B7OI61oqx3w0oYmriZJ5yuZDyGoZUMbBa3qffLOUc/knyDU/v7/D46sPHizFJyH1fQ9zL5+NZv8+jP02ffHrl7v+YjIeznKMdahgDOLTmGrSVNOKe66hJ+4LP/v6PaVFnYOJZfcBQ3AmwDnutHvRvXZjztiBIEgruS3OTkQh2KzVN3SL3vAkFoJSkqEsBqj3VtMjDgjnkxc5xbz8BJLOqfjLg1w2lVkrg5cxThZjYNbG3KX317/9e56UmX0+ZDGf9p7UekGUUcuxoDI7AVR4ZIKyTaC/xK266uHvw27T3+CPQBYYq7WXPJ5L2CtHE3dn8QeO00z2ReoN+y+2bZ5qP+0fSdWCoWQE27aXTzx8WfpRL5V1jbDmIL4rjwQ==,iv:QQibGEwtouyUUU1FO3QaS8wKuroiH3ZUXBrUeHCg3dA=,tag:AvLGvUT9n9yzEcop0+O2HA==,type:str]
     apiServer:
-        image: registry.k8s.io/kube-apiserver:v1.30.0
+        image: registry.k8s.io/kube-apiserver:v1.30.2
         certSANs:
             - 10.23.20.4
         disablePodSecurityPolicy: true
@@ -94,11 +94,11 @@ cluster:
             rules:
                 - level: Metadata
     controllerManager:
-        image: registry.k8s.io/kube-controller-manager:v1.30.0
+        image: registry.k8s.io/kube-controller-manager:v1.30.2
     proxy:
-        image: registry.k8s.io/kube-proxy:v1.30.0
+        image: registry.k8s.io/kube-proxy:v1.30.2
     scheduler:
-        image: registry.k8s.io/kube-scheduler:v1.30.0
+        image: registry.k8s.io/kube-scheduler:v1.30.2
     discovery:
         enabled: true
         registries:
@@ -125,8 +125,8 @@ sops:
             ZkUwUXlicDYwN1p4L2N0Y0Y1b3c4bWsKTamliHXUaB+z6T3QE5n6OzbHPY+VKMUl
             QJytY8aB0xxK+ihOB5wIdAcoIP/7pD2g6+5dvWsjSvXmeQtzs1fbYw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-05-14T18:17:05Z"
-    mac: ENC[AES256_GCM,data:Ff557m3dd3O+wa4F6bSxycl9soM6rrl7Up2d9WkrFJ2DFwhvZiqkrUKqseSj+zcNHmkg2RxNblo2pkHUkmir7BO0dI23zxdhgL4xsVLXd5SllqUjTS//kiSLQ/VHwEQfT3OTDYCQONTwoNbpg/+NUmpKaCiVRZSpNaBbhM0FlJw=,iv:3A23n8SI2Xbz6bIoV5ftV2MWV/VIFrAowV05dMz4jUA=,tag:/uGd5qX7lLArBxS6T1rUaw==,type:str]
+    lastmodified: "2024-07-06T15:20:47Z"
+    mac: ENC[AES256_GCM,data:BgPRxaaf5mu4sWb6OYU7m9AssyJtGTsT50s+JFM0d6aEO+ljzGKivnti6PLpZMV2bRSLv2OCRNJsITjxYXfrGufq/K/1eM1agC7euENUApbRul5D+QtCE0yBYSHuuTHtY/mFnjJnlG7Ve0C6JDi5XwVGXpMWzDnNWOLCQknAaao=,iv:/fo1u3QfKJOSjZtrtPeAxnGuV1VTEHYCc+5pHfJdIt8=,tag:iQOVkXYU7t0zQdG4zfkwng==,type:str]
     pgp: []
     encrypted_regex: ^(crt|id|key|secret|secretboxEncryptionSecret|token)$
     version: 3.8.1
