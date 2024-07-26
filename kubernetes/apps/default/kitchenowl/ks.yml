@@ -1,0 +1,35 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: kitchenowl
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./kubernetes/apps/default/kitchenowl/app
+  prune: true
+  wait: true
+  targetNamespace: default
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: kitchenowl-volsync
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./kubernetes/apps/volsync-system/volsync/template
+  prune: true
+  wait: true
+  targetNamespace: default
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  postBuild:
+    substitute:
+      APP: kitchenowl
+      CAPACITY: 1Gi
