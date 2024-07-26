@@ -34,6 +34,7 @@ spec:
               DB_NAME: kitchenowl
               DB_PORT: '5432'
               DB_USER: kitchenowl
+              OIDC_ISSUER: https://auth.cluster.dnhrrs.xyz/application/o/kitchenowl/
             envFrom:
               - secret: kitchenowl-credentials
     service:
