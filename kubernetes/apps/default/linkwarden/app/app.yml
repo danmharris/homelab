@@ -21,7 +21,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: linkwarden
-          image: 'ghcr.io/linkwarden/linkwarden:v2.6.1'
+          image: 'ghcr.io/linkwarden/linkwarden:v2.6.2'
           imagePullPolicy: IfNotPresent
           env:
             - name: NEXTAUTH_URL
