@@ -15,7 +15,7 @@ spec:
       weekly: 4
     copyMethod: Snapshot
     cacheStorageClassName: openebs-hostpath
-    storageClassName: openebs-hostpath
+    storageClassName: nfs-csi
     volumeSnapshotClassName: nfs-csi
 
 ---
