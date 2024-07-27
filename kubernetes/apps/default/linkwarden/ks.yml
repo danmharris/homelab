@@ -32,3 +32,4 @@ spec:
     substitute:
       APP: linkwarden
       CAPACITY: 10Gi
+      DELAY: "6"

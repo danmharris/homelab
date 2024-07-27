@@ -6,7 +6,7 @@ metadata:
 spec:
   sourcePVC: ${APP}
   trigger:
-    schedule: "0 3 * * *"
+    schedule: "${DELAY:=0} 3 * * *"
   restic:
     pruneIntervalDays: 14
     repository: ${APP}-volsync

@@ -32,3 +32,4 @@ spec:
     substitute:
       APP: gitea
       CAPACITY: 10Gi
+      DELAY: "4"

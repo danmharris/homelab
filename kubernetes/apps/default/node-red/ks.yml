@@ -33,3 +33,4 @@ spec:
     substitute:
       APP: node-red
       CAPACITY: 1Gi
+      DELAY: "2"
