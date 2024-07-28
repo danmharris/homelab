@@ -45,10 +45,14 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data/data
+            - name: next-cache
+              mountPath: /data/.next/cache
       volumes:
         - name: data
           persistentVolumeClaim:
             claimName: linkwarden
+        - name: next-cache
+          emptyDir: {}
 
 ---
 kind: Service
