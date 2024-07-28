@@ -1,19 +1,4 @@
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nas-photos
-  namespace: default
-spec:
-  accessModes:
-    - ReadOnlyMany
-  resources:
-    requests:
-      storage: 1Gi
-  volumeName: nas-photos
-  storageClassName: nfs-csi
-
----
 kind: Deployment
 apiVersion: apps/v1
 metadata:
