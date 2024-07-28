@@ -60,8 +60,10 @@ spec:
           persistentVolumeClaim:
             claimName: photos-web
         - name: photos
-          persistentVolumeClaim:
-            claimName: nas-photos
+          nfs:
+            server: nas.dnhrrs.xyz
+            path: /volume1/Photos
+            readOnly: true
 
 ---
 kind: Service
