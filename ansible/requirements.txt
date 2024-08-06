@@ -6,5 +6,5 @@ Jinja2==3.1.4
 MarkupSafe==2.1.5
 packaging==24.1
 pycparser==2.22
-PyYAML==6.0.1
+PyYAML==6.0.2
 resolvelib==1.0.1
