@@ -1,0 +1,81 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: paperless-ngx
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: app-template
+      version: '3.3.2'
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      app:
+        containers:
+          app:
+            image:
+              repository: ghcr.io/paperless-ngx/paperless-ngx
+              tag: 2.11.14
+            env:
+              PAPERLESS_REDIS: redis://paperless-ngx-redis.default.svc.cluster.local:6379
+              PAPERLESS_DBENGINE: postgresql
+              PAPERLESS_DBHOST: postgresql-16-rw.database.svc.cluster.local
+              PAPERLESS_DBNAME: paperless
+              PAPERLESS_DBUSER: paperless
+              PAPERLESS_CONSUMPTION_DIR: /nas/consumption
+              PAPERLESS_DATA_DIR: /data
+              PAPERLESS_MEDIA_ROOT: /nas/media
+              PAPERLESS_URL: https://paperless.cluster.dnhrrs.xyz
+              PAPERLESS_TIME_ZONE: Europe/London
+              PAPERLESS_ACCOUNT_EMAIL_VERIFICATION: none
+            envFrom:
+              - secret: paperless-ngx-credentials
+      redis:
+        containers:
+          app:
+            image:
+              repository: docker.io/valkey/valkey
+              tag: 7.2.6
+    service:
+      app:
+        controller: app
+        ports:
+          http:
+            port: 8000
+      redis:
+        controller: redis
+        ports:
+          redis:
+            port: 6379
+    ingress:
+      app:
+        className: nginx
+        hosts:
+          - host: paperless.cluster.dnhrrs.xyz
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  identifier: app
+                  port: http
+    persistence:
+      data:
+        type: persistentVolumeClaim
+        existingClaim: paperless-ngx
+        advancedMounts:
+          app:
+            app:
+              - path: /data
+      nas:
+        type: nfs
+        server: nas.dnhrrs.xyz
+        path: /volume1/paperless
+        advancedMounts:
+          app:
+            app:
+              - path: /nas
