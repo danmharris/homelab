@@ -9,6 +9,7 @@ spec:
   path: ./kubernetes/apps/default/linkwarden/app
   prune: true
   wait: true
+  targetNamespace: default
   sourceRef:
     kind: GitRepository
     name: homelab
