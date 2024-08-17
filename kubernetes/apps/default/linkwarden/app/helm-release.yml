@@ -28,7 +28,7 @@ spec:
               repository: ghcr.io/linkwarden/linkwarden
               tag: v2.6.2
             env:
-              HOME: &home /data/data
+              HOME: &home /home/linkwarden
             command: ['npx', 'playwright', 'install']
         containers:
           app:
@@ -69,3 +69,10 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /data/.next/cache
+      home:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: nfs-csi
+        globalMounts:
+          - path: *home
