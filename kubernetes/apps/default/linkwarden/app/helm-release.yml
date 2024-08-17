@@ -22,16 +22,22 @@ spec:
             runAsUser: 1000
             runAsGroup: 1000
             fsGroup: 1000
-        containers:
-          app:
-            image:
+        initContainers:
+          playwright-install:
+            image: &image
               repository: ghcr.io/linkwarden/linkwarden
               tag: v2.6.2
+            env:
+              HOME: &home /data/data
+            command: ['npx', 'playwright', 'install']
+        containers:
+          app:
+            image: *image
             env:
               NEXTAUTH_URL: https://links.cluster.dnhrrs.xyz/api/v1/auth
               NEXT_PUBLIC_AUTHENTIK_ENABLED: true
               AUTHENTIK_ISSUER: https://auth.cluster.dnhrrs.xyz/application/o/linkwarden
-              HOME: /data/data
+              HOME: *home
               NEXT_PUBLIC_DISABLE_REGISTRATION: true
               NEXT_PUBLIC_CREDENTIALS_ENABLED: false
             envFrom:
