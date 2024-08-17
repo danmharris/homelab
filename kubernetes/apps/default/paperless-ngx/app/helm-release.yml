@@ -36,6 +36,8 @@ spec:
               PAPERLESS_URL: https://paperless.cluster.dnhrrs.xyz
               PAPERLESS_TIME_ZONE: Europe/London
               PAPERLESS_ACCOUNT_EMAIL_VERIFICATION: none
+              PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
+              PAPERLESS_SOCIAL_AUTO_SIGNUP: true
             envFrom:
               - secret: paperless-ngx-credentials
       redis:
