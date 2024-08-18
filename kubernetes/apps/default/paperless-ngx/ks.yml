@@ -33,3 +33,4 @@ spec:
     substitute:
       APP: paperless-ngx
       CAPACITY: 1Gi
+      DELAY: "2"
