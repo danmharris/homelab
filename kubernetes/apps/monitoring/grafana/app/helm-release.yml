@@ -36,4 +36,5 @@ spec:
         auth_url: https://auth.cluster.dnhrrs.xyz/application/o/authorize/
         api_url: https://auth.cluster.dnhrrs.xyz/application/o/userinfo/
         token_url: https://auth.cluster.dnhrrs.xyz/application/o/token/
+        scopes: user email profile
     envFromSecret: grafana-env
