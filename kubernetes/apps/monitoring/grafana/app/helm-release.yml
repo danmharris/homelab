@@ -39,3 +39,12 @@ spec:
         scopes: user email profile
         role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
     envFromSecret: grafana-env
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+            access: proxy
+            isDefault: true
