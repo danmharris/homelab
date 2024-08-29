@@ -34,6 +34,8 @@ spec:
                   storage: 10Gi
     grafana:
       enabled: false
+    kubeProxy:
+      enabled: false
     prometheus:
       enabled: true
       ingress:
