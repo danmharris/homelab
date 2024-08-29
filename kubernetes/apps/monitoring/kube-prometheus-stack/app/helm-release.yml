@@ -1,0 +1,56 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: '62.3.1'
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  values:
+    crds:
+      enabled: false
+    alertmanager:
+      enabled: true
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - alertmanager.cluster.dnhrrs.xyz
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: openebs-hostpath
+              accessModes: ['ReadWriteOnce']
+              resources:
+                requests:
+                  storage: 10Gi
+    grafana:
+      enabled: false
+    prometheus:
+      enabled: true
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - prometheus.cluster.dnhrrs.xyz
+      prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        retention: 2d
+        retentionSize: 15GB
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: openebs-hostpath
+              accessModes: ['ReadWriteOnce']
+              resources:
+                requests:
+                  storage: 20Gi
