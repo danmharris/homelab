@@ -1,0 +1,37 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: grafana
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: grafana
+      version: '8.5.0'
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: flux-system
+  values:
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - grafana.cluster.dnhrrs.xyz
+    admin:
+      existingSecret: grafana-credentials
+      userKey: adminUsername
+      passwordKey: adminPassword
+    grafana.ini:
+      database:
+        type: postgres
+        host: postgresql-16-rw.database.svc.cluster.local:5432
+        name: grafana
+        user: grafana
+      auth.generic_oauth:
+        enabled: true
+        auth_url: https://auth.cluster.dnhrrs.xyz/application/o/authorize/
+        api_url: https://auth.cluster.dnhrrs.xyz/application/o/userinfo/
+        token_url: https://auth.cluster.dnhrrs.xyz/application/o/token/
+    envFromSecret: grafana-env
