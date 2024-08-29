@@ -20,6 +20,8 @@ spec:
         registry: registry.k8s.io
         image: ingress-nginx/controller
         tag: "v1.10.0"
+      config:
+        force-ssl-redirect: 'true'
       allowSnippetAnnotations: true
       extraArgs:
         default-ssl-certificate: network/cluster-dnhrrs-xyz-cert
