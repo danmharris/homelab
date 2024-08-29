@@ -6,10 +6,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./kubernetes/apps/default/node-red/app
+  path: ./kubernetes/apps/home/node-red/app
   prune: true
   wait: true
-  targetNamespace: default
+  targetNamespace: home
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -25,7 +25,7 @@ spec:
   path: ./kubernetes/apps/volsync-system/volsync/template
   prune: true
   wait: true
-  targetNamespace: default
+  targetNamespace: home
   sourceRef:
     kind: GitRepository
     name: homelab
