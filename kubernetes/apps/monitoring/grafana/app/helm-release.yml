@@ -37,4 +37,5 @@ spec:
         api_url: https://auth.cluster.dnhrrs.xyz/application/o/userinfo/
         token_url: https://auth.cluster.dnhrrs.xyz/application/o/token/
         scopes: user email profile
+        role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
     envFromSecret: grafana-env
