@@ -24,6 +24,8 @@ spec:
       userKey: adminUsername
       passwordKey: adminPassword
     grafana.ini:
+      server:
+        root_url: https://grafana.cluster.dnhrrs.xyz
       database:
         type: postgres
         host: postgresql-16-rw.database.svc.cluster.local:5432
