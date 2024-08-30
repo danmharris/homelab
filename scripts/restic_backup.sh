@@ -57,7 +57,7 @@ echo '---------------'
 echo 'Creating backup'
 echo '---------------'
 
-restic backup --verbose "${sources[@]}"
+restic backup --verbose --group-by '' "${sources[@]}"
 
 echo
 echo '-------------------'
@@ -71,7 +71,7 @@ echo '------------------'
 echo 'Pruning repository'
 echo '------------------'
 
-restic forget --prune --verbose \
+restic forget --prune --verbose --group-by '' \
     --keep-daily "$days" \
     --keep-weekly "$weeks" \
     --keep-monthly "$months"
