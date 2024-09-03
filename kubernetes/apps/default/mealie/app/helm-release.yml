@@ -62,3 +62,5 @@ spec:
       data:
         type: persistentVolumeClaim
         existingClaim: mealie
+        globalMounts:
+          - path: /app/data
