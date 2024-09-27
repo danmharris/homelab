@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: '62.7.0'
+      version: '63.1.0'
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -44,8 +44,10 @@ spec:
         hosts:
           - prometheus.cluster.dnhrrs.xyz
       prometheusSpec:
-        serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelector:
+          matchLabels: null
+        podMonitorSelector:
+          matchLabels: null
         retention: 2d
         retentionSize: 15GB
         storageSpec:
