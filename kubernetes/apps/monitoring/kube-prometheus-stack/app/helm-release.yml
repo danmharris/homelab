@@ -44,10 +44,8 @@ spec:
         hosts:
           - prometheus.cluster.dnhrrs.xyz
       prometheusSpec:
-        serviceMonitorSelector:
-          matchLabels: null
-        podMonitorSelector:
-          matchLabels: null
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
         retention: 2d
         retentionSize: 15GB
         storageSpec:
