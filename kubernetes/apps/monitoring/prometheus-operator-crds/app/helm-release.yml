@@ -5,6 +5,10 @@ metadata:
   name: prometheus-operator-crds
 spec:
   interval: 1h
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   chart:
     spec:
       chart: prometheus-operator-crds
