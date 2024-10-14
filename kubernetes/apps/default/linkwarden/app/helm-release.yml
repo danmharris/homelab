@@ -26,7 +26,7 @@ spec:
           playwright-install:
             image: &image
               repository: ghcr.io/linkwarden/linkwarden
-              tag: v2.7.1
+              tag: v2.7.1@sha256:bbd22798ee726184d4571ea4f4d831d57475c86c4965c2bb1c3c2d3de88c728a
             env:
               HOME: &home /home/linkwarden
             command: ['npx', 'playwright', 'install']

@@ -18,6 +18,6 @@ spec:
     image:
       registry: quay.io
       repository: oriedge/k8s_gateway
-      tag: v0.4.0
+      tag: v0.4.0@sha256:7bdbd447c0244b8f89de9cd6f4826ed0ac66c9406fac3a4ac80081020c251c6b
     domain: cluster.dnhrrs.xyz
 
