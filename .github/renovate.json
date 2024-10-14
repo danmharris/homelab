@@ -2,7 +2,8 @@
     "extends": [
         "config:recommended",
         ":semanticCommits",
-        "helpers:pinGitHubActionDigests"
+        "helpers:pinGitHubActionDigests",
+        "docker:pinDigests"
     ],
     "flux": {
         "fileMatch": ["kubernetes/.+\\.ya?ml$"]
