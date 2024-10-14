@@ -1,7 +1,8 @@
 {
     "extends": [
         "config:recommended",
-        ":semanticCommits"
+        ":semanticCommits",
+        "helpers:pinGitHubActionDigests"
     ],
     "flux": {
         "fileMatch": ["kubernetes/.+\\.ya?ml$"]
@@ -16,6 +17,26 @@
         {
             "matchPackagePrefixes": ["gitea.cluster.dnhrrs.xyz"],
             "enabled": false
+        },
+        {
+            "matchDatasources": ["pypi"],
+            "matchUpdateTypes": ["minor", "patch"],
+            "groupName": "ansible dependencies (non-major)",
+            "groupSlug": "ansible-dependencies",
+            "automerge": "true"
+        },
+        {
+            "matchDatasources": ["helm"],
+            "matchPackageNames": [
+                "kube-prometheus-stack"
+            ],
+            "matchUpdateTypes": ["minor", "patch"],
+            "automerge": "true"
+        },
+        {
+            "matchDepTypes": ["action"],
+            "matchUpdateTypes": ["minor", "patch"],
+            "automerge": "true"
         }
     ]
 }
