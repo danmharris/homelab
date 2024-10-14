@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: gitea/gitea
-      tag: '1.22.3'
+      tag: '1.22.3@sha256:76f516a1a8c27e8f8e9773639bf337c0176547a2d42a80843e3f2536787341c6'
       rootless: true
     service:
       ssh:
@@ -63,7 +63,7 @@ spec:
       image:
         registry: docker.io
         repository: bitnami/redis
-        tag: 7.4.1-debian-12-r0
+        tag: 7.4.1-debian-12-r0@sha256:df8d9405ab4ec7fc2e6aa6c0f0bed55ccf863dc15128b53b98ab90b9663f7ff0
   valuesFrom:
     - kind: Secret
       name: gitea-credentials
