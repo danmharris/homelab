@@ -18,7 +18,6 @@ spec:
     image:
       repository: gitea/gitea
       tag: '1.22.3'
-      digest: sha256:76f516a1a8c27e8f8e9773639bf337c0176547a2d42a80843e3f2536787341c6
       rootless: true
     service:
       ssh:
