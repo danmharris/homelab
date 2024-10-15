@@ -24,7 +24,8 @@
             "matchUpdateTypes": ["minor", "patch"],
             "groupName": "ansible dependencies (non-major)",
             "groupSlug": "ansible-dependencies",
-            "automerge": "true"
+            "automerge": true,
+            "ignoreTests": true
         },
         {
             "matchDatasources": ["helm"],
@@ -32,12 +33,14 @@
                 "kube-prometheus-stack"
             ],
             "matchUpdateTypes": ["minor", "patch"],
-            "automerge": "true"
+            "automerge": true,
+            "ignoreTests": true
         },
         {
             "matchDepTypes": ["action"],
             "matchUpdateTypes": ["minor", "patch"],
-            "automerge": "true"
+            "automerge": true,
+            "ignoreTests": true
         }
     ],
     "customManagers": [
