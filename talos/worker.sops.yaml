@@ -9,13 +9,13 @@ machine:
         key: ""
     certSANs: []
     kubelet:
-        image: ghcr.io/siderolabs/kubelet:v1.30.2
+        image: ghcr.io/siderolabs/kubelet:v1.31.1
         defaultRuntimeSeccompProfileEnabled: true
         disableManifestsDirectory: true
     network: {}
     install:
         disk: /dev/sda
-        image: ghcr.io/siderolabs/installer:v1.6.7
+        image: ghcr.io/siderolabs/installer:v1.8.1
         wipe: false
     features:
         rbac: true
@@ -61,8 +61,8 @@ sops:
             cE1oN0pSWXZiUmtGSUt6KzJlNDV5YkkK1XsX7We6tgJ11FKASe69WpvURw+ytWVL
             GGsEGZpdVYfuh3OptdY55lvuxigCwl9GT/nGD0wQUbVCq7gryf/T4g==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T15:20:57Z"
-    mac: ENC[AES256_GCM,data:MSzEmMR5DTJt3kaIezGIHUkkJj+AfcYPpjagObEBtHCyktq4ToGJP4Eo67WSdLrwpGCOvsr85uMEsCi3ff6BYJQ2OCiQ/hNU/FN6Y+QkPXFzRNlaBTDp9GMK7IrtKOs44klFShdlceyKmUSf08Z02WVM1eNmFKhTaywMkGT2NH4=,iv:A6znTU8wsLtyDGLWPn+cJBwAoqMtRXxyEtghVoFBZf8=,tag:whqWbl4w5qLJiDZEzK+JxA==,type:str]
+    lastmodified: "2024-10-26T13:22:23Z"
+    mac: ENC[AES256_GCM,data:+W9ckVLY+enslSP74epYE7oVUM2zSnxA+cRJTxDhstlEijZvDvjxX/bn+bEurQcDNk01udQJQyAallpYnt6RttntxJQw84HQffdvNR4dvGJz1+dnCuJiKLKYCHkf92Upqyib59fKpNZo8NTbyKhyIHV3gl4Hn99c2DbDcWdI2CQ=,iv:UTEWVaxEdOXFuMCIqJWcOw0hm18Auup6y00qNGvdqKc=,tag:7jm2AR2W3a/MEhBgOMLKEQ==,type:str]
     pgp: []
     encrypted_regex: ^(crt|id|key|secret|secretboxEncryptionSecret|token)$
     version: 3.8.1
