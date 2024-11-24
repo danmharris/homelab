@@ -26,7 +26,7 @@ spec:
           app:
             image:
               repository: tombursch/kitchenowl
-              tag: v0.5.2@sha256:5d37e09c034884a0495c0460fc849981b71ff1a90908ed29804dda7f13f2d165
+              tag: v0.6.4@sha256:55f32b2d9a45df1b789b28a6db8d5a5f9ae2aec394892d394f960a9298a43634
             env:
               FRONT_URL: https://kitchen.cluster.dnhrrs.xyz
               DB_DRIVER: postgresql
