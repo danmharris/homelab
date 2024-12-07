@@ -5,6 +5,7 @@
         "helpers:pinGitHubActionDigests",
         "docker:pinDigests"
     ],
+    "ignorePaths": ["kubernetes/archive/**"],
     "flux": {
         "fileMatch": ["kubernetes/.+\\.ya?ml$"]
     },
