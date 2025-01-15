@@ -93,7 +93,7 @@ spec:
                 port:
                   name: http
           - path: /outpost.goauthentik.io
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: authentik-server
