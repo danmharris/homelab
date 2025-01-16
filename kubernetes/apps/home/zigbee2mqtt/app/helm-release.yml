@@ -28,8 +28,8 @@ spec:
               ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER: ember
               ZIGBEE2MQTT_CONFIG_MQTT_SERVER: mqtt://emqx.home.svc.cluster.local:1883
               ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC: zigbee2mqtt
-              ZIGBEE2MQTT_CONFIG_FRONTEND: 'true'
-              ZIGBEE2MQTT_CONFIG_HOMEASSISTANT: 'true'
+              ZIGBEE2MQTT_CONFIG_FRONTEND_ENABLED: true
+              ZIGBEE2MQTT_CONFIG_HOMEASSISTANT_ENABLED: true
             envFrom:
               - secret: zigbee2mqtt-credentials
             securityContext:
