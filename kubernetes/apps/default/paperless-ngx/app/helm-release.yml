@@ -18,7 +18,7 @@ spec:
       app:
         pod:
           securityContext:
-            fsGroup: 1000
+            fsGroup: 1033
         containers:
           app:
             image:
@@ -40,6 +40,8 @@ spec:
               PAPERLESS_SOCIAL_AUTO_SIGNUP: true
               PAPERLESS_CONSUMER_POLLING: '60'
               PAPERLESS_OCR_USER_ARGS: '{"invalidate_digital_signatures": true}'
+              USERMAP_UID: '1033'
+              USERMAP_GID: '1033'
             envFrom:
               - secret: paperless-ngx-credentials
       redis:
