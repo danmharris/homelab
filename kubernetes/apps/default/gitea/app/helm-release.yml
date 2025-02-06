@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: gitea/gitea
-      tag: '1.23.2'
+      tag: '1.23.3'
       rootless: true
     service:
       ssh:
