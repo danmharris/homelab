@@ -14,6 +14,9 @@
           packages = [
             fluxcd
             kubectl
+            talosctl
+            sops
+            age
           ];
 
           shellHook = ''
