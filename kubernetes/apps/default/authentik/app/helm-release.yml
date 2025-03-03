@@ -24,6 +24,13 @@ spec:
         paths:
           - /
         pathType: Prefix
+    worker:
+      livenessProbe:
+        timeoutSeconds: 3
+      readinessProbe:
+        timeoutSeconds: 3
+      startupProbe:
+        timeoutSeconds: 3
     authentik:
       postgresql:
         host: postgresql-16-rw.database.svc.cluster.local
