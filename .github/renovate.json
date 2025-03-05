@@ -45,7 +45,7 @@
         },
         {
             "matchPackageNames": [
-                "gitea/gitea"
+                "docker.gitea.com/gitea"
             ],
             "pinDigests": false
         }
