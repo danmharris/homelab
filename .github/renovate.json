@@ -17,7 +17,7 @@
     },
     "packageRules": [
         {
-            "matchPackagePrefixes": ["gitea.cluster.dnhrrs.xyz"],
+            "matchPackageNames": ["gitea.cluster.dnhrrs.xyz/**"],
             "enabled": false
         },
         {
