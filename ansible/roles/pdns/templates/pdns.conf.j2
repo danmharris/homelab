@@ -1,13 +1,11 @@
 # {{ ansible_managed }}
 setuid=pdns
 setgid=pdns
+local-address=127.0.0.1:5354
 launch=gsqlite3
 gsqlite3-database={{ pdns_database }}
-default-soa-content={{ pdns_default_soa_content }}
-{% if pdns_api %}
 webserver=yes
 webserver-address=0.0.0.0
-webserver-allow-from={{ pdns_api_allow_from | join(',') }}
+webserver-allow-from=10.23.0.0/16
 api=yes
 api-key={{ pdns_api_key }}
-{% endif %}

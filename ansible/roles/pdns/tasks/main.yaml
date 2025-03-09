@@ -1,49 +1,36 @@
 ---
 - name: Install packages
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
-  loop: "{{ pdns_packages }}"
+  loop:
+    - pdns-server
+    - pdns-backend-sqlite3
+    - sqlite3
 
 - name: Install config
-  template:
+  ansible.builtin.template:
     src: pdns.conf.j2
     dest: /etc/powerdns/pdns.conf
     owner: pdns
-    group: root
+    group: pdns
     mode: 0640
   notify: Restart pdns
 
 - name: Create database
-  shell:
+  ansible.builtin.shell:
     cmd: "sqlite3 {{ pdns_database }} < {{ pdns_schema }}"
     creates: "{{ pdns_database }}"
 
 - name: Set permissions on database
-  file:
-    path: "{{ pdns_dir }}"
+  ansible.builtin.file:
+    path: "{{ pdns_database }}"
     owner: pdns
     group: pdns
-    state: directory
-    recurse: true
+    state: file
 
 - name: Enable service
-  service:
+  ansible.builtin.service:
     name: pdns
     state: started
     enabled: true
-
-- name: Create zones
-  include_tasks: create-zone.yaml
-  vars:
-    _pdns_zone: "{{ item }}"
-  loop: "{{ pdns_zones }}"
-
-- name: Add records
-  include_tasks: create-record.yaml
-  vars:
-    _pdns_zone: "{{ item.zone }}"
-    _pdns_name: "{{ item.name }}"
-    _pdns_type: "{{ item.type }}"
-    _pdns_content: "{{ item.content }}"
-  loop: "{{ pdns_records }}"

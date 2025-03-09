@@ -17,6 +17,7 @@
             talosctl
             sops
             age
+            ansible
           ];
 
           shellHook = ''

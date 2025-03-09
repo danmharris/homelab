@@ -1,8 +1,3 @@
 ---
-pdns_packages:
-  - pdns-server
-  - pdns-backend-sqlite3
-  - sqlite3
 pdns_schema: /usr/share/doc/pdns-backend-sqlite3/schema.sqlite3.sql
-pdns_dir: /var/lib/powerdns
-pdns_database: "{{ pdns_dir }}/pdns.sqlite3"
+pdns_database: /var/lib/powerdns/pdns.sqlite3
