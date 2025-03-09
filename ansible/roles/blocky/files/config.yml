@@ -1,0 +1,27 @@
+upstreams:
+  groups:
+    default:
+      - 1.1.1.1
+      - https://1.1.1.1/dns-query
+conditional:
+  fallbackUpstream: false
+  mapping:
+    cluster.dnhrrs.xyz: 10.23.20.175
+    dnhrrs.xyz: 127.0.0.1:5354
+    23.10.in-addr.arpa: 127.0.0.1:5354
+blocking:
+  denylists:
+    ads:
+      - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+  clientGroupsBlock:
+    default:
+      - ads
+bootstrapDns:
+  - tcp+udp:1.1.1.1
+  - https://1.1.1.1/dns-query
+prometheus:
+  enable: true
+  path: /metrics
+ports:
+  dns: 53
+  http: 4000

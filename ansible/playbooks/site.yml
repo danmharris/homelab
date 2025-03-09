@@ -40,8 +40,11 @@
 
 - name: Set up DNS servers
   hosts: dns
+  tags:
+    - dns
   roles:
     - pdns
+    - blocky
 
 - name: Set up Docker hosts
   hosts: docker

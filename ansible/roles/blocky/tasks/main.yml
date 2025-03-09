@@ -1,0 +1,96 @@
+---
+- name: Create blocky group
+  ansible.builtin.group:
+    name: blocky
+    state: present
+
+- name: Create blocky user
+  ansible.builtin.user:
+    name: blocky
+    home: /var/lib/blocky
+    create_home: false
+    shell: /usr/sbin/nologin
+    system: true
+    group: blocky
+    state: present
+
+- name: Check currently installed version
+  ansible.builtin.command: blocky version
+  register: blocky_installed_version
+  changed_when: false
+  ignore_errors: true
+
+- name: Mark blocky to install
+  when: blocky_installed_version.rc != 0
+  ansible.builtin.set_fact:
+    blocky_requires_update: true
+
+- name: Mark blocky to update
+  when: 'blocky_installed_version.stdout | regex_search("Version: (v[0-9]+[.][0-9]+)", "\\1") | first != blocky_version'
+  ansible.builtin.set_fact:
+    blocky_requires_update: true
+
+- name: Blocky version debug
+  ansible.builtin.debug:
+    var: blocky_requires_update
+
+- name: Download blocky binary
+  when: blocky_requires_update is true
+  delegate_to: localhost
+  become: false
+  block:
+    - name: Create tempdir
+      ansible.builtin.tempfile:
+        state: directory
+      register: tempdir
+    - name: Download release archive
+      ansible.builtin.get_url:
+        url: "https://github.com/0xERR0R/blocky/releases/download/{{ blocky_version }}/blocky_{{ blocky_version }}_Linux_{{ blocky_arch }}.tar.gz"
+        dest: "{{ tempdir.path }}/blocky.tar.gz"
+    - name: Extract release archive
+      ansible.builtin.unarchive:
+        src: "{{ tempdir.path }}/blocky.tar.gz"
+        dest: "{{ tempdir.path }}"
+
+- name: Copy blocky binary
+  when: blocky_requires_update is true
+  ansible.builtin.copy:
+    src: "{{ tempdir.path }}/blocky"
+    dest: /usr/bin/blocky
+    owner: root
+    group: root
+    mode: '0755'
+  notify: Restart blocky
+
+- name: Create config directory
+  ansible.builtin.file:
+    path: /etc/blocky
+    owner: blocky
+    group: blocky
+    mode: '0755'
+    state: directory
+
+- name: Copy config file
+  ansible.builtin.copy:
+    src: config.yml
+    dest: /etc/blocky/config.yml
+    owner: blocky
+    group: blocky
+    mode: '0644'
+  notify: Restart blocky
+
+- name: Copy blocky service file
+  ansible.builtin.copy:
+    src: blocky.service
+    dest: /usr/lib/systemd/system/blocky.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart blocky
+
+- name: Enable and start service
+  ansible.builtin.systemd_service:
+    name: blocky
+    state: started
+    enabled: true
+    daemon_reload: true
