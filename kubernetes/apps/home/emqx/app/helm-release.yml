@@ -23,7 +23,7 @@ spec:
     service:
       type: LoadBalancer
       annotations:
-        coredns.io/hostname: emqx-mqtt.cluster.dnhrrs.xyz
+        external-dns.alpha.kubernetes.io/hostname: emqx-mqtt.cluster.dnhrrs.xyz
     ingress:
       dashboard:
         enabled: true

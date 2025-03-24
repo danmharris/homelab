@@ -23,7 +23,7 @@ spec:
     service:
       ssh:
         annotations:
-          coredns.io/hostname: gitea-ssh.cluster.dnhrrs.xyz
+          external-dns.alpha.kubernetes.io/hostname: gitea-ssh.cluster.dnhrrs.xyz
         type: LoadBalancer
     ingress:
       enabled: true
