@@ -25,3 +25,6 @@ spec:
       allowSnippetAnnotations: true
       extraArgs:
         default-ssl-certificate: network/cluster-dnhrrs-xyz-cert
+      service:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: internal.cluster.dnhrrs.xyz
