@@ -23,8 +23,11 @@ spec:
       config:
         force-ssl-redirect: 'true'
       allowSnippetAnnotations: true
+      publishService:
+        enabled: false
       extraArgs:
         default-ssl-certificate: network/cluster-dnhrrs-xyz-cert
+        publish-status-address: internal.cluster.dnhrrs.xyz
       service:
         annotations:
           external-dns.alpha.kubernetes.io/hostname: internal.cluster.dnhrrs.xyz
