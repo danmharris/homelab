@@ -6,7 +6,6 @@ upstreams:
 conditional:
   fallbackUpstream: false
   mapping:
-    cluster.dnhrrs.xyz: 10.23.20.175
     dnhrrs.xyz: 127.0.0.1:5354
     23.10.in-addr.arpa: 127.0.0.1:5354
 blocking:
