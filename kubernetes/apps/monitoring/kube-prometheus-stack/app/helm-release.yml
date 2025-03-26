@@ -36,6 +36,14 @@ spec:
       enabled: false
     kubeProxy:
       enabled: false
+    kubeScheduler:
+      enabled: true
+      endpoints:
+        - 10.23.20.3
+    kubeControllerManager:
+      enabled: true
+      endpoints:
+        - 10.23.20.3
     prometheus:
       enabled: true
       ingress:
