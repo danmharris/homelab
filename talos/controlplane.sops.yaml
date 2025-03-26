@@ -95,10 +95,14 @@ cluster:
                 - level: Metadata
     controllerManager:
         image: registry.k8s.io/kube-controller-manager:v1.31.1
+        extraArgs:
+            bind-address: 0.0.0.0
     proxy:
         image: registry.k8s.io/kube-proxy:v1.31.1
     scheduler:
         image: registry.k8s.io/kube-scheduler:v1.31.1
+        extraArgs:
+            bind-address: 0.0.0.0
     discovery:
         enabled: true
         registries:
@@ -125,8 +129,8 @@ sops:
             ZkUwUXlicDYwN1p4L2N0Y0Y1b3c4bWsKTamliHXUaB+z6T3QE5n6OzbHPY+VKMUl
             QJytY8aB0xxK+ihOB5wIdAcoIP/7pD2g6+5dvWsjSvXmeQtzs1fbYw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-26T13:21:55Z"
-    mac: ENC[AES256_GCM,data:ir5Z1oKxvB4jlGWFEMcgFIAFHBA985Ec8w1vnAXFeIWqiDGYU33uEocHuDRBgLuU04DKNGCvrK72KLs6IafPGy+qaD2QArFaHCD/2Pkg3SMdHqOZfbIRjGnE2H8TfRWKnGBBm0ezC3xJQM1AiuaRy1cFvC5ZBIKBVQUBAvqPFvo=,iv:jjkbN37rAD5n+xUYKuVWLUBClv6csYGftQf83W8w1fo=,tag:Yxc4bQqd6Xxzymlltv0npA==,type:str]
+    lastmodified: "2025-03-26T18:25:21Z"
+    mac: ENC[AES256_GCM,data:7XGlFRoY1CduEN1oyANmD9GSl0JMWdm1LAoKUhAkoV14BoT6WlT6Ojpht3MbYjK4nmRss06OvyvcI5KpUYxdiaecLesp7rJUu5aaawrMIDC2//OB+OPhBx8E0OL5HI3uRJhzkwgL+ljnBIg0hLI8FTQ0XN78UQUFegYem/IDTdA=,iv:gdasQorU5Pv24yG3H/P1w+Exk6Au8ZXt/UYm76uQqmc=,tag:tu2yLn7xiOHAwJhNl5cr9w==,type:str]
     pgp: []
     encrypted_regex: ^(crt|id|key|secret|secretboxEncryptionSecret|token)$
-    version: 3.8.1
+    version: 3.9.2
