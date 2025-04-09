@@ -37,7 +37,7 @@ spec:
             port: 8123
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: hass.cluster.dnhrrs.xyz
             paths:

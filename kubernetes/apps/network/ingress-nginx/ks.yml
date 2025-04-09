@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./kubernetes/apps/network/ingress-nginx/chart
+  path: ./kubernetes/apps/network/ingress-nginx/app
   prune: true
   sourceRef:
     kind: GitRepository

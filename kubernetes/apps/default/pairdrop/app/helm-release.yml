@@ -37,7 +37,7 @@ spec:
             port: 3000
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: pairdrop.cluster.dnhrrs.xyz
             paths:

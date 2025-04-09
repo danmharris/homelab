@@ -80,7 +80,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-snippet: |
         proxy_set_header X-Forwarded-Host $http_host;
 spec:
-  ingressClassName: nginx
+  ingressClassName: nginx-internal
   rules:
     - host: photos.cluster.dnhrrs.xyz
       http:

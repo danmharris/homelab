@@ -27,7 +27,7 @@ spec:
     ingress:
       dashboard:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: nginx-internal
         hosts:
           - emqx.cluster.dnhrrs.xyz
         pathType: Prefix

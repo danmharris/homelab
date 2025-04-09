@@ -50,7 +50,7 @@ spec:
             port: 3000
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: links.cluster.dnhrrs.xyz
             paths:

@@ -29,5 +29,5 @@ spec:
     provider:
       name: pdns
     extraArgs:
-      - '--ingress-class=nginx'
+      - '--ingress-class=nginx-internal'
       - '--pdns-server=http://10.23.20.2:8081'

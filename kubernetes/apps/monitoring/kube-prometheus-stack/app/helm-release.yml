@@ -20,7 +20,7 @@ spec:
       enabled: true
       ingress:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: nginx-internal
         hosts:
           - alertmanager.cluster.dnhrrs.xyz
       alertmanagerSpec:
@@ -48,7 +48,7 @@ spec:
       enabled: true
       ingress:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: nginx-internal
         hosts:
           - prometheus.cluster.dnhrrs.xyz
       prometheusSpec:

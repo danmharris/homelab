@@ -63,7 +63,7 @@ spec:
             port: 6379
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: paperless.cluster.dnhrrs.xyz
             paths:
