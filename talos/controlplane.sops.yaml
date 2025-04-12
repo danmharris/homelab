@@ -9,7 +9,7 @@ machine:
         key: ENC[AES256_GCM,data:BK/90MRpchCZ+YgObIJnWbpu39kbfRrKxnRS8ZVOl9LzgmmCTgGHmyqISjraPrHwjJONglBnKDFsOGJPz8yTvjI98ykq5ntN6Uri9X0297OGxBZQwvHGwSEMwDwAbD7BbiH7+PnJy7gycoWH8truWn11aoZcOv7ysT84ZAZbI43EXg3vrWUsY7v3kkMbVB+a6IeYm65216mIMyNINhsjXprp/FYeZuebsadWpdCDU74KGKiG,iv:Mtlh2/ZTCFvDT6m4cAEq/OrqvbKrRyEAFVWQRIDV5Z0=,tag:/75MI7aKHXikuoP1gZSSLg==,type:str]
     certSANs: []
     kubelet:
-        image: ghcr.io/siderolabs/kubelet:v1.31.1
+        image: ghcr.io/siderolabs/kubelet:v1.31.6
         defaultRuntimeSeccompProfileEnabled: true
         disableManifestsDirectory: true
         extraMounts:
@@ -32,7 +32,7 @@ machine:
         disk: /dev/sda
         extraKernelArgs:
             - nomodeset
-        image: ghcr.io/siderolabs/installer:v1.8.1
+        image: ghcr.io/siderolabs/installer:v1.9.5
         wipe: true
     features:
         rbac: true
@@ -67,7 +67,7 @@ cluster:
     serviceAccount:
         key: ENC[AES256_GCM,data:lFvwv8K3wyos0D5H29JwCJuTHL1B7OI61oqx3w0oYmriZJ5yuZDyGoZUMbBa3qffLOUc/knyDU/v7/D46sPHizFJyH1fQ9zL5+NZv8+jP02ffHrl7v+YjIeznKMdahgDOLTmGrSVNOKe66hJ+4LP/v6PaVFnYOJZfcBQ3AmwDnutHvRvXZjztiBIEgruS3OTkQh2KzVN3SL3vAkFoJSkqEsBqj3VtMjDgjnkxc5xbz8BJLOqfjLg1w2lVkrg5cxThZjYNbG3KX317/9e56UmX0+ZDGf9p7UekGUUcuxoDI7AVR4ZIKyTaC/xK266uHvw27T3+CPQBYYq7WXPJ5L2CtHE3dn8QeO00z2ReoN+y+2bZ5qP+0fSdWCoWQE27aXTzx8WfpRL5V1jbDmIL4rjwQ==,iv:QQibGEwtouyUUU1FO3QaS8wKuroiH3ZUXBrUeHCg3dA=,tag:AvLGvUT9n9yzEcop0+O2HA==,type:str]
     apiServer:
-        image: registry.k8s.io/kube-apiserver:v1.31.1
+        image: registry.k8s.io/kube-apiserver:v1.31.6
         certSANs:
             - 10.23.20.4
         disablePodSecurityPolicy: true
@@ -94,13 +94,13 @@ cluster:
             rules:
                 - level: Metadata
     controllerManager:
-        image: registry.k8s.io/kube-controller-manager:v1.31.1
+        image: registry.k8s.io/kube-controller-manager:v1.31.6
         extraArgs:
             bind-address: 0.0.0.0
     proxy:
-        image: registry.k8s.io/kube-proxy:v1.31.1
+        image: registry.k8s.io/kube-proxy:v1.31.6
     scheduler:
-        image: registry.k8s.io/kube-scheduler:v1.31.1
+        image: registry.k8s.io/kube-scheduler:v1.31.6
         extraArgs:
             bind-address: 0.0.0.0
     discovery:
@@ -129,8 +129,8 @@ sops:
             ZkUwUXlicDYwN1p4L2N0Y0Y1b3c4bWsKTamliHXUaB+z6T3QE5n6OzbHPY+VKMUl
             QJytY8aB0xxK+ihOB5wIdAcoIP/7pD2g6+5dvWsjSvXmeQtzs1fbYw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-03-26T18:25:21Z"
-    mac: ENC[AES256_GCM,data:7XGlFRoY1CduEN1oyANmD9GSl0JMWdm1LAoKUhAkoV14BoT6WlT6Ojpht3MbYjK4nmRss06OvyvcI5KpUYxdiaecLesp7rJUu5aaawrMIDC2//OB+OPhBx8E0OL5HI3uRJhzkwgL+ljnBIg0hLI8FTQ0XN78UQUFegYem/IDTdA=,iv:gdasQorU5Pv24yG3H/P1w+Exk6Au8ZXt/UYm76uQqmc=,tag:tu2yLn7xiOHAwJhNl5cr9w==,type:str]
+    lastmodified: "2025-04-12T16:53:09Z"
+    mac: ENC[AES256_GCM,data:WtIyQvWC1ZKKID+g3rmqcR2CgnC5NwnfG8lKu1ONrsP81JdIIi5/VT0t5QylO7sRCci23iBkbsOYbjjeWjuih+LKmRUlWzGF0ly4Yg6C5nJfY+WNfgo4IFBmR78zXLA6lUFKuFyNfHO9msrT1HbgoFB2TLp3INTcycMCEiBhPAQ=,iv:xPHOlpeuw6vBKkpICyA7aK37O3jPyzdwF67wUWIEHSw=,tag:jGloGSIszJ0c5iFU5oaG1Q==,type:str]
     pgp: []
     encrypted_regex: ^(crt|id|key|secret|secretboxEncryptionSecret|token)$
     version: 3.9.2
