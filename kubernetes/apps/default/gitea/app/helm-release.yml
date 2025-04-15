@@ -64,7 +64,7 @@ spec:
       image:
         registry: docker.io
         repository: bitnami/redis
-        tag: 7.4.2-debian-12-r8@sha256:8c65fcff9673b063a72b106ba73fc712480ca335fe11f47be560be825e8c882a
+        tag: 7.4.2-debian-12-r9@sha256:4e65bf6418051797e71e0acea49f0f149ab05daa3e6ebce6049ed7eb288a23b0
   valuesFrom:
     - kind: Secret
       name: gitea-credentials
