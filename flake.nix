@@ -7,11 +7,11 @@
   outputs = { self, nixpkgs, utils }:
     utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShell = with pkgs; mkShell {
-          packages = [
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
             fluxcd
             kubectl
             talosctl
@@ -24,6 +24,8 @@
             . <(flux completion zsh)
             . <(kubectl completion zsh)
           '';
+
+          EDITOR = "nvim";
         };
       }
     );
