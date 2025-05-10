@@ -2,14 +2,41 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     utils.url = "github:numtide/flake-utils";
+    sops-nix.url = "github:Mic92/sops-nix";
+    impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nixpkgs,
     utils,
+    sops-nix,
+    impermanence,
+    ...
   }:
-    utils.lib.eachDefaultSystem (
+    {
+      nixosConfigurations = {
+        lumia = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            impermanence.nixosModules.impermanence
+            sops-nix.nixosModules.sops
+            ./nixos/hosts/lumia/configuration.nix
+          ];
+          specialArgs = {inherit inputs;};
+        };
+
+        iso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+            ./nixos/hosts/iso.nix
+          ];
+          specialArgs = {inherit inputs;};
+        };
+      };
+    }
+    // utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {

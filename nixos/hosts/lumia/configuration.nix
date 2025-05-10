@@ -1,0 +1,103 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  boot.kernelParams = ["ip=dhcp"];
+  boot.initrd.network = {
+    enable = true;
+    ssh = {
+      enable = true;
+      port = 2222;
+      shell = "/bin/cryptsetup-askpass";
+      authorizedKeys = config.users.users.dan.openssh.authorizedKeys.keys;
+      hostKeys = ["/nix/persist/initrd/ssh_host_ed25519_key"];
+    };
+  };
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "lumia";
+  networking.networkmanager.enable = true;
+
+  time.timeZone = "Europe/London";
+
+  i18n.defaultLocale = "en_GB.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_GB.UTF-8";
+    LC_IDENTIFICATION = "en_GB.UTF-8";
+    LC_MEASUREMENT = "en_GB.UTF-8";
+    LC_MONETARY = "en_GB.UTF-8";
+    LC_NAME = "en_GB.UTF-8";
+    LC_NUMERIC = "en_GB.UTF-8";
+    LC_PAPER = "en_GB.UTF-8";
+    LC_TELEPHONE = "en_GB.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
+  };
+
+  console.keyMap = "uk";
+
+  users.mutableUsers = false;
+
+  sops.age.sshKeyPaths = ["/nix/persist/etc/ssh/ssh_host_ed25519_key"];
+  sops.secrets.dan-password = {
+    sopsFile = ./secrets.yml;
+    neededForUsers = true;
+  };
+
+  users.users.dan = {
+    isNormalUser = true;
+    extraGroups = ["wheel"];
+    shell = pkgs.zsh;
+    hashedPasswordFile = config.sops.secrets.dan-password.path;
+
+    openssh.authorizedKeys.keys = [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4div1SWpMioi2ibOZy3/ww3tN8rdoNE5RLiy90s7leQsBhe8LzFVw8kn+oMVFIa/QBc8Iwt19j774OtG/wtfN3lNwO+s2N36ha34z722adfTB9LouEv0Af+sHvvrcVAMgNZ8Lqtevjy1VgLOx/LGMTi3pFhk7FfVFPwmYmPEXY+PjxPH8vALDgLMtTqt0o7OtuGI1ekXQ6V/7sXITiLVBzkGxmeYMOZZwNiVNNC0FdcFAopueZKzaejTLgmD/0Y1MGitDZSw+t0oAS2Rry152xSjcWaisdKJeO9F7r09rAr1oWwSttDAa99ddYcfv/gmkFz5kgr6uOPvPlp64gu5T"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkFBua9e2PT5pUZSi9fpRYznYepQBuNcTMj97gupNfB"
+    ];
+  };
+
+  programs.zsh.enable = true;
+  services.openssh.enable = true;
+
+  environment.persistence."/nix/persist" = {
+    hideMounts = true;
+    directories = [
+      "/var/log"
+      "/var/lib/nixos"
+    ];
+    files = [
+      "/etc/machine-id"
+      "/etc/ssh/ssh_host_ed25519_key"
+      "/etc/ssh/ssh_host_ed25519_key.pub"
+      "/etc/ssh/ssh_host_rsa_key"
+      "/etc/ssh/ssh_host_rsa_key.pub"
+    ];
+  };
+
+  # This option defines the first version of NixOS you have installed on this particular machine,
+  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+  #
+  # Most users should NEVER change this value after the initial install, for any reason,
+  # even if you've upgraded your system to a new NixOS release.
+  #
+  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
+  # to actually do that.
+  #
+  # This value being lower than the current NixOS release does NOT mean your system is
+  # out of date, out of support, or vulnerable.
+  #
+  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+  # and migrated your data accordingly.
+  #
+  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+  system.stateVersion = "24.11"; # Did you read the comment?
+}
