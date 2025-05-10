@@ -4,12 +4,17 @@
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, utils }:
-    utils.lib.eachDefaultSystem (system:
-      let
+  outputs = {
+    self,
+    nixpkgs,
+    utils,
+  }:
+    utils.lib.eachDefaultSystem (
+      system: let
         pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
+      in {
+        formatter = pkgs.alejandra;
+
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             fluxcd
