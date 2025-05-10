@@ -24,7 +24,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "lumia";
-  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/London";
 
