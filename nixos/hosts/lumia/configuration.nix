@@ -9,6 +9,7 @@
 
     ../../modules/acme
     ../../modules/glances
+    ../../modules/linkding
   ];
 
   boot.kernelParams = ["ip=dhcp"];
@@ -56,7 +57,7 @@
 
   users.users.dan = {
     isNormalUser = true;
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "poddy"];
     shell = pkgs.zsh;
     hashedPasswordFile = config.sops.secrets.dan-password.path;
 
@@ -69,10 +70,32 @@
   programs.zsh.enable = true;
   services.openssh.enable = true;
 
+  services.caddy.enable = true;
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
+  virtualisation = {
+    containers.enable = true;
+    oci-containers.backend = "podman";
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+  networking.firewall.interfaces.podman0.allowedUDPPorts = [53];
+  users.users.poddy = {
+    uid = 917;
+    group = "poddy";
+  };
+  users.groups.poddy.gid = 917;
+
   environment.persistence."/nix/persist" = {
     hideMounts = true;
     directories = [
       "/var/log"
+      "/var/lib/containers"
       "/var/lib/nixos"
     ];
     files = [
