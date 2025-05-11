@@ -6,6 +6,9 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+
+    ../../modules/acme
+    ../../modules/glances
   ];
 
   boot.kernelParams = ["ip=dhcp"];
