@@ -9,6 +9,7 @@
 
     ../../modules/acme
     ../../modules/glances
+    ../../modules/immich
     ../../modules/linkding
   ];
 
