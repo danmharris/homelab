@@ -46,4 +46,29 @@
       }
     ];
   };
+
+  services.restic.backups.linkding = {
+    repository = "/mnt/restic/linkding";
+    initialize = true;
+    passwordFile = config.sops.secrets."services/restic/password".path;
+    paths = [
+      "/var/lib/linkding/backup.zip"
+    ];
+    backupPrepareCommand = ''
+      ${pkgs.podman}/bin/podman exec linkding python manage.py full_backup /etc/linkding/data/backup.zip
+    '';
+    backupCleanupCommand = ''
+      rm -f /var/lib/linkding/backup.zip
+    '';
+    timerConfig = {
+      OnCalendar = "daily";
+      Persistent = true;
+      RandomizedDelaySec = "30m";
+    };
+    pruneOpts = [
+      "--keep-daily 7"
+      "--keep-weekly 4"
+      "--keep-monthly 3"
+    ];
+  };
 }
