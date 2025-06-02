@@ -9,7 +9,7 @@ spec:
   provider: generic
   ref:
     tag: v2.4.0
-    digest: 'sha256:3ad46381a9efb9e4ab491d76f3cc02389284ef38a7ecf3f5f3e3c186ded63255'
+    digest: 'sha256:feb7f142fd459f37bcd5547ab7ca40cae7204c2daf3466cb210f09afc043256c'
   url: oci://ghcr.io/fluxcd/flux-manifests
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
