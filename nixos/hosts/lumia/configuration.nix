@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
@@ -12,6 +11,8 @@
     ../../modules/immich
     ../../modules/linkding
   ];
+
+  nix.settings.trusted-users = ["@wheel"];
 
   boot.kernelParams = ["ip=dhcp"];
   boot.initrd.network = {
