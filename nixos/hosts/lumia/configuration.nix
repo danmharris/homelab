@@ -10,6 +10,7 @@
     ../../modules/glances
     ../../modules/immich
     ../../modules/linkding
+    ../../modules/postgresql
   ];
 
   nix.settings.trusted-users = ["@wheel"];
