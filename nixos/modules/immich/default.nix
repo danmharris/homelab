@@ -15,6 +15,7 @@ in {
       mediaLocation = "/var/lib/immich";
     };
 
+    mySystem.caddy.enable = true;
     services.caddy.virtualHosts."immich.dnhrrs.xyz" = {
       useACMEHost = "dnhrrs.xyz";
       extraConfig = ''

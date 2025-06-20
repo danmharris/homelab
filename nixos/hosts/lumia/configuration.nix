@@ -21,11 +21,6 @@
     };
   };
 
-  fileSystems."/mnt/restic" = {
-    device = "nas.dnhrrs.xyz:/volume1/restic";
-    fsType = "nfs";
-  };
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -59,7 +54,7 @@
 
   users.users.dan = {
     isNormalUser = true;
-    extraGroups = ["wheel" "poddy"];
+    extraGroups = ["wheel"];
     shell = pkgs.zsh;
     hashedPasswordFile = config.sops.secrets.dan-password.path;
 
@@ -71,27 +66,6 @@
 
   programs.zsh.enable = true;
   services.openssh.enable = true;
-
-  services.caddy.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
-  virtualisation = {
-    containers.enable = true;
-    oci-containers.backend = "podman";
-    podman = {
-      enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
-  networking.firewall.interfaces.podman0.allowedUDPPorts = [53];
-  users.users.poddy = {
-    uid = 917;
-    group = "poddy";
-  };
-  users.groups.poddy.gid = 917;
 
   environment.persistence."/nix/persist" = {
     hideMounts = true;
@@ -109,15 +83,12 @@
     ];
   };
 
-  sops.secrets."services/restic/password" = {
-    sopsFile = ./secrets.yml;
-  };
-
   mySystem = {
     acme.enable = true;
     glances.enable = true;
     immich.enable = true;
     linkding.enable = true;
+    restic.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

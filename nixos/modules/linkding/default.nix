@@ -16,6 +16,7 @@ in {
       restartUnits = ["podman-linkding.service"];
     };
 
+    mySystem.podman.enable = true;
     virtualisation.oci-containers.containers.linkding = {
       image = "sissbruecker/linkding:1.39.1";
       user = "917:917";
@@ -34,6 +35,7 @@ in {
       environmentFiles = [config.sops.secrets."app/linkding/env".path];
     };
 
+    mySystem.caddy.enable = true;
     services.caddy.virtualHosts."linkding.dnhrrs.xyz" = {
       useACMEHost = "dnhrrs.xyz";
       extraConfig = ''
