@@ -9,18 +9,6 @@
 
   nix.settings.trusted-users = ["@wheel"];
 
-  boot.kernelParams = ["ip=dhcp"];
-  boot.initrd.network = {
-    enable = true;
-    ssh = {
-      enable = true;
-      port = 2222;
-      shell = "/bin/cryptsetup-askpass";
-      authorizedKeys = config.users.users.dan.openssh.authorizedKeys.keys;
-      hostKeys = ["/nix/persist/initrd/ssh_host_ed25519_key"];
-    };
-  };
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -71,6 +59,7 @@
     linkding.enable = true;
     restic.enable = true;
     impermanence.enable = true;
+    cryptroot.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

@@ -2,6 +2,7 @@
   imports = [
     ./acme
     ./caddy
+    ./cryptroot
     ./glances
     ./immich
     ./impermanence
