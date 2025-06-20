@@ -43,7 +43,7 @@ in {
       '';
     };
 
-    environment.persistence."/nix/persist" = {
+    environment.persistence."/nix/persist" = lib.mkIf (config.mySystem.impermanence.enable) {
       directories = [
         {
           directory = "/var/lib/linkding";

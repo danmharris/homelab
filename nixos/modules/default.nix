@@ -4,6 +4,7 @@
     ./caddy
     ./glances
     ./immich
+    ./impermanence
     ./linkding
     ./podman
     ./postgresql

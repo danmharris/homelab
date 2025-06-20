@@ -25,5 +25,11 @@ in {
     users.groups.poddy.gid = 917;
 
     users.users.dan.extraGroups = ["poddy"];
+
+    environment.persistence."/nix/persist" = lib.mkIf (config.mySystem.impermanence.enable) {
+      directories = [
+        "/var/lib/containers"
+      ];
+    };
   };
 }

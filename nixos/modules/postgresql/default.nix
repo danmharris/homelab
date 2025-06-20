@@ -4,7 +4,7 @@
   ...
 }: {
   config = lib.mkIf (config.services.postgresql.enable) {
-    environment.persistence."/nix/persist" = {
+    environment.persistence."/nix/persist" = lib.mkIf (config.mySystem.impermanence.enable) {
       directories = [
         {
           directory = config.services.postgresql.dataDir;

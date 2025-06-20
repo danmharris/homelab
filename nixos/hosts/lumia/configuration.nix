@@ -44,9 +44,6 @@
 
   console.keyMap = "uk";
 
-  users.mutableUsers = false;
-
-  sops.age.sshKeyPaths = ["/nix/persist/etc/ssh/ssh_host_ed25519_key"];
   sops.secrets.dan-password = {
     sopsFile = ./secrets.yml;
     neededForUsers = true;
@@ -67,28 +64,13 @@
   programs.zsh.enable = true;
   services.openssh.enable = true;
 
-  environment.persistence."/nix/persist" = {
-    hideMounts = true;
-    directories = [
-      "/var/log"
-      "/var/lib/containers"
-      "/var/lib/nixos"
-    ];
-    files = [
-      "/etc/machine-id"
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
-      "/etc/ssh/ssh_host_rsa_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
-    ];
-  };
-
   mySystem = {
     acme.enable = true;
     glances.enable = true;
     immich.enable = true;
     linkding.enable = true;
     restic.enable = true;
+    impermanence.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
