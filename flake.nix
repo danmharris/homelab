@@ -21,6 +21,7 @@
           modules = [
             impermanence.nixosModules.impermanence
             sops-nix.nixosModules.sops
+            ./nixos/modules
             ./nixos/hosts/lumia/configuration.nix
           ];
           specialArgs = {inherit inputs;};

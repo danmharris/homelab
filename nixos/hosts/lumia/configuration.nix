@@ -5,12 +5,6 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-
-    ../../modules/acme
-    ../../modules/glances
-    ../../modules/immich
-    ../../modules/linkding
-    ../../modules/postgresql
   ];
 
   nix.settings.trusted-users = ["@wheel"];
@@ -117,6 +111,13 @@
 
   sops.secrets."services/restic/password" = {
     sopsFile = ./secrets.yml;
+  };
+
+  mySystem = {
+    acme.enable = true;
+    glances.enable = true;
+    immich.enable = true;
+    linkding.enable = true;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
