@@ -21,7 +21,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: photos-web
-          image: 'filebrowser/filebrowser:v2.32.0@sha256:593478e3c24c5ea9f5d7478dc549965b7bc7030707291006ce8d0b6162d3454b'
+          image: 'filebrowser/filebrowser:v2.33.7@sha256:e0969d7619096d704f1df790a80b9e00ee5240aedb401f87f104b70530cb7dca'
           imagePullPolicy: IfNotPresent
           env:
             - name: FB_PORT
