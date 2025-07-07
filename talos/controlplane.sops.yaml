@@ -20,6 +20,13 @@ machine:
                 - bind
                 - rshared
                 - rw
+            - destination: /var/lib/csi-local-hostpath
+              type: bind
+              source: /var/lib/csi-local-hostpath
+              options:
+                - bind
+                - rshared
+                - rw
     network:
         hostname: lychee
         interfaces:
@@ -115,10 +122,6 @@ cluster:
             key: ENC[AES256_GCM,data:pN9pS52PP/l66Es04aCZkbQLvQP64jTircFwH3KpcXwIXAB9e/pwO89ohmrrW3c4SdtlDugiRDJHrZldIMH6aDhye52SPy4MxKUgEkaB1JY6Ua5aDBDZElNQ9twubkMSRku+fKu/0/FvWvymR6qD5/olk4TdGRLXv7SB89REWh/PRPHsE1hXVnssAmTZoUdZgOWM9ZIZo36yi1l3Y9Z85/b+N/nchoVzR3BbzMHPnrFMjLRhi9VWAOh5yiIqJCfTSd4jzdpK1/s/EiNOz9FxtMW4olUAUMnwlAvewzRyPCXs8LfnxFXxRmiTcnC07ZcY19SIm6mz9PtHKmBXYP+WwIY7hLPPkYn6X60tw03MD1O4jkpJBLXCCWwKVuLeq0xE7yCdP54NxHaoEyYDPlwW7A==,iv:qZObkBEQ/M3aW/Ji3DI/D/Jz95jSDh4ZoMk9CfD9N+U=,tag:sF/5i0aHz9H1n4QyDp47HA==,type:str]
     allowSchedulingOnControlPlanes: true
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
     age:
         - recipient: age162k3jv9wyce4dkly60tu0l9jmme5qa3fmcrknrz6lx54ru2ftgaqcsy5e2
           enc: |
@@ -129,8 +132,7 @@ sops:
             ZkUwUXlicDYwN1p4L2N0Y0Y1b3c4bWsKTamliHXUaB+z6T3QE5n6OzbHPY+VKMUl
             QJytY8aB0xxK+ihOB5wIdAcoIP/7pD2g6+5dvWsjSvXmeQtzs1fbYw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-04-12T16:53:09Z"
-    mac: ENC[AES256_GCM,data:WtIyQvWC1ZKKID+g3rmqcR2CgnC5NwnfG8lKu1ONrsP81JdIIi5/VT0t5QylO7sRCci23iBkbsOYbjjeWjuih+LKmRUlWzGF0ly4Yg6C5nJfY+WNfgo4IFBmR78zXLA6lUFKuFyNfHO9msrT1HbgoFB2TLp3INTcycMCEiBhPAQ=,iv:xPHOlpeuw6vBKkpICyA7aK37O3jPyzdwF67wUWIEHSw=,tag:jGloGSIszJ0c5iFU5oaG1Q==,type:str]
-    pgp: []
+    lastmodified: "2025-07-07T18:29:34Z"
+    mac: ENC[AES256_GCM,data:3cP8uIoMIGsTaIuSZG9LLr4hwiFRUL91n96gipyCuHGONrQHBvrazWuXLj1HBU4DWpWOse/GvadeSMFNGgVPlv+lCImFwQmUWFjKWZO3W2DsnYuF12ZJnqq1Um8aqeVFBJLmhG1m4z5VjIPxvgTQw8V5PZsYR4lasY3UOdi5XlE=,iv:K9CPu4vOmEEs7nUWr0f6Ha7g4b9G86VdbGhgBe6/yYM=,tag:cE35ign5QM8qGwLWpUkxHg==,type:str]
     encrypted_regex: ^(crt|id|key|secret|secretboxEncryptionSecret|token)$
-    version: 3.9.2
+    version: 3.10.2
