@@ -61,6 +61,9 @@ spec:
       enabled: false
     valkey:
       enabled: true
+      primary:
+        persistence:
+          storageClass: local-hostpath
   valuesFrom:
     - kind: Secret
       name: gitea-credentials
