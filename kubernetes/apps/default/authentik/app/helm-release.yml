@@ -38,6 +38,9 @@ spec:
         user: authentik
     redis:
       enabled: true
+      master:
+        persistence:
+          storageClass: local-hostpath
   valuesFrom:
     - kind: Secret
       name: authentik-credentials
