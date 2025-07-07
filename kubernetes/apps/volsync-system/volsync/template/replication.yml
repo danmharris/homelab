@@ -14,7 +14,7 @@ spec:
       daily: 7
       weekly: 4
     copyMethod: Snapshot
-    cacheStorageClassName: openebs-hostpath
+    cacheStorageClassName: local-hostpath
     storageClassName: nfs-csi
     volumeSnapshotClassName: nfs-csi
 
@@ -31,6 +31,8 @@ spec:
     copyMethod: Snapshot
     accessModes: [ReadWriteOnce]
     capacity: ${CAPACITY}
-    cacheStorageClassName: openebs-hostpath
+    cacheStorageClassName: local-hostpath
     storageClassName: nfs-csi
     volumeSnapshotClassName: nfs-csi
+    cleanupTempPVC: true
+    cleanupCachePVC: true
