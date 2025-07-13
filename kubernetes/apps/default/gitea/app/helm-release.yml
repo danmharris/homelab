@@ -64,6 +64,10 @@ spec:
       primary:
         persistence:
           storageClass: local-hostpath
+    initPreScript: |
+      if [[ -d /data/git/.ssh ]]; then
+        exit 0
+      fi
   valuesFrom:
     - kind: Secret
       name: gitea-credentials
