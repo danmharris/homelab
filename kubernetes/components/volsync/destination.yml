@@ -1,0 +1,18 @@
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: ${APP}-rdst
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    repository: ${APP}-volsync
+    copyMethod: Snapshot
+    accessModes: [ReadWriteOnce]
+    capacity: ${CAPACITY}
+    cacheStorageClassName: local-hostpath
+    storageClassName: ${STORAGE_CLASS:=nfs-csi}
+    volumeSnapshotClassName: ${STORAGE_CLASS:=nfs-csi}
+    cleanupTempPVC: true
+    cleanupCachePVC: true
