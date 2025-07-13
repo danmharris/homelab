@@ -22,7 +22,7 @@ metadata:
 spec:
   interval: 10m
   path: ./kubernetes/apps/volsync-system/volsync/template
-  prune: true
+  prune: false
   wait: true
   targetNamespace: default
   sourceRef:
