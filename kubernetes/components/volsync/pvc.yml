@@ -9,7 +9,7 @@ spec:
   resources:
     requests:
       storage: ${CAPACITY}
-  storageClassName: nfs-csi
+  storageClassName: ${STORAGE_CLASS:=nfs-csi}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
