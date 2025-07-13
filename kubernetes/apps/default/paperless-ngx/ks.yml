@@ -13,24 +13,11 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: paperless-ngx-volsync
-  namespace: flux-system
-spec:
-  interval: 10m
-  path: ./kubernetes/apps/volsync-system/volsync/template
-  prune: false
-  wait: true
-  targetNamespace: default
-  sourceRef:
-    kind: GitRepository
-    name: homelab
+  components:
+    - ../../../../components/volsync
   postBuild:
     substitute:
       APP: paperless-ngx
       CAPACITY: 1Gi
       DELAY: "2"
+      STORAGE_CLASS: local-hostpath
