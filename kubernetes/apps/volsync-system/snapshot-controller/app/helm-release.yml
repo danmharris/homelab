@@ -17,3 +17,7 @@ spec:
     crds: CreateReplace
   upgrade:
     crds: CreateReplace
+  values:
+    controller:
+      args:
+        enableDistributedSnapshotting: true
