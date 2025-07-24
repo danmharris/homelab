@@ -17,6 +17,7 @@ spec:
     controllers:
       app:
         pod:
+          hostNetwork: true
           securityContext:
             runAsNonRoot: true
             runAsUser: 1000
