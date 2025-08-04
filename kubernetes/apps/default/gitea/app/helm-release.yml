@@ -18,7 +18,7 @@ spec:
     image:
       registry: docker.gitea.com
       repository: gitea
-      tag: '1.24.3'
+      tag: '1.24.4'
       rootless: true
     service:
       ssh:
