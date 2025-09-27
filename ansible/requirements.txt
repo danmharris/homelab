@@ -3,7 +3,7 @@ ansible-core==2.19.2
 cffi==2.0.0
 cryptography==46.0.1
 Jinja2==3.1.6
-MarkupSafe==3.0.2
+MarkupSafe==3.0.3
 packaging==25.0
 pycparser==2.23
 PyYAML==6.0.3
