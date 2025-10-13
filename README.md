@@ -2,6 +2,12 @@
 
 Configuration for tools used to manage my homelab.
 
+> [!IMPORTANT]
+> I am no longer actively updating this repository. My homelab is now managed with
+> NixOS instead of Kubernetes.
+>
+> The configuration for this can be found at https://github.com/danmharris/nixfiles
+
 ## 🚢 Kubernetes
 
 The majority of services in the homelab are hosted on a single Kubernetes
