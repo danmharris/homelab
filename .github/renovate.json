@@ -11,17 +11,20 @@
     "flux": {
         "managerFilePatterns": [
             "/kubernetes/.+\\.ya?ml$/"
-        ]
+        ],
+        "enabled": false
     },
     "helm-values": {
         "managerFilePatterns": [
             "/kubernetes/.+\\.ya?ml$/"
-        ]
+        ],
+        "enabled": false
     },
     "kubernetes": {
         "managerFilePatterns": [
             "/kubernetes/.+\\.ya?ml$/"
-        ]
+        ],
+        "enabled": false
     },
     "packageRules": [
         {
