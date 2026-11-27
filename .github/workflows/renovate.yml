@@ -21,6 +21,6 @@ jobs:
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
 
       - name: Renovate
-        uses: renovatebot/github-action@ea850436a5fe75c0925d583c7a02c60a5865461d # v43.0.20
+        uses: renovatebot/github-action@1376d90bcd3a4d4e7393ae762eea56ac684aee38 # v48.0.0
         with:
           token: '${{ steps.get_token.outputs.token }}'
